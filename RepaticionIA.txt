@@ -1,0 +1,3 @@
+Jose: Generacion, Presentacion + ayudar Cristian
+Jonathan: Recopilacion usuario, recopilacion preferencias (preguntas)
+Cristian: Procesado
