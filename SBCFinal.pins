@@ -1,0 +1,163 @@
+; Tue Dec 01 08:43:28 CET 2015
+; 
+;+ (version "3.4.1")
+;+ (build "Build 537")
+
+([SBCFinal_Class0] of  Idioma
+
+	(idioma "espanol")
+	(inverse_of_idioma_disponible
+		[SBCFinal_Class24]
+		[SBCFinal_Class25]))
+
+([SBCFinal_Class1] of  Idioma
+
+	(idioma "catalan")
+	(inverse_of_idioma_disponible [SBCFinal_Class24]))
+
+([SBCFinal_Class10] of  Subgenero_ciencia_ficcion
+
+	(subgenero_ciencia_ficcion "viajes_en_el_tiempo"))
+
+([SBCFinal_Class11] of  Subgenero_ciencia_ficcion
+
+	(inverse_of_subgenero_cf [SBCFinal_Class24])
+	(subgenero_ciencia_ficcion "espacio"))
+
+([SBCFinal_Class12] of  Subgenero_ciencia_ficcion
+
+	(subgenero_ciencia_ficcion "robotica_y_inteligencia_artificial"))
+
+([SBCFinal_Class13] of  Subgenero_ciencia_ficcion
+
+	(subgenero_ciencia_ficcion "socal_alternativo"))
+
+([SBCFinal_Class14] of  Subgenero_ciencia_ficcion
+
+	(subgenero_ciencia_ficcion "social_utopia"))
+
+([SBCFinal_Class15] of  Subgenero_ciencia_ficcion
+
+	(subgenero_ciencia_ficcion "social_distopia"))
+
+([SBCFinal_Class16] of  Subgenero_misterio
+
+	(inverse_of_subgenero_mist [SBCFinal_Class26])
+	(subgenero_misterio "policial"))
+
+([SBCFinal_Class17] of  Subgenero_misterio
+
+	(subgenero_misterio "suspense"))
+
+([SBCFinal_Class19] of  Autor
+
+	(inverse_of_escrito_por [SBCFinal_Class24])
+	(Nacionalidad "nac1")
+	(Nombre "autor1"))
+
+([SBCFinal_Class2] of  Idioma
+
+	(idioma "ingles")
+	(inverse_of_idioma_disponible
+		[SBCFinal_Class24]
+		[SBCFinal_Class26]))
+
+([SBCFinal_Class20] of  Autor
+
+	(inverse_of_escrito_por [SBCFinal_Class25])
+	(Nacionalidad "nac2")
+	(Nombre "autor2"))
+
+([SBCFinal_Class21] of  Autor
+
+	(inverse_of_escrito_por [SBCFinal_Class26])
+	(Nacionalidad "nac2")
+	(Nombre "autor3"))
+
+([SBCFinal_Class22] of  Autor
+
+	(Nacionalidad "nac3")
+	(Nombre "autor4"))
+
+([SBCFinal_Class23] of  Autor
+
+	(Nacionalidad "nac2")
+	(Nombre "autor5"))
+
+([SBCFinal_Class24] of  Ciencia_ficcion
+
+	(anyo_publicacion 1900)
+	(best_seller TRUE)
+	(clasico_literatura TRUE)
+	(edad_recomendada 16)
+	(edicion_bolsillo TRUE)
+	(editorial "edit1")
+	(escrito_por [SBCFinal_Class19])
+	(hard TRUE)
+	(idioma_disponible
+		[SBCFinal_Class0]
+		[SBCFinal_Class1]
+		[SBCFinal_Class2])
+	(num_pag 500)
+	(saga TRUE)
+	(subgenero_cf [SBCFinal_Class11])
+	(titulo "libro1"))
+
+([SBCFinal_Class25] of  Fantasia
+
+	(anyo_publicacion 2000)
+	(best_seller TRUE)
+	(clasico_literatura TRUE)
+	(edad_recomendada 12)
+	(edicion_bolsillo TRUE)
+	(editorial "edit1")
+	(escrito_por [SBCFinal_Class20])
+	(idioma_disponible [SBCFinal_Class0])
+	(num_pag 300)
+	(saga TRUE)
+	(subgenero_fant [SBCFinal_Class5])
+	(titulo "libro2"))
+
+([SBCFinal_Class26] of  Misterio
+
+	(anyo_publicacion 1500)
+	(best_seller TRUE)
+	(clasico_literatura TRUE)
+	(edad_recomendada 18)
+	(edicion_bolsillo TRUE)
+	(editorial "edit2")
+	(escrito_por [SBCFinal_Class21])
+	(idioma_disponible [SBCFinal_Class2])
+	(num_pag 150)
+	(saga TRUE)
+	(subgenero_mist [SBCFinal_Class16])
+	(titulo "libro3"))
+
+([SBCFinal_Class3] of  Idioma
+
+	(idioma "aleman"))
+
+([SBCFinal_Class4] of  Idioma
+
+	(idioma "chino"))
+
+([SBCFinal_Class5] of  Subgenero_fantasia
+
+	(inverse_of_subgenero_fant [SBCFinal_Class25])
+	(subgenero_fantasia "cuentos_clasicos"))
+
+([SBCFinal_Class6] of  Subgenero_fantasia
+
+	(subgenero_fantasia "magia_y_espada"))
+
+([SBCFinal_Class7] of  Subgenero_fantasia
+
+	(subgenero_fantasia "alta_fantasia"))
+
+([SBCFinal_Class8] of  Subgenero_fantasia
+
+	(subgenero_fantasia "medieval"))
+
+([SBCFinal_Class9] of  Subgenero_fantasia
+
+	(subgenero_fantasia "terror"))
