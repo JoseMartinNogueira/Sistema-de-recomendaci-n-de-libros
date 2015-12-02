@@ -71,17 +71,17 @@
 
 ;-----
 
-
-(defrule procesado::valorar-edad "Se quitan las peliculas que no cumplan la recomendacion de edades"
+;----------- Jose
+(defrule procesado::valorar-edad "Se quitan los libros que no cumplan la recomendacion de edades"
         (Usuario (edad ?e))
-        ?rec <- (object (is-a Recomendacion) (contenido ?conta))
-        ?cont <-(object (is-a Contenido) (clasificacion_edades ?min-edad))
-        (test (eq (instance-name ?cont) (instance-name ?conta)))
+        ?rec <- (object (is-a Solucion) (libro ?lib))
+        ?cont <-(object (is-a Libro) (edad_recomendada ?min-edad))
+        (test (eq (instance-name ?cont) (instance-name ?lib)))
         (test (< ?e ?min-edad))
         =>
         (send ?rec delete)
 )
-
+;------------ FIN
 (defrule procesado::valorar-ninyo-peliculas "Se mejora la puntuacion de los contenidos adecuados a ninyos"
         (Usuario (edad ?e))
         (test (< ?e 14))
