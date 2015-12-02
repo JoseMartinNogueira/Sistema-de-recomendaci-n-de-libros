@@ -7,42 +7,42 @@
 )
 
 
-;;; Modulo procesado de contenido ---------------------------------------------------
+;;; Filtrar libros segun el genero---------------------------------------------------
 
 
-(defrule procesado::anadir-peliculas "Se añade todas las peliculas, luego se filtran"
-        ?hecho <- (formato Pelicula)
+(defrule procesado::anadir-Ciencia-ficcion "Se añade todos los libros, luego se filtran"
+        ?hecho <- (genero-elegido Ciencia_ficcion)
         =>
-        (bind $?lista (find-all-instances ((?inst Pelicula)) TRUE))
+        (bind $?lista (find-all-instances ((?inst Ciencia_ficcion)) TRUE))
         (progn$ (?curr-con ?lista)
-                (make-instance (gensym) of Recomendacion (contenido ?curr-con) (puntuacion (send ?curr-con get-puntuacion)))
+                (make-instance (gensym) of Solucion (libro ?curr-con) (puntuacion (send ?curr-con get-puntuacion)))
         )       
         (retract ?hecho)
 )
 
-
-(defrule procesado::anadir-series "Se añade todas las series, luego se filtran"
-        ?hecho <- (formato Serie)
+(defrule procesado::anadir-Fantasia "Se añade todos los libros, luego se filtran"
+        ?hecho <- (genero-elegido Fantasia)
         =>
-        (bind $?lista (find-all-instances ((?inst Serie)) TRUE))
+        (bind $?lista (find-all-instances ((?inst Fantasia)) TRUE))
         (progn$ (?curr-con ?lista)
-                (make-instance (gensym) of Recomendacion (contenido ?curr-con) (puntuacion (send ?curr-con get-puntuacion)))
+                (make-instance (gensym) of Solucion (libro ?curr-con) (puntuacion (send ?curr-con get-puntuacion)))
         )       
         (retract ?hecho)
 )
 
-
-(defrule procesado::anadir-docus "Se añade todas los documentales, luego se filtran"
-        ?hecho <- (formato Documental)
+(defrule procesado::anadir-Misterio "Se añade todos los libros, luego se filtran"
+        ?hecho <- (genero-elegido Misterio)
         =>
-        (bind $?lista (find-all-instances ((?inst Documental)) TRUE))
+        (bind $?lista (find-all-instances ((?inst Misterio)) TRUE))
         (progn$ (?curr-con ?lista)
-                (make-instance (gensym) of Recomendacion (contenido ?curr-con) (puntuacion (send ?curr-con get-puntuacion)))
+                (make-instance (gensym) of Solucion (libro ?curr-con) (puntuacion (send ?curr-con get-puntuacion)))
         )       
         (retract ?hecho)
 )
 
+;;;;;------------------------------------------------------------
 
+;-----
 (defrule procesado::aux-genero "Crea hechos para poder procesar los generos favoritos"
         (preferencias (generos-favoritos $?gen))
         ?hecho <- (genero-favorito ?aux)
@@ -69,7 +69,7 @@
         )
 )
 
-
+;-----
 
 
 (defrule procesado::valorar-edad "Se quitan las peliculas que no cumplan la recomendacion de edades"
