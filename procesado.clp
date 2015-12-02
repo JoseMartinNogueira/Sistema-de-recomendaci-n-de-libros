@@ -19,7 +19,7 @@
         )       
         (retract ?hecho)
 )
-
+;;hola
 ;;; Modulo procesado de contenido ---------------------------------------------------
 
 (defrule procesado::anadir-peliculas "Se añade todas las peliculas, luego se filtran"
