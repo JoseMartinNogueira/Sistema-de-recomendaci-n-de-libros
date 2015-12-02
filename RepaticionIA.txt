@@ -1,3 +1,7 @@
 Jose: Generacion, Presentacion + ayudar Cristian
 Jonathan: Recopilacion usuario, recopilacion preferencias (preguntas)
 Cristian: Procesado
+
+
+
+Web: https://www.csie.ntu.edu.tw/~sylee/courses/clips/bpg/nodeG.html

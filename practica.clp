@@ -571,7 +571,7 @@
 	=>
 	(printout t "Estos son los 3 libros que le recomendamos" crlf)
 	(printout t crlf)
-	(bind ?finalistas (create$ (nth$ 0 soluciones-ordenada) (nth$ 1 soluciones-ordenada) (nth$ 2 soluciones-ordenada)))
+	(bind ?finalistas (create$ (nth$ 1 (soluciones-ordenada))))
 	(progn$ (?finalista $finalistas))
 		
 	(assert (final))
