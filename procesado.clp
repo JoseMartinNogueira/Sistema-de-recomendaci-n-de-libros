@@ -75,7 +75,7 @@
 
 ;;;;;------------------------------------------------------------
 
-;-----
+;-----Cristian
 (defrule procesado::aux-genero "Crea hechos para poder procesar los generos favoritos"
         (preferencias (generos-favoritos $?gen))
         ?hecho <- (genero-favorito ?aux)
@@ -102,7 +102,7 @@
         )
 )
 
-;-----
+;-----FIN Cristian
 
 
 (defrule procesado::valorar-edad "Se quitan las peliculas que no cumplan la recomendacion de edades"
