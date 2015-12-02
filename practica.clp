@@ -501,14 +501,31 @@
 	(slot nombre (type STRING))
 )
 
-
-
 (deftemplate MAIN::soluciones-desordenada
 	(multislot soluciones (type INSTANCE))
 )
 (deftemplate MAIN::soluciones-ordenada
 	(multislot soluciones (type INSTANCE))
 )
+
+;; Fnciones
+
+;; Funcion para encontrar el libro con puntuacion maxima
+(deffunction puntuacion-maxima ($lista)
+	(bind ?elem nil)
+	(bind ?max -1)
+	(progn$ (?rec $?lista)
+		(bind ?cont (send ?rec get-libro))
+		(bind ?punt (send ?rec get-puntuacion))
+		(if (> ?put ?max)
+			then
+			(bind ?max ?punt)
+			(bind ?elem ?rec)
+		)
+	)
+	?elem
+)
+
 
 ;;Mensajes
 
@@ -571,8 +588,8 @@
 	=>
 	(printout t "Estos son los 3 libros que le recomendamos" crlf)
 	(printout t crlf)
-	(bind ?finalistas (create$ (nth$ 1 (soluciones-ordenada))))
-	(progn$ (?finalista $finalistas))
-		
+	(printout t (send (nth 0 ?soluciones) mostrar))
+	(printout t (send (nth 1 ?soluciones) mostrar))
+	(printout t (send (nth 2 ?soluciones) mostrar))	
 	(assert (final))
 )
