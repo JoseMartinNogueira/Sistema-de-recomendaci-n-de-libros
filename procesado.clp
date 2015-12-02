@@ -7,8 +7,20 @@
 )
 
 
-;;; Modulo procesado de contenido ---------------------------------------------------
+;;; NEW ---------------------------------------------------
 
+
+(defrule procesado::anadir-libros "Se añade todos los libros, luego se filtran"
+        ?hecho <- (genero-elegido Ciencia_ficcion)
+        =>
+        (bind $?lista (find-all-instances ((?inst Ciencia_ficcion)) TRUE))
+        (progn$ (?curr-con ?lista)
+                (make-instance (gensym) of Recomendacion (contenido ?curr-con) (puntuacion (send ?curr-con get-puntuacion)))
+        )       
+        (retract ?hecho)
+)
+
+;;; Modulo procesado de contenido ---------------------------------------------------
 
 (defrule procesado::anadir-peliculas "Se añade todas las peliculas, luego se filtran"
         ?hecho <- (formato Pelicula)
