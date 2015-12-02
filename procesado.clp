@@ -1,3 +1,36 @@
+;;; Declaracion de templates --------------------------
+
+;;; Template para los datos personales del usuario
+;;valorar segun las preguntas
+(deftemplate MAIN::Usuario
+        (slot nombre (type STRING))
+        (slot sexo (type SYMBOL) (default desconocido))
+        (slot edad (type INTEGER) (default -1))
+        (slot familia (type SYMBOL) (default desconocido))
+)
+
+;;; Template para las preferencias del usuario
+(deftemplate MAIN::preferencias
+        (multislot idiomas (type INSTANCE))
+        (multislot autores-favoritos (type INSTANCE)) ; nuevo
+        (multislot subgeneros-cf-favoritos (type INSTANCE)) ; nuevo
+        (multislot subgeneros-mist-favoritos (type INSTANCE)) ; nuevo
+        (multislot subgeneros-fant-favoritos (type INSTANCE)) ; nuevo
+)
+
+;;; Template para una lista de recomendaciones sin orden
+(deftemplate MAIN::lista-rec
+        (multislot soluciones (type INSTANCE))
+)
+
+;;; Template para una lista de recomendaciones con orden
+(deftemplate MAIN::lista-rec-ordenada
+        (multislot soluciones (type INSTANCE))
+)
+
+;;; Fin declaracion de templates ----------------------
+
+
 ;;; Modulo de filtrado y procesado del contenido adequado al usuario
 (defmodule procesado
         (import MAIN ?ALL)
