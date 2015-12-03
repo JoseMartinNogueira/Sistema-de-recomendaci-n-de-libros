@@ -511,7 +511,7 @@
 ;; Fnciones
 
 ;; Funcion para encontrar el libro con puntuacion maxima
-(deffunction puntuacion-maxima ($lista)
+(deffunction puntuacion-maxima ($?lista)
 	(bind ?elem nil)
 	(bind ?max -1)
 	(progn$ (?rec $?lista)
