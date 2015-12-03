@@ -250,7 +250,7 @@
                 )
         )
         (send ?rec put-puntuacion ?p)
-        (assert (valorado-adolescente ?cont))
+        (assert (adolescente-valorado ?cont))
 )
 
 (defrule procesado::valorar-adolescente-fantasia "Se mejora la puntuacion de los contenidos adecuados a adolescentes"
@@ -264,7 +264,6 @@
         (progn$ (?curr-gen $?subfant) 
                 (bind ?nombre (send ?curr-gen get-subgenero_fant))
                 (switch ?nombre
-                        (switch ?nombre
                         (case "cuentos_clasicos" then 
                                 (bind ?p (+ ?p 125))
                         )
@@ -283,7 +282,7 @@
                 )
         )
         (send ?rec put-puntuacion ?p)
-        (assert (valorado-adolescente ?cont))
+        (assert (adolescente-valorado ?cont))
 )
 
 
@@ -295,10 +294,9 @@
         (test (eq (instance-name ?cont) (instance-name ?lib)))
         (not (adolescente-valorado ?cont))
         =>
-        (progn$ (?curr-gen $?subfant) 
+        (progn$ (?curr-gen $?submist) 
                 (bind ?nombre (send ?curr-gen get-subgenero_mist))
                 (switch ?nombre
-                        (switch ?nombre
                         (case "policial" then 
                                 (bind ?p (+ ?p 125))
                         )
@@ -308,131 +306,104 @@
                 )
         )
         (send ?rec put-puntuacion ?p)
-        (assert (valorado-adolescente ?cont))
+        (assert (adolescente-valorado ?cont))
 )
+
+
+(defrule procesado::valorar-mayor-ciencia-ficcion "Se mejora la puntuacion de los contenidos adecuados a personas mayores"
+        (Usuario (edad ?e))
+        (test (>= ?e 63))
+        ?rec <- (object (is-a Solucion) (libro ?lib) (puntuacion ?p))
+        ?cont <-(object (is-a Ciencia_ficcion) (subgenero_cf $?subcf) (edad_recomendada ?edad_mayor))
+        (test (eq (instance-name ?cont) (instance-name ?lib)))
+        (not (mayor-valorado ?cont))
+        =>
+        (progn$ (?curr-gen $?subcf) 
+                (bind ?nombre (send ?curr-gen get-subgenero_cf))
+                (switch ?nombre
+                        (case "robotica_y_inteligencia_artificial" then 
+                                (bind ?p (+ ?p 125))
+                        )
+                        (case "viajes_en_el_tiempo" then
+                                (bind ?p (+ ?p 125))
+                        )
+                        (case "espacio" then
+                                (bind ?p (+ ?p 125))
+                        )
+                        (case "social_utopia" then
+                                (bind ?p (+ ?p 125))
+                        )
+                        (case "social_alterantivo" then
+                                (bind ?p (+ ?p 125))
+                        )
+                        (case "social_distopia" then
+                                (bind ?p (+ ?p 125))
+                        )
+                )
+        )
+        (send ?rec put-puntuacion ?p)
+        (assert (valorado-mayor ?cont))
+)
+
+
+(defrule procesado::valorar-mayor-fantasia "Se mejora la puntuacion de los contenidos adecuados a personas mayores"
+        (Usuario (edad ?e))
+        (test (>= ?e 18))
+        ?rec <- (object (is-a Solucion) (libro ?lib) (puntuacion ?p))
+        ?cont <-(object (is-a Fantasia) (subgenero_fant $?subfant) (edad_recomendada ?edad_mayor))
+        (test (eq (instance-name ?cont) (instance-name ?lib)))
+        (not (mayor-valorado ?cont))
+        =>
+        (progn$ (?curr-gen $?subfant) 
+                (bind ?nombre (send ?curr-gen get-subgenero_fant))
+                (switch ?nombre
+                        (case "cuentos_clasicos" then 
+                                (bind ?p (+ ?p 125))
+                        )
+                        (case "magia_y_espada" then
+                                (bind ?p (+ ?p 125))
+                        )
+                        (case "alta_fantasia" then
+                                (bind ?p (+ ?p 125))
+                        )
+                        (case "medieval" then
+                                (bind ?p (+ ?p 125))
+                        )
+                        (case "terror" then
+                                (bind ?p (+ ?p 125))
+                        )
+                )
+        )
+        (send ?rec put-puntuacion ?p)
+        (assert (valorado-mayor ?cont))
+)
+
+(defrule procesado::valorar-mayor-misterio "Se mejora la puntuacion de los contenidos adecuados a personas mayores"
+        (Usuario (edad ?e))
+        (test (>= ?e 18))
+        ?rec <- (object (is-a Solucion) (libro ?lib) (puntuacion ?p))
+        ?cont <-(object (is-a Misterio) (subgenero_mist $?submist) (edad_recomendada ?edad_mayor))
+        (test (eq (instance-name ?cont) (instance-name ?lib)))
+        (not (mayor-valorado ?cont))
+        =>
+        (progn$ (?curr-gen $?submist) 
+                (bind ?nombre (send ?curr-gen get-subgenero_mist))
+                (switch ?nombre
+                        (case "policial" then 
+                                (bind ?p (+ ?p 125))
+                        )
+                        (case "suspense" then
+                                (bind ?p (+ ?p 125))
+                        )
+                )
+        )
+        (send ?rec put-puntuacion ?p)
+        (assert (valorado-mayor ?cont))
+)
+
+
+
 ;-----FIN Cristian
-
-(defrule procesado::valorar-mayor-serie "Se mejora la puntuacion de los contenidos adecuados a personas mayores"
-        (Usuario (edad ?e))
-        (test (>= ?e 63))
-        ?rec <- (object (is-a Recomendacion) (contenido ?conta) (puntuacion ?p) (justificaciones $?just))
-        ?cont <-(object (is-a Serie) (serie_genero $?generos) (de_moda ?moda) (anyo ?anyo) (contenido_animo $?animos) (trata_de $?argumentos))
-        (test (eq (instance-name ?cont) (instance-name ?conta)))
-        (not (valorado-mayor ?cont))
-        =>
-        (bind ?p (+ ?p -75))
-        (bind $?just (insert$ $?just (+ (length$ $?just) 1) "El usuario es mayor y es una serie -> -75")) 
-        (if (< ?anyo 1970) then
-                (bind ?p (+ ?p 150))
-                (bind $?just (insert$ $?just (+ (length$ $?just) 1) "El usuario es mayor y es antiguo -> +150")) 
-        )
-        (progn$ (?curr-gen $?generos) 
-                (bind ?nombre (send ?curr-gen get-genero))
-                (switch ?nombre
-                        (case "historico" then
-                                (bind ?p (+ ?p 100))
-                                (bind $?just (insert$ $?just (+ (length$ $?just) 1) "El usuario es mayor y es de género histórico -> +100"))
-                        )
-                        (case "western" then 
-                                (bind ?p (+ ?p 100))
-                                (bind $?just (insert$ $?just (+ (length$ $?just) 1) "El usuario es mayor y es un western -> +100"))
-                        )
-                        (case "musical" then 
-                                (bind ?p (+ ?p 100))
-                                (bind $?just (insert$ $?just (+ (length$ $?just) 1) "El usuario es mayor y es de género musical -> +100"))
-                        )
-                )
-        )
-        (progn$ (?curr-ani $?animos)
-                (bind ?nombre (send ?curr-ani get-animo))
-                (switch ?nombre
-                        (case "sentimental" then 
-                                (bind ?p (+ ?p 100))
-                                (bind $?just (insert$ $?just (+ (length$ $?just) 1) "El usuario es mayor y es sentimental -> +100"))
-                        )
-                        (case "senta_bien" then 
-                                (bind ?p (+ ?p 100))
-                                (bind $?just (insert$ $?just (+ (length$ $?just) 1) "El usuario es mayor y senta bien -> +100"))
-                        )
-                )
-        )
-        (progn$ (?curr-arg $?argumentos)
-                (bind ?nombre (send ?curr-arg get-argumento))
-                (switch ?nombre
-                        (case "guerra_civil" then 
-                                (bind ?p (+ ?p 125))
-                                (bind $?just (insert$ $?just (+ (length$ $?just) 1) "El usuario es mayor y va de la guerra civil -> +125"))
-                        )
-                        (case "anyos60" then
-                                (bind ?p (+ ?p 50))
-                                (bind $?just (insert$ $?just (+ (length$ $?just) 1) "El usuario es mayor y va de la década de los 60 -> +150"))
-                        )       
-                )
-        )
-        (send ?rec put-puntuacion ?p)
-        (send ?rec put-justificaciones $?just)
-        (assert (valorado-mayor ?cont))
-)
-
-(defrule procesado::valorar-mayor-pelicula "Se mejora la puntuacion de los contenidos adecuados a personas mayores"
-        (Usuario (edad ?e))
-        (test (>= ?e 63))
-        ?rec <- (object (is-a Recomendacion) (contenido ?conta) (puntuacion ?p) (justificaciones $?just))
-        ?cont <-(object (is-a Pelicula) (pelicula_genero $?generos) (de_moda ?moda) (anyo ?anyo) (contenido_animo $?animos) (trata_de $?argumentos))
-        (test (eq (instance-name ?cont) (instance-name ?conta)))
-        (not (valorado-mayor ?cont))
-        =>
-        (if (< ?anyo 1970) then
-                (bind ?p (+ ?p 150))
-                (bind $?just (insert$ $?just (+ (length$ $?just) 1) "El usuario es mayor y es antiguo -> +150")) 
-        )
-        (progn$ (?curr-gen $?generos) 
-                (bind ?nombre (send ?curr-gen get-genero))
-                (switch ?nombre
-                        (case "western" then 
-                                (bind ?p (+ ?p 100))
-                                (bind $?just (insert$ $?just (+ (length$ $?just) 1) "El usuario es mayor y es un western -> +100"))
-                        )
-                        (case "musical" then 
-                                (bind ?p (+ ?p 100))
-                                (bind $?just (insert$ $?just (+ (length$ $?just) 1) "El usuario es mayor y es de género musical -> +100"))
-                        )
-                        (case "historico" then
-                                (bind ?p (+ ?p 100))
-                                (bind $?just (insert$ $?just (+ (length$ $?just) 1) "El usuario es mayor y es de género histórico -> +100"))
-                        )
-                )
-        )
-        (progn$ (?curr-ani $?animos)
-                (bind ?nombre (send ?curr-ani get-animo))
-                (switch ?nombre
-                        (case "sentimental" then 
-                                (bind ?p (+ ?p 150))
-                                (bind $?just (insert$ $?just (+ (length$ $?just) 1) "El usuario es mayor y es sentimental -> +150"))
-                        )
-                        (case "senta_bien" then 
-                                (bind ?p (+ ?p 150))
-                                (bind $?just (insert$ $?just (+ (length$ $?just) 1) "El usuario es mayor y senta bien -> +150"))
-                        )
-                )
-        )
-        (progn$ (?curr-arg $?argumentos)
-                (bind ?nombre (send ?curr-arg get-argumento))
-                (switch ?nombre
-                        (case "guerra" then 
-                                (bind ?p (+ ?p 125))
-                                (bind $?just (insert$ $?just (+ (length$ $?just) 1) "El usuario es mayor y va de la guerra -> +125"))
-                        )
-                        (case "anyos60" then
-                                (bind ?p (+ ?p 150))
-                                (bind $?just (insert$ $?just (+ (length$ $?just) 1) "El usuario es mayor y va de la década de los 60 -> +150"))
-                        )
-                )
-        )
-        (send ?rec put-puntuacion ?p)
-        (send ?rec put-justificaciones $?just)
-        (assert (valorado-mayor ?cont))
-)
 
 
 (defrule procesado::valorar-tematica-favorita "Se mejora la puntuacion de ldocumentales de tematica favorita"
