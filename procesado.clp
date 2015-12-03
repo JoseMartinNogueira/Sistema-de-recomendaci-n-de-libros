@@ -76,49 +76,49 @@
 ;;;;;------------------------------------------------------------
 
 ;-----Cristian
-(defrule procesado::aux-subgenero-cf "Crea hechos para poder procesar los generos favoritos"
-        (preferencias (subgeneros-cf-favoritos $?gen))
-        ?hecho <- (subgenero-cf-favorito ?aux)
+(defrule procesado::aux-subgenero-ciencia-ficcion "Crea hechos para poder procesar los subgeneros favoritos"
+        (preferencias (subgeneros-ciencia-ficcion-favoritos $?gen))
+        ?hecho <- (subgenero-ciencia-ficcion-favorito ?aux)
         (test (or (eq ?aux TRUE) (eq ?aux FALSE)))
         =>
         (retract ?hecho)
         (if (eq ?aux TRUE)then 
                 (progn$ (?curr-gen $?gen)
-                        (assert (subgenero-cf-favorito ?curr-gen))
+                        (assert (subgenero-ciencia-ficcion-favorito ?curr-gen))
                 )
         )
 )
 
-(defrule procesado::aux-subgenero-mist "Crea hechos para poder procesar los generos favoritos"
-        (preferencias (subgeneros-mist-favoritos $?gen))
-        ?hecho <- (subgenero-mist-favorito ?aux)
+(defrule procesado::aux-subgenero-misterio "Crea hechos para poder procesar los subgeneros favoritos"
+        (preferencias (subgeneros-misterio-favoritos $?gen))
+        ?hecho <- (subgenero-misterio-favorito ?aux)
         (test (or (eq ?aux TRUE) (eq ?aux FALSE)))
         =>
         (retract ?hecho)
         (if (eq ?aux TRUE)then 
                 (progn$ (?curr-gen $?gen)
-                        (assert (subgenero-mist-favorito ?curr-gen))
+                        (assert (subgenero-misterio-favorito ?curr-gen))
                 )
         )
 )
 
 
-(defrule procesado::aux-subgenero-fant "Crea hechos para poder procesar los generos favoritos"
-        (preferencias (subgeneros-fant-favoritos $?gen))
-        ?hecho <- (subgenero-fant-favorito ?aux)
+(defrule procesado::aux-subgenero-fantasia "Crea hechos para poder procesar los subgeneros favoritos"
+        (preferencias (subgeneros-fantasia-favoritos $?gen))
+        ?hecho <- (subgenero-fantasia-favorito ?aux)
         (test (or (eq ?aux TRUE) (eq ?aux FALSE)))
         =>
         (retract ?hecho)
         (if (eq ?aux TRUE)then 
                 (progn$ (?curr-gen $?gen)
-                        (assert (subgenero-fant-favorito ?curr-gen))
+                        (assert (subgenero-fantasia-favorito ?curr-gen))
                 )
         )
 )
 
 
 
-;-----FIN Cristian
+;-----FIN Cristian HECHO
 
 ;----------- Jose
 (defrule procesado::valorar-edad "Se quitan los libros que no cumplan la recomendacion de edades"
@@ -215,7 +215,7 @@
         (assert (infantil-valorado ?cont))
 )
 
-(defrule procesado::valorar-adolescente-pelicula "Se mejora la puntuacion de los contenidos adecuados a adolescentes"
+(defrule procesado::valorar-adolescente-cf "Se mejora la puntuacion de los contenidos adecuados a adolescentes"
         (Usuario (edad ?e))
         (test (and (>= ?e 14) (< ?e 23)))
         ?rec <- (object (is-a Recomendacion) (contenido ?conta) (puntuacion ?p) (justificaciones $?just))
