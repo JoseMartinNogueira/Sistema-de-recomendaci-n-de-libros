@@ -402,10 +402,6 @@
 )
 
 
-
-;-----FIN Cristian
-
-
 (defrule procesado::valorar-tematica-favorita "Se mejora la puntuacion de ldocumentales de tematica favorita"
         ?hecho <- (tematica ?tem)
         ?cont <-(object (is-a Documental) (docu_tematica ?tematica))
@@ -455,6 +451,8 @@
         (send ?rec put-justificaciones $?just)
         (assert (valorado-genero-favorito ?cont ?gen))
 )
+
+;-----FIN Cristian
 
 
 (defrule procesado::aux-nacionalidad "Crea hechos con las nacionalidades favoritas para porder tratarlas"
