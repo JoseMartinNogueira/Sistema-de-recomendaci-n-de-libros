@@ -104,7 +104,7 @@
 
 ;-----FIN Cristian
 
-;----------- Jose
+
 (defrule procesado::valorar-edad "Se quitan los libros que no cumplan la recomendacion de edades"
         (Usuario (edad ?e))
         ?rec <- (object (is-a Solucion) (libro ?lib))
@@ -114,7 +114,7 @@
         =>
         (send ?rec delete)
 )
-;------------ FIN
+;------------ Jose
 (defrule procesado::valorar-ninyo-peliculas "Se mejora la puntuacion de los contenidos adecuados a ninyos"
         (Usuario (edad ?e))
         (test (< ?e 14))
@@ -183,7 +183,7 @@
         (assert (valorado-ninyo ?cont))
 )
 
-
+;----------- Fin Jose
 (defrule procesado::valorar-adolescente-pelicula "Se mejora la puntuacion de los contenidos adecuados a adolescentes"
         (Usuario (edad ?e))
         (test (and (>= ?e 14) (< ?e 23)))
