@@ -574,6 +574,29 @@
 	(assert (soluciones-desordenada))
 )
 
+(defrule generador::add-solucion 
+	(declare (salience 10))
+	?sol <- (object (is-a Solucion))
+	?aux <- (soluciones-desordenada (soluciones $?lista))
+	(test (not (member$ ?rec $?lista)))
+	=>
+	(bind $?lista (insert$ $?lista (+ (length $ $?lista) 1) ?sol))
+	(modify ?aux (soluciones $?lista))
+)
+
+(defrule generador:: ordenar-lista
+	(not (soluciones-ordenada))
+	(soluciones-desordenada (soluciones $?lista))
+	=>
+	(bind $?ordenada (create$ ))
+	(while (and (not (eq (length$ $?lista) 0)) (< (length$ $?ordenada) 3)) do 
+		(bind ?sol (puntuacion-maxima $?lista))
+		(bind $?lista (delete-member$ $?lista ?sol))
+		(bind $?ordenada (insert$ $?ordenada (+ (length$ $?ordenada) 1) ?sol))
+	)
+	(assert (soluciones-ordenada (soluciones $?ordenada)))
+)
+
 (defrule generador::enviar-presentacion
 	(soluciones-ordenada)
 	=>
