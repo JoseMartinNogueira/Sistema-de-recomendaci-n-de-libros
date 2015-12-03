@@ -43,7 +43,7 @@
 ;;; Filtrar libros segun el genero---------------------------------------------------
 
 
-(defrule procesado::anadir-Ciencia-ficcion "Se añade todos los libros, luego se filtran"
+(defrule procesado::anadir-ciencia-ficcion "Se añade todos los libros, luego se filtran"
         ?hecho <- (genero-elegido Ciencia_ficcion)
         =>
         (bind $?lista (find-all-instances ((?inst Ciencia_ficcion)) TRUE))
@@ -53,7 +53,7 @@
         (retract ?hecho)
 )
 
-(defrule procesado::anadir-Fantasia "Se añade todos los libros, luego se filtran"
+(defrule procesado::anadir-fantasia "Se añade todos los libros, luego se filtran"
         ?hecho <- (genero-elegido Fantasia)
         =>
         (bind $?lista (find-all-instances ((?inst Fantasia)) TRUE))
@@ -63,7 +63,7 @@
         (retract ?hecho)
 )
 
-(defrule procesado::anadir-Misterio "Se añade todos los libros, luego se filtran"
+(defrule procesado::anadir-misterio "Se añade todos los libros, luego se filtran"
         ?hecho <- (genero-elegido Misterio)
         =>
         (bind $?lista (find-all-instances ((?inst Misterio)) TRUE))
@@ -402,57 +402,55 @@
 )
 
 
-(defrule procesado::valorar-tematica-favorita "Se mejora la puntuacion de ldocumentales de tematica favorita"
-        ?hecho <- (tematica ?tem)
-        ?cont <-(object (is-a Documental) (docu_tematica ?tematica))
-        (test (eq (instance-name ?tem) ?tematica))
-        ?rec <- (object (is-a Recomendacion) (contenido ?conta) (puntuacion ?p) (justificaciones $?just))
-        (test (eq (instance-name ?cont) (instance-name ?conta)))
-        (not (valorado-tematica-favorita ?cont ?tem))
-        =>
-        (bind ?p (+ ?p 150))
-        (bind ?text (str-cat "Pertenece a la temática favorita " (send ?tem get-tematica) " -> +150"))
-        (bind $?just (insert$ $?just (+ (length$ $?just) 1) ?text))
-        (send ?rec put-puntuacion ?p)
-        (send ?rec put-justificaciones $?just)
-        (assert (valorado-tematica-favorita ?cont ?tem))
-)
 
-
-(defrule procesado::valorar-genero-favorito-peliculas "Se mejora la puntuacion de las peliculas de genero favorito"
-        ?hecho <- (genero-favorito ?gen)
-        ?cont <-(object (is-a Pelicula) (pelicula_genero $?generos))
+(defrule procesado::valorar-subgenero-favorito-ciencia-ficcion "Se mejora la puntuacion de los libros de los subgeneros de ciencia ficcion favoritos"
+        ?hecho <- (subgenero-cf-favorito ?gen)
+        ?cont <-(object (is-a Ciencia_ficcion) (subgenero_cf $?generos))
         (test (member$ ?gen $?generos))
-        ?rec <- (object (is-a Recomendacion) (contenido ?conta) (puntuacion ?p) (justificaciones $?just))
-        (test (eq (instance-name ?cont) (instance-name ?conta)))
-        (not (valorado-genero-favorito ?cont ?gen))
+        ?rec <- (object (is-a Solucion) (libro ?lib) (puntuacion ?p))
+        (test (eq (instance-name ?cont) (instance-name ?lib)))
+        (not (valorado-subgenero-favorito-ciencia-ficcion ?cont ?gen))
         =>
         (bind ?p (+ ?p 75))
         (send ?rec put-puntuacion ?p)
-        (bind ?text (str-cat "Pertenece al género favorito " (send ?gen get-genero) " -> +75"))
-        (bind $?just (insert$ $?just (+ (length$ $?just) 1) ?text))
-        (send ?rec put-justificaciones $?just)
-        (assert (valorado-genero-favorito ?cont ?gen))
+        (bind ?text (str-cat "Pertenece al género favorito " (send ?gen get-subgenero_cf) " -> +75"))
+        (assert (valorado-subgenero-favorito-ciencia-ficcion ?cont ?gen))
 )
 
-
-(defrule procesado::valorar-genero-favorito-series "Se mejora la puntuacion de las series de genero favorito"
-        ?hecho <- (genero-favorito ?gen)
-        ?cont <-(object (is-a Serie) (serie_genero $?generos))
+(defrule procesado::valorar-subgenero-favorito-fantasia "Se mejora la puntuacion de los libros de los subgeneros de fantasia favoritos"
+        ?hecho <- (subgenero-fant-favorito ?gen)
+        ?cont <-(object (is-a Fantasia) (subgenero_fant $?generos))
         (test (member$ ?gen $?generos))
-        ?rec <- (object (is-a Recomendacion) (contenido ?conta) (puntuacion ?p) (justificaciones $?just))
-        (test (eq (instance-name ?cont) (instance-name ?conta)))
-        (not (valorado-genero-favorito ?cont ?gen))
+        ?rec <- (object (is-a Solucion) (libro ?lib) (puntuacion ?p))
+        (test (eq (instance-name ?cont) (instance-name ?lib)))
+        (not (valorado-subgenero-favorito-fantasia ?cont ?gen))
         =>
-        (bind ?p (+ ?p 50))
+        (bind ?p (+ ?p 75))
         (send ?rec put-puntuacion ?p)
-        (bind ?text (str-cat "Pertenece al género favorito " (send ?gen get-genero) " -> +75"))
-        (bind $?just (insert$ $?just (+ (length$ $?just) 1) ?text))
-        (send ?rec put-justificaciones $?just)
-        (assert (valorado-genero-favorito ?cont ?gen))
+        (bind ?text (str-cat "Pertenece al género favorito " (send ?gen get-subgenero_fant) " -> +75"))
+        (assert (valorado-subgenero-favorito-fantasia ?cont ?gen))
 )
 
-;-----FIN Cristian
+(defrule procesado::valorar-subgenero-favorito-misterio "Se mejora la puntuacion de los libros de los subgeneros de misterio favoritos"
+        ?hecho <- (subgenero-mist-favorito ?gen)
+        ?cont <-(object (is-a Misterio) (subgenero_mist $?generos))
+        (test (member$ ?gen $?generos))
+        ?rec <- (object (is-a Solucion) (libro ?lib) (puntuacion ?p))
+        (test (eq (instance-name ?cont) (instance-name ?lib)))
+        (not (valorado-subgenero-favorito-misterio ?cont ?gen))
+        =>
+        (bind ?p (+ ?p 75))
+        (send ?rec put-puntuacion ?p)
+        (bind ?text (str-cat "Pertenece al género favorito " (send ?gen get-subgenero_mist) " -> +75"))
+        (assert (valorado-subgenero-favorito-misterio ?cont ?gen))
+)
+
+;;;;;;;;;;;////////////////////////////////
+;;;;;;;;;;;////////////////////////////////
+;;;;;;;;;;;////////////////////////////////
+;;;;;;;;;;;////////////////////////////////
+
+;-----FIN Cristian DONE
 
 
 (defrule procesado::aux-nacionalidad "Crea hechos con las nacionalidades favoritas para porder tratarlas"
