@@ -84,23 +84,39 @@
         (retract ?hecho)
         (if (eq ?aux TRUE)then 
                 (progn$ (?curr-gen $?gen)
-                        (assert (genero-favorito ?curr-gen))
+                        (assert (subgenero-cf-favorito ?curr-gen))
                 )
         )
 )
 
-(defrule procesado::aux-tematica "Crea hechos para poder procesar las tematicas favoritas"
-        (preferencias (tematicas-favoritas $?tem))
-        ?hecho <- (tematica-favorita ?aux)
+(defrule procesado::aux-subgenero-mist "Crea hechos para poder procesar los generos favoritos"
+        (preferencias (subgeneros-mist-favoritos $?gen))
+        ?hecho <- (subgenero-mist-favorito ?aux)
         (test (or (eq ?aux TRUE) (eq ?aux FALSE)))
         =>
         (retract ?hecho)
         (if (eq ?aux TRUE)then 
-                (progn$ (?curr-tem $?tem)
-                        (assert (tematica ?curr-tem))
+                (progn$ (?curr-gen $?gen)
+                        (assert (subgenero-mist-favorito ?curr-gen))
                 )
         )
 )
+
+
+(defrule procesado::aux-subgenero-fant "Crea hechos para poder procesar los generos favoritos"
+        (preferencias (subgeneros-fant-favoritos $?gen))
+        ?hecho <- (subgenero-fant-favorito ?aux)
+        (test (or (eq ?aux TRUE) (eq ?aux FALSE)))
+        =>
+        (retract ?hecho)
+        (if (eq ?aux TRUE)then 
+                (progn$ (?curr-gen $?gen)
+                        (assert (subgenero-fant-favorito ?curr-gen))
+                )
+        )
+)
+
+
 
 ;-----FIN Cristian
 
