@@ -452,6 +452,68 @@
 
 ;-----FIN Cristian DONE
 
+;------Jose       ;;; Reglas para procesar sagas, best sellers y autores estranjeros
+                ;;; assert necesario saga-libros (TURE/FALSE/INDIFERENTE)
+                ;;; assert necesario libro-best-seller(TURE/FALSE/INDIFERENTE)
+        ;;; Comentar autores extranjeros (nacionalidad del usuario?)
+(defrule procesado::descartar-sagas "Descarta los libros que pertenezcan a sagas"
+        (declare (salience 10))
+        (saga-libros FALSE)
+        ?cont <- (object (is-a Libro) (saga TRUE))
+        ?rec <- (object (is-a Solucion) (libro ?lib))
+        (test (eq (instance-name ?cont) (instance-name ?lib)))
+        =>
+        (send ?rec delete)
+)
+
+(defrule procesado::descartar-best-sellers "Descarta los libros que hayan sido nombrados best sellers"
+        (declare (salience 10))
+        (libro-best-seller FALSE)
+        ?cont <- (object (is-a Libro) (best_seller TRUE))
+        ?rec <- (object (is-a Solucion) (libro ?lib))
+        (test (eq (instance-name ?cont) (instance-name ?lib)))
+        =>
+        (send ?rec delete)
+)
+
+(defrule procesado::descartar-autor-extranjero "Descarta los libros escritos por autores extranjeros"
+        (declare (salience 10))
+        (autor-extranjero FALSE)
+        ?cont <- (object (is-a Libro) (best_seller TRUE))
+        ?rec <- (object (is-a Solucion) (libro ?lib))
+        (test (eq (instance-name ?cont) (instance-name ?lib)))
+        =>
+        (send ?rec delete)
+)
+
+(defrule procesado::valorar-saga "Mejora la puntuacion de los libros que pertenezcan a saga"
+        (saga-libros TRUE)
+        ?cont <- (object (is-a Libro) (saga TRUE))
+        ?rec <- (object (is-a Solucion) (libro ?lib) (puntuacion ?p))
+        (test (eq (instance-name ?cont) (instance-name ?lib)))
+        (not (saga-valorada ?cont))
+        =>
+        (bind ?p (+ ?p 150))
+        (send ?rec put-puntuacion ?p)
+        (assert (saga-valorada ?cont))
+)
+
+
+(defrule procesado::valorar-best-seller "Mejora la puntuacion de los libros que hayan sido nombrados best sellers"
+        (libro-best-seller TRUE)
+        ?cont <- (object (is-a Libro) (best_seller TRUE))
+        ?rec <- (object (is-a Solucion) (libro ?lib) (puntuacion ?p))
+        (test (eq (instance-name ?cont) (instance-name ?lib)))
+        (not (best-seller-valorado ?cont))
+        =>
+        (bind ?p (+ ?p 150))
+        (send ?rec put-puntuacion ?p)
+        (assert (best-seller-valorado ?cont))
+)
+
+;------FIN Jose
+
+
 
 (defrule procesado::aux-nacionalidad "Crea hechos con las nacionalidades favoritas para porder tratarlas"
         (preferencias (nacionalidades $?nac))
