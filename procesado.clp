@@ -43,7 +43,7 @@
 ;;; Filtrar libros segun el genero---------------------------------------------------
 
 
-(defrule procesado::anadir-Ciencia-ficcion "Se añade todos los libros, luego se filtran"
+(defrule procesado::anadir-ciencia-ficcion "Se añade todos los libros, luego se filtran"
         ?hecho <- (genero-elegido Ciencia_ficcion)
         =>
         (bind $?lista (find-all-instances ((?inst Ciencia_ficcion)) TRUE))
@@ -53,7 +53,7 @@
         (retract ?hecho)
 )
 
-(defrule procesado::anadir-Fantasia "Se añade todos los libros, luego se filtran"
+(defrule procesado::anadir-fantasia "Se añade todos los libros, luego se filtran"
         ?hecho <- (genero-elegido Fantasia)
         =>
         (bind $?lista (find-all-instances ((?inst Fantasia)) TRUE))
@@ -63,7 +63,7 @@
         (retract ?hecho)
 )
 
-(defrule procesado::anadir-Misterio "Se añade todos los libros, luego se filtran"
+(defrule procesado::anadir-misterio "Se añade todos los libros, luego se filtran"
         ?hecho <- (genero-elegido Misterio)
         =>
         (bind $?lista (find-all-instances ((?inst Misterio)) TRUE))
@@ -76,7 +76,7 @@
 ;;;;;------------------------------------------------------------
 
 ;-----Cristian
-(defrule procesado::aux-subgenero-cf "Crea hechos para poder procesar los generos favoritos"
+(defrule procesado::aux-subgenero-cf "Crea hechos para poder procesar los subgeneros favoritos"
         (preferencias (subgeneros-cf-favoritos $?gen))
         ?hecho <- (subgenero-cf-favorito ?aux)
         (test (or (eq ?aux TRUE) (eq ?aux FALSE)))
@@ -89,7 +89,7 @@
         )
 )
 
-(defrule procesado::aux-subgenero-mist "Crea hechos para poder procesar los generos favoritos"
+(defrule procesado::aux-subgenero-mist "Crea hechos para poder procesar los subgeneros favoritos"
         (preferencias (subgeneros-mist-favoritos $?gen))
         ?hecho <- (subgenero-mist-favorito ?aux)
         (test (or (eq ?aux TRUE) (eq ?aux FALSE)))
@@ -103,7 +103,7 @@
 )
 
 
-(defrule procesado::aux-subgenero-fant "Crea hechos para poder procesar los generos favoritos"
+(defrule procesado::aux-subgenero-fant "Crea hechos para poder procesar los subgeneros favoritos"
         (preferencias (subgeneros-fant-favoritos $?gen))
         ?hecho <- (subgenero-fant-favorito ?aux)
         (test (or (eq ?aux TRUE) (eq ?aux FALSE)))
@@ -118,7 +118,7 @@
 
 
 
-;-----FIN Cristian
+;-----FIN Cristian HECHO
 
 ;----------- Jose
 (defrule procesado::valorar-edad "Se quitan los libros que no cumplan la recomendacion de edades"
@@ -134,8 +134,8 @@
 (defrule procesado::valorar-infantil-fantasia "Se mejora la puntuacion de los libros adecuados para personas menores de 12 anyos"
         (Usuario (edad ?e))
         (test (< ?e 13))
-        ?rec <- (object (is-a Solucion) (libro ?lib) (puntuacion ?p) (justificaciones $?just))
-        ?cont <-(object (is-a Fantasia) (subgenero-fant $?subfant) (edad_recomendada ?edad-min))
+        ?rec <- (object (is-a Solucion) (libro ?lib) (puntuacion ?p))
+        ?cont <-(object (is-a Fantasia) (subgenero_fant $?subfant) (edad_recomendada ?edad-min))
         (test (eq (instance-name ?cont) (instance-name ?lib)))
         (not (infantil-valorado ?cont))
         =>
@@ -161,8 +161,8 @@
         (Usuario (edad ?e))
         (test (< ?e 13))
         ?rec <- (object (is-a Solucion) (libro ?lib) (puntuacion ?p))
-        ?cont <-(object (is-a Ciencia_ficcion) (subgenero-cf $?subcf) (edad_recomendada ?edad_min))
-        (test (eq (instance-name ?cont) (instance-name ?conta)))
+        ?cont <-(object (is-a Ciencia_ficcion) (subgenero_cf $?subcf) (edad_recomendada ?edad_min))
+        (test (eq (instance-name ?cont) (instance-name ?lib)))
         (not (infantil-valorado ?cont))
         =>
         (progn$ (?curr-gen $?subcf) 
@@ -178,13 +178,13 @@
                                 (bind ?p (+ ?p 125))
                         )
                         (case "social_utopia" then
-                                (bind ?p (+ ?p 100))
+                                (bind ?p (+ ?p 125))
                         )
                         (case "social_alterantivo" then
-                                (bind ?p (+ ?p 50))
+                                (bind ?p (+ ?p 125))
                         )
                         (case "social_distopia" then
-                                (bind ?p (+ ?p 50))
+                                (bind ?p (+ ?p 125))
                         )
                 )
         )
@@ -196,18 +196,18 @@
         (Usuario (edad ?e))
         (test (< ?e 13))
         ?rec <- (object (is-a Solucion) (libro ?lib) (puntuacion ?p))
-        ?cont <-(object (is-a Misterio) (subgenero-mist $?subcf) (edad_recomendada ?edad_min))
-        (test (eq (instance-name ?cont) (instance-name ?conta)))
+        ?cont <-(object (is-a Misterio) (subgenero_mist $?subcf) (edad_recomendada ?edad_min))
+        (test (eq (instance-name ?cont) (instance-name ?lib)))
         (not (infantil-valorado ?cont))
         =>
         (progn$ (?curr-gen $?subcf) 
                 (bind ?nombre (send ?curr-gen get-subgenero_mist))
                 (switch ?nombre
                         (case "policial" then 
-                                (bind ?p (+ ?p 50))
+                                (bind ?p (+ ?p 125))
                         )
                         (case "suspense" then
-                                (bind ?p (+ ?p 75))
+                                (bind ?p (+ ?p 125))
                         )
                 )
         )
@@ -215,264 +215,303 @@
         (assert (infantil-valorado ?cont))
 )
 
-(defrule procesado::valorar-adolescente-pelicula "Se mejora la puntuacion de los contenidos adecuados a adolescentes"
+
+;-----Cristian
+
+(defrule procesado::valorar-adolescente-ciencia-ficcion "Se mejora la puntuacion de los contenidos adecuados a adolescentes"
         (Usuario (edad ?e))
-        (test (and (>= ?e 14) (< ?e 23)))
-        ?rec <- (object (is-a Recomendacion) (contenido ?conta) (puntuacion ?p) (justificaciones $?just))
-        ?cont <-(object (is-a Pelicula) (pelicula_genero $?generos) (de_moda ?moda) (anyo ?anyo) (contenido_animo $?animos))
-        (test (eq (instance-name ?cont) (instance-name ?conta)))
-        (not (valorado-adolescente ?cont))
+        (test (and (>= ?e 12) (< ?e 18)))
+        ?rec <- (object (is-a Solucion) (libro ?lib) (puntuacion ?p))
+        ?cont <-(object (is-a Ciencia_ficcion) (subgenero_cf $?subcf) (edad_recomendada ?edad_media))
+        (test (eq (instance-name ?cont) (instance-name ?lib)))
+        (not (adolescente-valorado ?cont))
         =>
-        (if (eq ?moda TRUE) then
-                (bind ?p (+ ?p 150))
-                (bind $?just (insert$ $?just (+ (length$ $?just) 1) "El usuario es adolescente y está de moda -> +150")) 
-        )
-        (if (> ?anyo 2005) then
-                (bind ?p (+ ?p 50))
-                (bind $?just (insert$ $?just (+ (length$ $?just) 1) "El usuario es adolescente y es reciente -> +50")) 
-        )
-        (progn$ (?curr-gen $?generos) 
-                (bind ?nombre (send ?curr-gen get-genero))
+        (progn$ (?curr-gen $?subcf) 
+                (bind ?nombre (send ?curr-gen get-subgenero_cf))
                 (switch ?nombre
-                        (case "comedia" then 
-                                (bind ?p (+ ?p 100))
-                                (bind $?just (insert$ $?just (+ (length$ $?just) 1) "El usuario es adolescente y es de género comedia -> +100"))
+                        (case "robotica_y_inteligencia_artificial" then 
+                                (bind ?p (+ ?p 125))
                         )
-                )
-        )
-        (progn$ (?curr-ani $?animos)
-                (bind ?nombre (send ?curr-ani get-animo))
-                (switch ?nombre
-                        (case "trepidante" then 
-                                (bind ?p (+ ?p 150))
-                                (bind $?just (insert$ $?just (+ (length$ $?just) 1) "El usuario es adolescente y es trepidante -> +150"))
+                        (case "viajes_en_el_tiempo" then
+                                (bind ?p (+ ?p 125))
                         )
-                        (case "gracioso" then 
-                                (bind ?p (+ ?p 150))
-                                (bind $?just (insert$ $?just (+ (length$ $?just) 1) "El usuario es adolescente y es gracioso -> +150"))
+                        (case "espacio" then
+                                (bind ?p (+ ?p 125))
+                        )
+                        (case "social_utopia" then
+                                (bind ?p (+ ?p 125))
+                        )
+                        (case "social_alterantivo" then
+                                (bind ?p (+ ?p 125))
+                        )
+                        (case "social_distopia" then
+                                (bind ?p (+ ?p 125))
                         )
                 )
         )
         (send ?rec put-puntuacion ?p)
-        (send ?rec put-justificaciones $?just)
-        (assert (valorado-adolescente ?cont))
+        (assert (adolescente-valorado ?cont))
 )
 
-(defrule procesado::valorar-adolescente-serie "Se mejora la puntuacion de los contenidos adecuados a adolescentes"
+(defrule procesado::valorar-adolescente-fantasia "Se mejora la puntuacion de los contenidos adecuados a adolescentes"
         (Usuario (edad ?e))
-        (test (and (>= ?e 14) (< ?e 23)))
-        ?rec <- (object (is-a Recomendacion) (contenido ?conta) (puntuacion ?p) (justificaciones $?just))
-        ?cont <-(object (is-a Serie) (serie_genero $?generos) (de_moda ?moda) (anyo ?anyo) (contenido_animo $?animos))
-        (test (eq (instance-name ?cont) (instance-name ?conta)))
-        (not (valorado-adolescente ?cont))
+        (test (and (>= ?e 12) (< ?e 18)))
+        ?rec <- (object (is-a Solucion) (libro ?lib) (puntuacion ?p))
+        ?cont <-(object (is-a Fantasia) (subgenero_fant $?subfant) (edad_recomendada ?edad_media))
+        (test (eq (instance-name ?cont) (instance-name ?lib)))
+        (not (adolescente-valorado ?cont))
         =>
-        (if (eq ?moda TRUE) then
-                (bind ?p (+ ?p 150))
-                (bind $?just (insert$ $?just (+ (length$ $?just) 1) "El usuario es adolescente y está de moda -> +150")) 
-        )
-        (if (> ?anyo 2005) then
-                (bind ?p (+ ?p 50))
-                (bind $?just (insert$ $?just (+ (length$ $?just) 1) "El usuario es adolescente y es reciente -> +50")) 
-        )
-        (progn$ (?curr-gen $?generos) 
-                (bind ?nombre (send ?curr-gen get-genero))
+        (progn$ (?curr-gen $?subfant) 
+                (bind ?nombre (send ?curr-gen get-subgenero_fant))
                 (switch ?nombre
-                        (case "comedia" then 
-                                (bind ?p (+ ?p 100))
-                                (bind $?just (insert$ $?just (+ (length$ $?just) 1) "El usuario es adolescente y es de género comedia -> +100"))
+                        (case "cuentos_clasicos" then 
+                                (bind ?p (+ ?p 125))
                         )
-                )
-        )
-        (progn$ (?curr-ani $?animos)
-                (bind ?nombre (send ?curr-ani get-animo))
-                (switch ?nombre
-                        (case "trepidante" then 
-                                (bind ?p (+ ?p 150))
-                                (bind $?just (insert$ $?just (+ (length$ $?just) 1) "El usuario es adolescente y es trepidante -> +150"))
+                        (case "magia_y_espada" then
+                                (bind ?p (+ ?p 125))
                         )
-                        (case "gracioso" then 
-                                (bind ?p (+ ?p 150))
-                                (bind $?just (insert$ $?just (+ (length$ $?just) 1) "El usuario es adolescente y es gracioso -> +150"))
+                        (case "alta_fantasia" then
+                                (bind ?p (+ ?p 125))
+                        )
+                        (case "medieval" then
+                                (bind ?p (+ ?p 125))
+                        )
+                        (case "terror" then
+                                (bind ?p (+ ?p 125))
                         )
                 )
         )
         (send ?rec put-puntuacion ?p)
-        (send ?rec put-justificaciones $?just)
-        (assert (valorado-adolescente ?cont))
+        (assert (adolescente-valorado ?cont))
 )
 
-(defrule procesado::valorar-mayor-serie "Se mejora la puntuacion de los contenidos adecuados a personas mayores"
+
+(defrule procesado::valorar-adolescente-misterio "Se mejora la puntuacion de los contenidos adecuados a adolescentes"
+        (Usuario (edad ?e))
+        (test (and (>= ?e 12) (< ?e 18)))
+        ?rec <- (object (is-a Solucion) (libro ?lib) (puntuacion ?p))
+        ?cont <-(object (is-a Misterio) (subgenero_mist $?submist) (edad_recomendada ?edad_media))
+        (test (eq (instance-name ?cont) (instance-name ?lib)))
+        (not (adolescente-valorado ?cont))
+        =>
+        (progn$ (?curr-gen $?submist) 
+                (bind ?nombre (send ?curr-gen get-subgenero_mist))
+                (switch ?nombre
+                        (case "policial" then 
+                                (bind ?p (+ ?p 125))
+                        )
+                        (case "suspense" then
+                                (bind ?p (+ ?p 125))
+                        )
+                )
+        )
+        (send ?rec put-puntuacion ?p)
+        (assert (adolescente-valorado ?cont))
+)
+
+
+(defrule procesado::valorar-mayor-ciencia-ficcion "Se mejora la puntuacion de los contenidos adecuados a personas mayores"
         (Usuario (edad ?e))
         (test (>= ?e 63))
-        ?rec <- (object (is-a Recomendacion) (contenido ?conta) (puntuacion ?p) (justificaciones $?just))
-        ?cont <-(object (is-a Serie) (serie_genero $?generos) (de_moda ?moda) (anyo ?anyo) (contenido_animo $?animos) (trata_de $?argumentos))
-        (test (eq (instance-name ?cont) (instance-name ?conta)))
-        (not (valorado-mayor ?cont))
+        ?rec <- (object (is-a Solucion) (libro ?lib) (puntuacion ?p))
+        ?cont <-(object (is-a Ciencia_ficcion) (subgenero_cf $?subcf) (edad_recomendada ?edad_mayor))
+        (test (eq (instance-name ?cont) (instance-name ?lib)))
+        (not (mayor-valorado ?cont))
         =>
-        (bind ?p (+ ?p -75))
-        (bind $?just (insert$ $?just (+ (length$ $?just) 1) "El usuario es mayor y es una serie -> -75")) 
-        (if (< ?anyo 1970) then
-                (bind ?p (+ ?p 150))
-                (bind $?just (insert$ $?just (+ (length$ $?just) 1) "El usuario es mayor y es antiguo -> +150")) 
-        )
-        (progn$ (?curr-gen $?generos) 
-                (bind ?nombre (send ?curr-gen get-genero))
+        (progn$ (?curr-gen $?subcf) 
+                (bind ?nombre (send ?curr-gen get-subgenero_cf))
                 (switch ?nombre
-                        (case "historico" then
-                                (bind ?p (+ ?p 100))
-                                (bind $?just (insert$ $?just (+ (length$ $?just) 1) "El usuario es mayor y es de género histórico -> +100"))
-                        )
-                        (case "western" then 
-                                (bind ?p (+ ?p 100))
-                                (bind $?just (insert$ $?just (+ (length$ $?just) 1) "El usuario es mayor y es un western -> +100"))
-                        )
-                        (case "musical" then 
-                                (bind ?p (+ ?p 100))
-                                (bind $?just (insert$ $?just (+ (length$ $?just) 1) "El usuario es mayor y es de género musical -> +100"))
-                        )
-                )
-        )
-        (progn$ (?curr-ani $?animos)
-                (bind ?nombre (send ?curr-ani get-animo))
-                (switch ?nombre
-                        (case "sentimental" then 
-                                (bind ?p (+ ?p 100))
-                                (bind $?just (insert$ $?just (+ (length$ $?just) 1) "El usuario es mayor y es sentimental -> +100"))
-                        )
-                        (case "senta_bien" then 
-                                (bind ?p (+ ?p 100))
-                                (bind $?just (insert$ $?just (+ (length$ $?just) 1) "El usuario es mayor y senta bien -> +100"))
-                        )
-                )
-        )
-        (progn$ (?curr-arg $?argumentos)
-                (bind ?nombre (send ?curr-arg get-argumento))
-                (switch ?nombre
-                        (case "guerra_civil" then 
+                        (case "robotica_y_inteligencia_artificial" then 
                                 (bind ?p (+ ?p 125))
-                                (bind $?just (insert$ $?just (+ (length$ $?just) 1) "El usuario es mayor y va de la guerra civil -> +125"))
                         )
-                        (case "anyos60" then
-                                (bind ?p (+ ?p 50))
-                                (bind $?just (insert$ $?just (+ (length$ $?just) 1) "El usuario es mayor y va de la década de los 60 -> +150"))
-                        )       
-                )
-        )
-        (send ?rec put-puntuacion ?p)
-        (send ?rec put-justificaciones $?just)
-        (assert (valorado-mayor ?cont))
-)
-
-(defrule procesado::valorar-mayor-pelicula "Se mejora la puntuacion de los contenidos adecuados a personas mayores"
-        (Usuario (edad ?e))
-        (test (>= ?e 63))
-        ?rec <- (object (is-a Recomendacion) (contenido ?conta) (puntuacion ?p) (justificaciones $?just))
-        ?cont <-(object (is-a Pelicula) (pelicula_genero $?generos) (de_moda ?moda) (anyo ?anyo) (contenido_animo $?animos) (trata_de $?argumentos))
-        (test (eq (instance-name ?cont) (instance-name ?conta)))
-        (not (valorado-mayor ?cont))
-        =>
-        (if (< ?anyo 1970) then
-                (bind ?p (+ ?p 150))
-                (bind $?just (insert$ $?just (+ (length$ $?just) 1) "El usuario es mayor y es antiguo -> +150")) 
-        )
-        (progn$ (?curr-gen $?generos) 
-                (bind ?nombre (send ?curr-gen get-genero))
-                (switch ?nombre
-                        (case "western" then 
-                                (bind ?p (+ ?p 100))
-                                (bind $?just (insert$ $?just (+ (length$ $?just) 1) "El usuario es mayor y es un western -> +100"))
-                        )
-                        (case "musical" then 
-                                (bind ?p (+ ?p 100))
-                                (bind $?just (insert$ $?just (+ (length$ $?just) 1) "El usuario es mayor y es de género musical -> +100"))
-                        )
-                        (case "historico" then
-                                (bind ?p (+ ?p 100))
-                                (bind $?just (insert$ $?just (+ (length$ $?just) 1) "El usuario es mayor y es de género histórico -> +100"))
-                        )
-                )
-        )
-        (progn$ (?curr-ani $?animos)
-                (bind ?nombre (send ?curr-ani get-animo))
-                (switch ?nombre
-                        (case "sentimental" then 
-                                (bind ?p (+ ?p 150))
-                                (bind $?just (insert$ $?just (+ (length$ $?just) 1) "El usuario es mayor y es sentimental -> +150"))
-                        )
-                        (case "senta_bien" then 
-                                (bind ?p (+ ?p 150))
-                                (bind $?just (insert$ $?just (+ (length$ $?just) 1) "El usuario es mayor y senta bien -> +150"))
-                        )
-                )
-        )
-        (progn$ (?curr-arg $?argumentos)
-                (bind ?nombre (send ?curr-arg get-argumento))
-                (switch ?nombre
-                        (case "guerra" then 
+                        (case "viajes_en_el_tiempo" then
                                 (bind ?p (+ ?p 125))
-                                (bind $?just (insert$ $?just (+ (length$ $?just) 1) "El usuario es mayor y va de la guerra -> +125"))
                         )
-                        (case "anyos60" then
-                                (bind ?p (+ ?p 150))
-                                (bind $?just (insert$ $?just (+ (length$ $?just) 1) "El usuario es mayor y va de la década de los 60 -> +150"))
+                        (case "espacio" then
+                                (bind ?p (+ ?p 125))
+                        )
+                        (case "social_utopia" then
+                                (bind ?p (+ ?p 125))
+                        )
+                        (case "social_alterantivo" then
+                                (bind ?p (+ ?p 125))
+                        )
+                        (case "social_distopia" then
+                                (bind ?p (+ ?p 125))
                         )
                 )
         )
         (send ?rec put-puntuacion ?p)
-        (send ?rec put-justificaciones $?just)
         (assert (valorado-mayor ?cont))
 )
 
 
-(defrule procesado::valorar-tematica-favorita "Se mejora la puntuacion de ldocumentales de tematica favorita"
-        ?hecho <- (tematica ?tem)
-        ?cont <-(object (is-a Documental) (docu_tematica ?tematica))
-        (test (eq (instance-name ?tem) ?tematica))
-        ?rec <- (object (is-a Recomendacion) (contenido ?conta) (puntuacion ?p) (justificaciones $?just))
-        (test (eq (instance-name ?cont) (instance-name ?conta)))
-        (not (valorado-tematica-favorita ?cont ?tem))
+(defrule procesado::valorar-mayor-fantasia "Se mejora la puntuacion de los contenidos adecuados a personas mayores"
+        (Usuario (edad ?e))
+        (test (>= ?e 18))
+        ?rec <- (object (is-a Solucion) (libro ?lib) (puntuacion ?p))
+        ?cont <-(object (is-a Fantasia) (subgenero_fant $?subfant) (edad_recomendada ?edad_mayor))
+        (test (eq (instance-name ?cont) (instance-name ?lib)))
+        (not (mayor-valorado ?cont))
         =>
-        (bind ?p (+ ?p 150))
-        (bind ?text (str-cat "Pertenece a la temática favorita " (send ?tem get-tematica) " -> +150"))
-        (bind $?just (insert$ $?just (+ (length$ $?just) 1) ?text))
+        (progn$ (?curr-gen $?subfant) 
+                (bind ?nombre (send ?curr-gen get-subgenero_fant))
+                (switch ?nombre
+                        (case "cuentos_clasicos" then 
+                                (bind ?p (+ ?p 125))
+                        )
+                        (case "magia_y_espada" then
+                                (bind ?p (+ ?p 125))
+                        )
+                        (case "alta_fantasia" then
+                                (bind ?p (+ ?p 125))
+                        )
+                        (case "medieval" then
+                                (bind ?p (+ ?p 125))
+                        )
+                        (case "terror" then
+                                (bind ?p (+ ?p 125))
+                        )
+                )
+        )
         (send ?rec put-puntuacion ?p)
-        (send ?rec put-justificaciones $?just)
-        (assert (valorado-tematica-favorita ?cont ?tem))
+        (assert (valorado-mayor ?cont))
+)
+
+(defrule procesado::valorar-mayor-misterio "Se mejora la puntuacion de los contenidos adecuados a personas mayores"
+        (Usuario (edad ?e))
+        (test (>= ?e 18))
+        ?rec <- (object (is-a Solucion) (libro ?lib) (puntuacion ?p))
+        ?cont <-(object (is-a Misterio) (subgenero_mist $?submist) (edad_recomendada ?edad_mayor))
+        (test (eq (instance-name ?cont) (instance-name ?lib)))
+        (not (mayor-valorado ?cont))
+        =>
+        (progn$ (?curr-gen $?submist) 
+                (bind ?nombre (send ?curr-gen get-subgenero_mist))
+                (switch ?nombre
+                        (case "policial" then 
+                                (bind ?p (+ ?p 125))
+                        )
+                        (case "suspense" then
+                                (bind ?p (+ ?p 125))
+                        )
+                )
+        )
+        (send ?rec put-puntuacion ?p)
+        (assert (valorado-mayor ?cont))
 )
 
 
-(defrule procesado::valorar-genero-favorito-peliculas "Se mejora la puntuacion de las peliculas de genero favorito"
-        ?hecho <- (genero-favorito ?gen)
-        ?cont <-(object (is-a Pelicula) (pelicula_genero $?generos))
+
+(defrule procesado::valorar-subgenero-favorito-ciencia-ficcion "Se mejora la puntuacion de los libros de los subgeneros de ciencia ficcion favoritos"
+        ?hecho <- (subgenero-cf-favorito ?gen)
+        ?cont <-(object (is-a Ciencia_ficcion) (subgenero_cf $?generos))
         (test (member$ ?gen $?generos))
-        ?rec <- (object (is-a Recomendacion) (contenido ?conta) (puntuacion ?p) (justificaciones $?just))
-        (test (eq (instance-name ?cont) (instance-name ?conta)))
-        (not (valorado-genero-favorito ?cont ?gen))
+        ?rec <- (object (is-a Solucion) (libro ?lib) (puntuacion ?p))
+        (test (eq (instance-name ?cont) (instance-name ?lib)))
+        (not (valorado-subgenero-favorito-ciencia-ficcion ?cont ?gen))
         =>
         (bind ?p (+ ?p 75))
         (send ?rec put-puntuacion ?p)
-        (bind ?text (str-cat "Pertenece al género favorito " (send ?gen get-genero) " -> +75"))
-        (bind $?just (insert$ $?just (+ (length$ $?just) 1) ?text))
-        (send ?rec put-justificaciones $?just)
-        (assert (valorado-genero-favorito ?cont ?gen))
+        (bind ?text (str-cat "Pertenece al género favorito " (send ?gen get-subgenero_cf) " -> +75"))
+        (assert (valorado-subgenero-favorito-ciencia-ficcion ?cont ?gen))
 )
 
-
-(defrule procesado::valorar-genero-favorito-series "Se mejora la puntuacion de las series de genero favorito"
-        ?hecho <- (genero-favorito ?gen)
-        ?cont <-(object (is-a Serie) (serie_genero $?generos))
+(defrule procesado::valorar-subgenero-favorito-fantasia "Se mejora la puntuacion de los libros de los subgeneros de fantasia favoritos"
+        ?hecho <- (subgenero-fant-favorito ?gen)
+        ?cont <-(object (is-a Fantasia) (subgenero_fant $?generos))
         (test (member$ ?gen $?generos))
-        ?rec <- (object (is-a Recomendacion) (contenido ?conta) (puntuacion ?p) (justificaciones $?just))
-        (test (eq (instance-name ?cont) (instance-name ?conta)))
-        (not (valorado-genero-favorito ?cont ?gen))
+        ?rec <- (object (is-a Solucion) (libro ?lib) (puntuacion ?p))
+        (test (eq (instance-name ?cont) (instance-name ?lib)))
+        (not (valorado-subgenero-favorito-fantasia ?cont ?gen))
         =>
-        (bind ?p (+ ?p 50))
+        (bind ?p (+ ?p 75))
         (send ?rec put-puntuacion ?p)
-        (bind ?text (str-cat "Pertenece al género favorito " (send ?gen get-genero) " -> +75"))
-        (bind $?just (insert$ $?just (+ (length$ $?just) 1) ?text))
-        (send ?rec put-justificaciones $?just)
-        (assert (valorado-genero-favorito ?cont ?gen))
+        (bind ?text (str-cat "Pertenece al género favorito " (send ?gen get-subgenero_fant) " -> +75"))
+        (assert (valorado-subgenero-favorito-fantasia ?cont ?gen))
 )
+
+(defrule procesado::valorar-subgenero-favorito-misterio "Se mejora la puntuacion de los libros de los subgeneros de misterio favoritos"
+        ?hecho <- (subgenero-mist-favorito ?gen)
+        ?cont <-(object (is-a Misterio) (subgenero_mist $?generos))
+        (test (member$ ?gen $?generos))
+        ?rec <- (object (is-a Solucion) (libro ?lib) (puntuacion ?p))
+        (test (eq (instance-name ?cont) (instance-name ?lib)))
+        (not (valorado-subgenero-favorito-misterio ?cont ?gen))
+        =>
+        (bind ?p (+ ?p 75))
+        (send ?rec put-puntuacion ?p)
+        (bind ?text (str-cat "Pertenece al género favorito " (send ?gen get-subgenero_mist) " -> +75"))
+        (assert (valorado-subgenero-favorito-misterio ?cont ?gen))
+)
+
+;;;;;;;;;;;////////////////////////////////
+;;;;;;;;;;;////////////////////////////////
+;;;;;;;;;;;////////////////////////////////
+;;;;;;;;;;;////////////////////////////////
+
+;-----FIN Cristian DONE
+
+;------Jose       ;;; Reglas para procesar sagas, best sellers y autores estranjeros
+                ;;; assert necesario saga-libros (TURE/FALSE/INDIFERENTE)
+                ;;; assert necesario libro-best-seller(TURE/FALSE/INDIFERENTE)
+        ;;; Comentar autores extranjeros (nacionalidad del usuario?)
+(defrule procesado::descartar-sagas "Descarta los libros que pertenezcan a sagas"
+        (declare (salience 10))
+        (saga-libros FALSE)
+        ?cont <- (object (is-a Libro) (saga TRUE))
+        ?rec <- (object (is-a Solucion) (libro ?lib))
+        (test (eq (instance-name ?cont) (instance-name ?lib)))
+        =>
+        (send ?rec delete)
+)
+
+(defrule procesado::descartar-best-sellers "Descarta los libros que hayan sido nombrados best sellers"
+        (declare (salience 10))
+        (libro-best-seller FALSE)
+        ?cont <- (object (is-a Libro) (best_seller TRUE))
+        ?rec <- (object (is-a Solucion) (libro ?lib))
+        (test (eq (instance-name ?cont) (instance-name ?lib)))
+        =>
+        (send ?rec delete)
+)
+
+(defrule procesado::descartar-autor-extranjero "Descarta los libros escritos por autores extranjeros"
+        (declare (salience 10))
+        (autor-extranjero FALSE)
+        ?cont <- (object (is-a Libro) (best_seller TRUE))
+        ?rec <- (object (is-a Solucion) (libro ?lib))
+        (test (eq (instance-name ?cont) (instance-name ?lib)))
+        =>
+        (send ?rec delete)
+)
+
+(defrule procesado::valorar-saga "Mejora la puntuacion de los libros que pertenezcan a saga"
+        (saga-libros TRUE)
+        ?cont <- (object (is-a Libro) (saga TRUE))
+        ?rec <- (object (is-a Solucion) (libro ?lib) (puntuacion ?p))
+        (test (eq (instance-name ?cont) (instance-name ?lib)))
+        (not (saga-valorada ?cont))
+        =>
+        (bind ?p (+ ?p 150))
+        (send ?rec put-puntuacion ?p)
+        (assert (saga-valorada ?cont))
+)
+
+
+(defrule procesado::valorar-best-seller "Mejora la puntuacion de los libros que hayan sido nombrados best sellers"
+        (libro-best-seller TRUE)
+        ?cont <- (object (is-a Libro) (best_seller TRUE))
+        ?rec <- (object (is-a Solucion) (libro ?lib) (puntuacion ?p))
+        (test (eq (instance-name ?cont) (instance-name ?lib)))
+        (not (best-seller-valorado ?cont))
+        =>
+        (bind ?p (+ ?p 150))
+        (send ?rec put-puntuacion ?p)
+        (assert (best-seller-valorado ?cont))
+)
+
+;------FIN Jose
 
 
 (defrule procesado::aux-nacionalidad "Crea hechos con las nacionalidades favoritas para porder tratarlas"
@@ -504,7 +543,8 @@
         (send ?rec put-justificaciones $?just)
         (assert (valorado-nacionalidad-favorita ?cont ?nac))
 )
-        
+     
+
 
 (defrule procesado::valorar-subir-series "Se mejora la puntuacion de las series en general"
         (subir-series TRUE)
