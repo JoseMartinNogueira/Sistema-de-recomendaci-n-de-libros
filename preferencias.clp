@@ -25,7 +25,7 @@
 
 ;;; Template para las preferencias del usuario
 (deftemplate MAIN::preferencias
-	(slot sagas (type SYMBOL) (default desconocido))
+	;(slot sagas (type SYMBOL) (default desconocido))
 	(multislot idiomas (type INSTANCE))
 	;(slot frecuencia (type SYMBOL) (default desconocido))
 	;(slot momento (type SYMBOL) (default desconocido))
@@ -146,48 +146,22 @@
 )
 
 (defrule recopilacion-prefs::libros-populares "Establece si le gustan los libros populares"
-	?p <- (preferencias (libros-populares desconocido))
 	=>
 	(bind ?populares (pregunta-si-no "¿Le gustan los libros populares?"))
 	(if (eq ?populares TRUE) then
-		(modify ?p (libros-populares TRUE))
+		(assert (libro-best-seller TRUE))
 	else 	
-		(modify ?p (libros-populares FALSE))
+		(assert (libro-best-seller FALSE))
 	)
 )
 
-
-(defrule recopilacion-prefs::valoraciones "Establece si se fía de las valoraciones"
-	?p <- (preferencias (valoraciones desconocido))
+(defrule recopilacion-prefs::clasicos-literatura "Establece si le gustan los clasicos de la literatura"
 	=>
-	(bind ?valoraciones (pregunta-si-no "¿Se fía de las valoraciones?"))
-	(if (eq ?valoraciones TRUE) then
-		(modify ?p (valoraciones TRUE))
-	else 	
-		(modify ?p (valoraciones FALSE))
-	)
-)
-
-(defrule recopilacion-prefs::modas "Establece si se deja llevar por las modas"
-	?p <- (preferencias (modas desconocido))
-	=>
-	(bind ?modas (pregunta-si-no "¿Se deja llevar por las modas?"))
-	(if (eq ?modas TRUE) then
-		(modify ?p (modas TRUE))
-	else 	
-		(modify ?p (modas FALSE))
-	)
-)
-
-
-(defrule recopilacion-prefs::autores-extranjeros "Establece si prefiere autores extranjeros"
-	?p <- (preferencias (autores-extranjeros desconocido))
-	=>
-	(bind ?extranjeros (pregunta-si-no "¿Prefiere libros de autores extranjeros?"))
-	(if (eq ?extranjeros TRUE) then
-		(modify ?p (autores-extranjeros TRUE))
-	else 	
-		(modify ?p (autores-extranjeros FALSE))
+	(bind ?clasicos (pregunta-si-no "¿Le gustan los clasicos de la literatura?"))
+	(if (eq ?clasicos TRUE) then
+		(assert (clasico-literatura TRUE))
+	else 
+		(assert (clasico-literatura FALSE))
 	)
 )
 
