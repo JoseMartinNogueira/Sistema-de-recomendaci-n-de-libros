@@ -496,30 +496,17 @@
 ;------FIN Jose
 
 
-(defrule procesado::aux-nacionalidad "Crea hechos con las nacionalidades favoritas para porder tratarlas"
-        (preferencias (nacionalidades $?nac))
-        ?hecho <- (nacionalidad ?aux)
-        (test (or (eq ?aux TRUE) (eq ?aux FALSE)))
-        =>
-        (retract ?hecho)
-        (if (eq ?aux TRUE) then 
-                (progn$ (?curr-nac $?nac)
-                        (assert (nacionalidad ?curr-nac))
-                )
-        )
-)
-
-(defrule procesado::descartar-por-idioma "Se descartan los libros que el usuario no va a entender dependiendo de si tienen subtitulos o no"
-        (declare (salience 10)) ; Para tener prioridad y descartar antes
-        (preferencias (idiomas $?idiomas))
-        (vo FALSE)
-        ?cont <- (object (is-a Contenido) (en_idioma ?idioma))
-        ?rec <- (object (is-a Recomendacion) (contenido ?conta) (puntuacion ?p))
-        (test (eq (instance-name ?cont) (instance-name ?conta)))
-        (test (not (member$ ?idioma $?idiomas)))
-        =>
-        (send ?rec delete)
-)
+;(defrule procesado::descartar-por-idioma "Se descartan los libros que el usuario no va a entender dependiendo de si tienen subtitulos o no"
+;        (declare (salience 10)) ; Para tener prioridad y descartar antes
+;        (preferencias (idiomas $?idiomas))
+;        (vo FALSE)
+;        ?cont <- (object (is-a Contenido) (en_idioma ?idioma))
+;        ?rec <- (object (is-a Recomendacion) (contenido ?conta) (puntuacion ?p))
+;        (test (eq (instance-name ?cont) (instance-name ?conta)))
+;        (test (not (member$ ?idioma $?idiomas)))
+;        =>
+;        (send ?rec delete)
+;)
 
 (defrule procesado::descartar-clasicos "Se descartan contenidos clasicos si no le gustan al usuario"
         (declare (salience 10)) ; Para tener prioridad y descartar antes
@@ -532,65 +519,6 @@
         (send ?rec delete)
 )
 
-(defrule procesado::descartar-mudo "Se descartan los contenidos mudos"
-        (declare (salience 10)) ; Para tener prioridad y descartar antes
-        (mudo FALSE)
-        ?cont <- (object (is-a Contenido) (es_mudo TRUE))
-        ?rec <- (object (is-a Recomendacion) (contenido ?conta))
-        (test (eq (instance-name ?cont) (instance-name ?conta)))
-        =>
-        (send ?rec delete)
-)
-
-(defrule procesado::descartar-blanconegro "Se descartan los contenidos en blanco y negro"
-        (declare (salience 10)) ; Para tener prioridad y descartar antes
-        (blanconegro FALSE)
-        (clasicos FALSE)
-        ?cont <- (object (is-a Contenido) (blanco_negro TRUE))
-        ?rec <- (object (is-a Recomendacion) (contenido ?conta))
-        (test (eq (instance-name ?cont) (instance-name ?conta)))
-        =>
-        (send ?rec delete)
-)
-
-(defrule procesado::valorar-series-espanyolas "Mejora la puntuacion de las series espanyolas"
-        (series-espanyolas ?valorar)
-        ?cont <- (object (is-a Serie) (hecha_en ?nac))
-        (test (eq (send ?nac get-nacionalidad) "Espanya"))
-        ?rec <- (object (is-a Recomendacion) (contenido ?conta) (puntuacion ?p) (justificaciones $?just))
-        (test (eq (instance-name ?cont) (instance-name ?conta)))
-        (not (valorado-series-espanyolas ?cont))
-        =>
-        (if (eq ?valorar TRUE) 
-                then
-                        (bind ?p (+ ?p 100))
-                        (bind $?just (insert$ $?just (+ (length$ $?just) 1) "Es una serie espanyola -> +100"))
-        )
-        (if (eq ?valorar FALSE)
-                then
-                        (bind ?p (+ ?p -100))
-                        (bind $?just (insert$ $?just (+ (length$ $?just) 1) "Es una serie espanyola -> -100"))
-        )
-        (send ?rec put-puntuacion ?p)
-        (send ?rec put-justificaciones $?just)
-        (assert (valorado-series-espanyolas ?cont))
-)
-
-
-(defrule procesado::valorar-aclamado-critica "Sube la puntuación de los contenidos aclamados por la critica"
-        (aclamado-critica TRUE)
-        ?cont <- (object (is-a Contenido) (aclamada_por_critica TRUE))
-        ?rec <- (object (is-a Recomendacion) (contenido ?conta) (puntuacion ?p) (justificaciones $?just))
-        (test (eq (instance-name ?cont) (instance-name ?conta)))
-        (not (valorado-aclamado-critica ?cont))
-        =>
-        (bind ?p (+ ?p 75))
-        (send ?rec put-puntuacion ?p)
-        (bind ?text (str-cat "Es un contenido aclamado por la crítica especializada -> +75"))
-        (bind $?just (insert$ $?just (+ (length$ $?just) 1) ?text))
-        (send ?rec put-justificaciones $?just)
-        (assert (valorado-aclamado-critica ?cont))
-)
 
 (defrule procesado::valorar-clasicos "Sube la puntuación de los contenidos clásicos"
         (clasicos TRUE)
@@ -606,72 +534,6 @@
         (bind $?just (insert$ $?just (+ (length$ $?just) 1) ?text))
         (send ?rec put-justificaciones $?just)
         (assert (valorado-clasico ?cont))
-)
-
-(defrule procesado::valorar-indie "Modifica la puntuación de los contenidos según sean de bajo presupuesto o no"
-        (indie ?indie)
-        ?cont <- (object (is-a Contenido) (bajo_presupuesto TRUE))
-        ?rec <- (object (is-a Recomendacion) (contenido ?conta) (puntuacion ?p) (justificaciones $?just))
-        (test (eq (instance-name ?cont) (instance-name ?conta)))
-        (not (valorado-indie ?cont))
-        =>
-        (if (eq ?indie TRUE) then
-                (bind ?p (+ ?p 75))
-                (bind ?text (str-cat "Es un contenido de bajo presupuesto o independiente -> +75"))
-                (bind $?just (insert$ $?just (+ (length$ $?just) 1) ?text))
-        else
-                (bind ?p (+ ?p -75))
-                (bind ?text (str-cat "Es un contenido de bajo presupuesto o independiente -> -75"))
-                (bind $?just (insert$ $?just (+ (length$ $?just) 1) ?text))
-        )
-        (send ?rec put-puntuacion ?p)
-        (send ?rec put-justificaciones $?just)
-        (assert (valorado-indie ?cont))
-)
-
-(defrule procesado::valorar-blanconegro "Mejora la puntuación de los contenidos en blanco y negro"
-        (blanconegro TRUE)
-        ?cont <- (object (is-a Contenido) (blanco_negro TRUE))
-        ?rec <- (object (is-a Recomendacion) (contenido ?conta) (puntuacion ?p) (justificaciones $?just))
-        (test (eq (instance-name ?cont) (instance-name ?conta)))
-        (not (valorado-blanconegro ?cont))
-        =>
-        (bind ?p (+ ?p 150))
-        (send ?rec put-puntuacion ?p)
-        (bind ?text (str-cat "Es un contenido en blanco y negro -> +150"))
-        (bind $?just (insert$ $?just (+ (length$ $?just) 1) ?text))
-        (send ?rec put-justificaciones $?just)
-        (assert (valorado-blanconegro ?cont))
-)
-
-(defrule procesado::valorar-mudo "Mejora la puntuación de los contenidos mudos"
-        (mudo TRUE)
-        ?cont <- (object (is-a Contenido) (es_mudo TRUE))
-        ?rec <- (object (is-a Recomendacion) (contenido ?conta) (puntuacion ?p) (justificaciones $?just))
-        (test (eq (instance-name ?cont) (instance-name ?conta)))
-        (not (valorado-mudo ?cont))
-        =>
-        (bind ?p (+ ?p 75))
-        (bind ?text (str-cat "Es un contenido mudo -> +75"))
-        (bind $?just (insert$ $?just (+ (length$ $?just) 1) ?text))
-        (send ?rec put-puntuacion ?p)
-        (send ?rec put-justificaciones $?just)
-        (assert (valorado-mudo ?cont))
-)
-
-(defrule procesado::valorar-buena-audiencia "Modifica la puntuación de los contenidos con buena audiencia"
-        (buena-audiencia TRUE)
-        ?cont <- (object (is-a Contenido) (buena_audiencia TRUE))
-        ?rec <- (object (is-a Recomendacion) (contenido ?conta) (puntuacion ?p) (justificaciones $?just))
-        (test (eq (instance-name ?cont) (instance-name ?conta)))
-        (not (valorado-buena-audiencia ?cont))
-        =>
-        (bind ?p (+ ?p 75))
-        (bind ?text (str-cat "Es un contenido que ha tenido buena audiencia -> +75"))
-        (bind $?just (insert$ $?just (+ (length$ $?just) 1) ?text))
-        (send ?rec put-puntuacion ?p)
-        (send ?rec put-justificaciones $?just)
-        (assert (valorado-buena-audiencia ?cont))
 )
         
 (defrule procesado::pasar-a-generacion "Pasa al modulo de generacion de respuestas"
