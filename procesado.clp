@@ -1,23 +1,5 @@
 ;;; Declaracion de templates --------------------------
 
-;;; Template para los datos personales del usuario
-;;valorar segun las preguntas
-(deftemplate MAIN::Usuario
-        (slot nombre (type STRING))
-        (slot sexo (type SYMBOL) (default desconocido))
-        (slot edad (type INTEGER) (default -1))
-        (slot familia (type SYMBOL) (default desconocido))
-)
-
-;;; Template para las preferencias del usuario
-(deftemplate MAIN::preferencias
-        (multislot idiomas (type INSTANCE))
-        (multislot autores-favoritos (type INSTANCE)) ; nuevo
-        (multislot subgeneros-cf-favoritos (type INSTANCE)) ; nuevo
-        (multislot subgeneros-mist-favoritos (type INSTANCE)) ; nuevo
-        (multislot subgeneros-fant-favoritos (type INSTANCE)) ; nuevo
-)
-
 ;;; Template para una lista de recomendaciones sin orden
 (deftemplate MAIN::lista-rec
         (multislot soluciones (type INSTANCE))
@@ -527,57 +509,7 @@
         )
 )
 
-
-(defrule procesado::valorar-nacionalidad-favorita "Se mejora la puntuacion de los contenidos de las nacionalidades favoritas del usuario"
-        (nacionalidad ?nac)
-        ?cont <- (object (is-a Contenido) (hecha_en $?nacionalidades))
-        (test (member$ ?nac $?nacionalidades))
-        ?rec <- (object (is-a Recomendacion) (contenido ?conta) (puntuacion ?p) (justificaciones $?just))
-        (test (eq (instance-name ?cont) (instance-name ?conta)))
-        (not (valorado-nacionalidad-favorita ?cont ?nac))
-        =>
-        (bind ?p (+ ?p 75))
-        (send ?rec put-puntuacion ?p)
-        (bind ?text (str-cat "Es de la nacionalidad favorita " (send ?nac get-nacionalidad) " -> +75"))
-        (bind $?just (insert$ $?just (+ (length$ $?just) 1) ?text))
-        (send ?rec put-justificaciones $?just)
-        (assert (valorado-nacionalidad-favorita ?cont ?nac))
-)
-     
-
-
-(defrule procesado::valorar-subir-series "Se mejora la puntuacion de las series en general"
-        (subir-series TRUE)
-        ?cont <- (object (is-a Serie))
-        ?rec <- (object (is-a Recomendacion) (contenido ?conta) (puntuacion ?p) (justificaciones $?just))
-        (test (eq (instance-name ?cont) (instance-name ?conta)))
-        (not (valorado-subir-series ?cont))
-        =>
-        (bind ?text (str-cat "Es una serie y el usuario las ve normalmente -> + 125"))
-        (bind $?just (insert$ $?just (+ (length$ $?just) 1) ?text))
-        (bind ?p (+ ?p 125))
-        (send ?rec put-puntuacion ?p)
-        (send ?rec put-justificaciones $?just)
-        (assert (valorado-subir-series ?cont))
-)
-
-(defrule procesado::valorar-subir-documentales "Mejora la puntuacion de los documentales en general"
-        (subir-documentales TRUE)
-        ?cont <- (object (is-a Documental))
-        ?rec <- (object (is-a Recomendacion) (contenido ?conta) (puntuacion ?p) (justificaciones $?just))
-        (test (eq (instance-name ?cont) (instance-name ?conta)))
-        (not (valorado-subir-documental ?cont))
-        =>
-        (bind ?text (str-cat "Es un documental y el usuario los ve normalmente -> + 125"))
-        (bind $?just (insert$ $?just (+ (length$ $?just) 1) ?text))
-        (bind ?p (+ ?p 125))
-        (send ?rec put-puntuacion ?p)
-        (send ?rec put-justificaciones $?just)
-        (assert (valorado-subir-documental ?cont))
-)
-        
-
-(defrule procesado::descartar-por-idioma "Se descartan las peliculas que el usuario no va a entender dependiendo de si tienen subtitulos o no"
+(defrule procesado::descartar-por-idioma "Se descartan los libros que el usuario no va a entender dependiendo de si tienen subtitulos o no"
         (declare (salience 10)) ; Para tener prioridad y descartar antes
         (preferencias (idiomas $?idiomas))
         (vo FALSE)
