@@ -420,6 +420,7 @@
 (defrule procesado::valorar-subgenero-favorito-fantasia "Se mejora la puntuacion de los libros de los subgeneros de fantasia favoritos"
         ?hecho <- (subgenero-fant-favorito ?gen)
         ?cont <-(object (is-a Fantasia) (subgenero_fant $?generos))
+<<<<<<< HEAD
         (test (member$ ?gen $?generos))
         ?rec <- (object (is-a Solucion) (libro ?lib) (puntuacion ?p))
         (test (eq (instance-name ?cont) (instance-name ?lib)))
@@ -496,7 +497,39 @@
         (bind ?p (+ ?p 150))
         (send ?rec put-puntuacion ?p)
         (assert (saga-valorada ?cont))
+=======
+        (test (member$ ?gen $?generos))
+        ?rec <- (object (is-a Solucion) (libro ?lib) (puntuacion ?p))
+        (test (eq (instance-name ?cont) (instance-name ?lib)))
+        (not (valorado-subgenero-favorito-fantasia ?cont ?gen))
+        =>
+        (bind ?p (+ ?p 75))
+        (send ?rec put-puntuacion ?p)
+        (bind ?text (str-cat "Pertenece al género favorito " (send ?gen get-subgenero_fant) " -> +75"))
+        (assert (valorado-subgenero-favorito-fantasia ?cont ?gen))
 )
+
+(defrule procesado::valorar-subgenero-favorito-misterio "Se mejora la puntuacion de los libros de los subgeneros de misterio favoritos"
+        ?hecho <- (subgenero-mist-favorito ?gen)
+        ?cont <-(object (is-a Misterio) (subgenero_mist $?generos))
+        (test (member$ ?gen $?generos))
+        ?rec <- (object (is-a Solucion) (libro ?lib) (puntuacion ?p))
+        (test (eq (instance-name ?cont) (instance-name ?lib)))
+        (not (valorado-subgenero-favorito-misterio ?cont ?gen))
+        =>
+        (bind ?p (+ ?p 75))
+        (send ?rec put-puntuacion ?p)
+        (bind ?text (str-cat "Pertenece al género favorito " (send ?gen get-subgenero_mist) " -> +75"))
+        (assert (valorado-subgenero-favorito-misterio ?cont ?gen))
+>>>>>>> c22755a318fe727dc3911f8b2b34c9499eb52599
+)
+
+;;;;;;;;;;;////////////////////////////////
+;;;;;;;;;;;////////////////////////////////
+;;;;;;;;;;;////////////////////////////////
+;;;;;;;;;;;////////////////////////////////
+
+;-----FIN Cristian DONE
 
 
 (defrule procesado::valorar-best-seller "Mejora la puntuacion de los libros que hayan sido nombrados best sellers"
