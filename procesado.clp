@@ -497,6 +497,7 @@
         (bind ?p (+ ?p 150))
         (send ?rec put-puntuacion ?p)
         (assert (saga-valorada ?cont))
+<<<<<<< HEAD
 =======
         (test (member$ ?gen $?generos))
         ?rec <- (object (is-a Solucion) (libro ?lib) (puntuacion ?p))
@@ -531,6 +532,10 @@
 
 ;-----FIN Cristian DONE
 
+=======
+)
+
+>>>>>>> 7f73e2fdfd529c8a62d709db08a30aed6312228b
 
 (defrule procesado::valorar-best-seller "Mejora la puntuacion de los libros que hayan sido nombrados best sellers"
         (libro-best-seller TRUE)
@@ -546,6 +551,10 @@
 
 ;------FIN Jose
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 7f73e2fdfd529c8a62d709db08a30aed6312228b
 
 (defrule procesado::aux-nacionalidad "Crea hechos con las nacionalidades favoritas para porder tratarlas"
         (preferencias (nacionalidades $?nac))
