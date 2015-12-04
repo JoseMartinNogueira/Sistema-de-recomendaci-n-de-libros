@@ -454,7 +454,7 @@
         ?cont <- (object (is-a Libro) (best_seller TRUE))
         ?rec <- (object (is-a Solucion) (libro ?lib))
         (test (eq (instance-name ?cont) (instance-name ?lib)))
-        =>
+       =>
         (send ?rec delete)
 )
 
@@ -468,6 +468,26 @@
 ;        (send ?rec delete)
 ;)
 
+(defrule procesado::descartar-sin-ediciones-de-bolsillo "Descarta los libros sin edicion de bolisllo"
+        (declare (salience 10))
+        (transporte-publico FALSE)
+        ?cont <- (object (is-a Libro) (edicion_bolsillo FALSE))
+        ?rec <- (object (is-a Solucion) (libro ?lib))
+        (test (eq (instance-name ?cont) (instance-name ?lib)))
+        =>
+        (send ?rec delete)
+)
+
+(defrule procesado::descartar-calsicos-literatura "Descarta los clasicos de la literatura"
+        (declare (salience 10))
+        (clasico-literatura FALSE)
+        ?cont <- (object (is-a Libro) (clasico-literatura FALSE))
+        ?rec <- (object (is-a Solucion) (libro ?lib))
+        (test (eq (instance-name ?cont) (instance-name ?lib)))
+        =>
+        (send ?rec delete)        
+)
+
 (defrule procesado::valorar-saga "Mejora la puntuacion de los libros que pertenezcan a saga"
         (saga-libros TRUE)
         ?cont <- (object (is-a Libro) (saga TRUE))
@@ -480,7 +500,6 @@
         (assert (saga-valorada ?cont))
 )
 
-
 (defrule procesado::valorar-best-seller "Mejora la puntuacion de los libros que hayan sido nombrados best sellers"
         (libro-best-seller TRUE)
         ?cont <- (object (is-a Libro) (best_seller TRUE))
@@ -491,6 +510,30 @@
         (bind ?p (+ ?p 150))
         (send ?rec put-puntuacion ?p)
         (assert (best-seller-valorado ?cont))
+)
+
+(defrule procesado::valorar-edicion-bolsillo "Mejora la puntuacion de los libros con edicion de bolisllo"
+        (libro-best-seller TRUE)
+        ?cont <- (object (is-a Libro) (edicion_bolsillo TRUE))
+        ?rec <- (object (is-a Solucion) (libro ?lib) (puntuacion ?p))
+        (test (eq (instance-name ?cont) (instance-name ?lib)))
+        (not (edicion-bolsillo-valorado ?cont))
+        =>
+        (bind ?p (+ ?p 150))
+        (send ?rec put-puntuacion ?p)
+        (assert (edicion-bolsillo-valorado ?cont))
+)
+
+(defrule procesado::valorar-edicion-bolsillo "Mejora la puntuacion de los clasicos de la literatura"
+        (clasico-literatura TRUE)
+        ?cont <- (object (is-a Libro) (clasico_literatura TRUE))
+        ?rec <- (object (is-a Solucion) (libro ?lib) (puntuacion ?p))
+        (test (eq (instance-name ?cont) (instance-name ?lib)))
+        (not (clasico-literatura-valorado ?cont))
+        =>
+        (bind ?p (+ ?p 150))
+        (send ?rec put-puntuacion ?p)
+        (assert (clasico-literatura-valorado ?cont))
 )
 
 ;------FIN Jose
