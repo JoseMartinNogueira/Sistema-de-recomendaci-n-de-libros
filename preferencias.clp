@@ -20,20 +20,23 @@
 	(slot nombre (type STRING))
 	(slot sexo (type SYMBOL) (default desconocido))
 	(slot edad (type INTEGER) (default -1))
+	;;(multislot idiomas (type INSTANCE))
+	;;(nacionalidad)
 )
 
 ;;; Template para las preferencias del usuario
 (deftemplate MAIN::preferencias
 	(slot sagas (type SYMBOL) (default desconocido))
-	(slot frecuencia (type SYMBOL) (default desconocido))
-	(slot momento (type SYMBOL) (default desconocido))
+	(multislot idiomas (type INSTANCE))
+	;(slot frecuencia (type SYMBOL) (default desconocido))
+	;(slot momento (type SYMBOL) (default desconocido))
 	(slot lugar (type SYMBOL) (default desconocido))
 	(slot libros-populares (type SYMBOL) (default desconocido))
-	(slot valoraciones (type SYMBOL) (default desconocido))
-	(slot modas (type SYMBOL) (default desconocido))
-	(slot autores-extranjeros (type SYMBOL) (default desconocido))
-	(multislot generos-favoritos (type INSTANCE))
-	(multislot tematicas-favoritas (type INSTANCE))
+	;(slot valoraciones (type SYMBOL) (default desconocido))
+	;(slot autores-extranjeros (type SYMBOL) (default desconocido))
+	(multislot subgeneros-cf-favoritos (type INSTANCE)) ; nuevo
+    (multislot subgeneros-mist-favoritos (type INSTANCE)) ; nuevo
+    (multislot subgeneros-fant-favoritos (type INSTANCE)) ; nuevo
 )
 
 ;;; Declaracion de funciones --------------------------

@@ -584,7 +584,7 @@
 	(modify ?aux (soluciones $?lista))
 )
 
-(defrule generador:: ordenar-lista
+(defrule generador::ordenar-lista
 	(not (soluciones-ordenada))
 	(soluciones-desordenada (soluciones $?lista))
 	=>

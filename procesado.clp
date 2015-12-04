@@ -402,6 +402,7 @@
 (defrule procesado::valorar-subgenero-favorito-fantasia "Se mejora la puntuacion de los libros de los subgeneros de fantasia favoritos"
         ?hecho <- (subgenero-fant-favorito ?gen)
         ?cont <-(object (is-a Fantasia) (subgenero_fant $?generos))
+<<<<<<< HEAD
         (test (member$ ?gen $?generos))
         ?rec <- (object (is-a Solucion) (libro ?lib) (puntuacion ?p))
         (test (eq (instance-name ?cont) (instance-name ?lib)))
@@ -480,20 +481,21 @@
         (assert (saga-valorada ?cont))
 )
 
+;------FIN Jose
 
-(defrule procesado::valorar-best-seller "Mejora la puntuacion de los libros que hayan sido nombrados best sellers"
-        (libro-best-seller TRUE)
-        ?cont <- (object (is-a Libro) (best_seller TRUE))
-        ?rec <- (object (is-a Solucion) (libro ?lib) (puntuacion ?p))
-        (test (eq (instance-name ?cont) (instance-name ?lib)))
-        (not (best-seller-valorado ?cont))
+
+(defrule procesado::aux-nacionalidad "Crea hechos con las nacionalidades favoritas para porder tratarlas"
+        (preferencias (nacionalidades $?nac))
+        ?hecho <- (nacionalidad ?aux)
+        (test (or (eq ?aux TRUE) (eq ?aux FALSE)))
         =>
-        (bind ?p (+ ?p 150))
-        (send ?rec put-puntuacion ?p)
-        (assert (best-seller-valorado ?cont))
+        (retract ?hecho)
+        (if (eq ?aux TRUE) then 
+                (progn$ (?curr-nac $?nac)
+                        (assert (nacionalidad ?curr-nac))
+                )
+        )
 )
-
-;------FIN Jose     
 
 (defrule procesado::descartar-por-idioma "Se descartan los libros que el usuario no va a entender dependiendo de si tienen subtitulos o no"
         (declare (salience 10)) ; Para tener prioridad y descartar antes
