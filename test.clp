@@ -9,6 +9,8 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;PRACTICA.CLP;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
+;;protege
+
 
 ;;ontologia
 
@@ -493,6 +495,27 @@
 ;;; Modulos
 (defmodule MAIN(export ?ALL))
 
+;;; Modulo de recopilacion de los datos del usuario
+(defmodule recopilacion-usuario
+        (import MAIN ?ALL)
+        (export ?ALL)
+)
+
+(defmodule recopilacion-prefs
+        (import MAIN ?ALL)
+        (import recopilacion-usuario deftemplate ?ALL)
+        (export ?ALL)
+)
+
+;;; Modulo de filtrado y procesado del contenido adequado al usuario
+(defmodule procesado
+        (import MAIN ?ALL)
+        (import recopilacion-usuario deftemplate ?ALL)
+        (import recopilacion-prefs deftemplate ?ALL)
+        (export ?ALL)
+)
+
+
 ;;;Modulo generacion de soluciones
 (defmodule generador
         (import MAIN ?ALL)
@@ -503,36 +526,6 @@
 (defmodule representacion
         (import MAIN ?ALL)
         (export ?ALL)
-)
-
-;; Templates
-(deftemplate MAIN::Usuario
-        (slot nombre (type STRING))
-)
-
-(deftemplate MAIN::soluciones-desordenada
-        (multislot soluciones (type INSTANCE))
-)
-(deftemplate MAIN::soluciones-ordenada
-        (multislot soluciones (type INSTANCE))
-)
-
-;; Fnciones
-
-;; Funcion para encontrar el libro con puntuacion maxima
-(deffunction puntuacion-maxima ($?lista)
-        (bind ?elem nil)
-        (bind ?max -1)
-        (progn$ (?rec $?lista)
-                (bind ?cont (send ?rec get-libro))
-                (bind ?punt (send ?rec get-puntuacion))
-                (if (> ?put ?max)
-                        then
-                        (bind ?max ?punt)
-                        (bind ?elem ?rec)
-                )
-        )
-        ?elem
 )
 
 
@@ -556,98 +549,7 @@
         (printout t "+++++++++++++++++++++++++++++++++" crlf)
 )
 
-;; Reglas
-
-;; bienvenida
-
-(defrule MAIN::bienvenida
-        (declare (salience 10))
-        =>
-        (printout t "//////////////////////////////////////////////////")
-        (printout t crlf)
-        (printout t "  Sistema de recomendacion de libros de ficcion")
-        (printout t crlf)
-        (printout t "//////////////////////////////////////////////////")
-        (printout t crlf)
-        (printout t "¡Bienvenido al sistema de recomendacion de libros de ficcion!")
-        (printout t crlf)
-        (printout t "A continuacion le formularemos una serie de preguntas")
-        (printout t crlf)       
-)
-
-;; Generacion soluciones
-
-(defrule generador::lista-soluciones
-        (not (soluciones-desordenada))
-        =>
-        (assert (soluciones-desordenada))
-)
-
-(defrule generador::add-solucion 
-        (declare (salience 10))
-        ?sol <- (object (is-a Solucion))
-        ?aux <- (soluciones-desordenada (soluciones $?lista))
-        (test (not (member$ ?rec $?lista)))
-        =>
-        (bind $?lista (insert$ $?lista (+ (length $ $?lista) 1) ?sol))
-        (modify ?aux (soluciones $?lista))
-)
-
-(defrule generador::ordenar-lista
-        (not (soluciones-ordenada))
-        (soluciones-desordenada (soluciones $?lista))
-        =>
-        (bind $?ordenada (create$ ))
-        (while (and (not (eq (length$ $?lista) 0)) (< (length$ $?ordenada) 3)) do 
-                (bind ?sol (puntuacion-maxima $?lista))
-                (bind $?lista (delete-member$ $?lista ?sol))
-                (bind $?ordenada (insert$ $?ordenada (+ (length$ $?ordenada) 1) ?sol))
-        )
-        (assert (soluciones-ordenada (soluciones $?ordenada)))
-)
-
-(defrule generador::enviar-presentacion
-        (soluciones-ordenada)
-        =>
-        (focus representacion)
-)
-
-;; Representacion
-
-(defrule representacion::solucion-final
-        (soluciones-ordenada (soluciones $?soluciones))
-        (not (final))
-        =>
-        (printout t "Estos son los 3 libros que le recomendamos" crlf)
-        (printout t crlf)
-        (printout t (send (nth 0 ?soluciones) mostrar))
-        (printout t (send (nth 1 ?soluciones) mostrar))
-        (printout t (send (nth 2 ?soluciones) mostrar)) 
-        (assert (final))
-)
-
-
-
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;PREFERENCIAS.CLP;;;;;;;;;;;;;;;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-;;; Modulo principal de utilidades, indicamos que exportamos todo
-(defmodule MAIN (export ?ALL))
-
-;;; Modulo de recopilacion de los datos del usuario
-(defmodule recopilacion-usuario
-        (import MAIN ?ALL)
-        (export ?ALL)
-)
-
-(defmodule recopilacion-prefs
-        (import MAIN ?ALL)
-        (import recopilacion-usuario deftemplate ?ALL)
-        (export ?ALL)
-)
-
-;;; Declaracion de templates --------------------------
+;; Templates
 
 ;;; Template para los datos socio-demograficos del usuario
 (deftemplate MAIN::Usuario
@@ -659,20 +561,41 @@
 
 ;;; Template para las preferencias del usuario
 (deftemplate MAIN::preferencias
-        ;(slot sagas (type SYMBOL) (default desconocido))
-        (multislot idiomas (type INSTANCE))
-        ;(slot frecuencia (type SYMBOL) (default desconocido))
-        ;(slot momento (type SYMBOL) (default desconocido))
-        (slot lugar (type SYMBOL) (default desconocido))
-        (slot libros-populares (type SYMBOL) (default desconocido))
-        ;(slot valoraciones (type SYMBOL) (default desconocido))
-        ;(slot autores-extranjeros (type SYMBOL) (default desconocido))
+        ;(multislot idiomas (type INSTANCE))
         (multislot subgeneros-cf-favoritos (type INSTANCE)) ; nuevo
     (multislot subgeneros-mist-favoritos (type INSTANCE)) ; nuevo
     (multislot subgeneros-fant-favoritos (type INSTANCE)) ; nuevo
 )
 
-;;; Declaracion de funciones --------------------------
+
+;;; Template para una lista de recomendaciones sin orden
+(deftemplate MAIN::soluciones-desordenada
+        (multislot soluciones (type INSTANCE))
+)
+
+;;; Template para una lista de recomendaciones con orden
+(deftemplate MAIN::soluciones-ordenada
+        (multislot soluciones (type INSTANCE))
+)
+
+
+
+;; Funcion para encontrar el libro con puntuacion maxima
+(deffunction puntuacion-maxima ($?lista)
+        (bind ?elem nil)
+        (bind ?max -1)
+        (progn$ (?rec $?lista)
+                (bind ?cont (send ?rec get-libro))
+                (bind ?punt (send ?rec get-puntuacion))
+                (if (> ?punt ?max)
+                        then
+                        (bind ?max ?punt)
+                        (bind ?elem ?rec)
+                )
+        )
+        ?elem
+)
+
 
 ;;; Funcion para hacer una pregunta con respuesta cualquiera
 (deffunction pregunta-general (?pregunta)
@@ -727,12 +650,63 @@
         ?respuesta
 )
 
+(deffunction pregunta-multi (?pregunta $?valores-posibles)
+    (bind ?linea (format nil "%s" ?pregunta))
+    (printout t ?linea crlf)
+    (progn$ (?var ?valores-posibles) 
+            (bind ?linea (format nil "  %d. %s" ?var-index ?var))
+            (printout t ?linea crlf)
+    )
+    (format t "%s" "Indica los números separados por un espacio: ")
+    (bind ?resp (readline))
+    (bind ?numeros (str-explode ?resp))
+    (bind $?lista (create$ ))
+    (progn$ (?var ?numeros) 
+        (if (and (integerp ?var) (and (>= ?var 1) (<= ?var (length$ ?valores-posibles))))
+            then 
+                (if (not (member$ ?var ?lista))
+                    then (bind ?lista (insert$ ?lista (+ (length$ ?lista) 1) ?var))
+                )
+        ) 
+    )
+    ?lista
+)
+
+;; Reglas
+
+;; bienvenida
+
+(defrule MAIN::bienvenida
+        (declare (salience 10))
+        =>
+        (printout t "//////////////////////////////////////////////////" crlf)
+        (printout t crlf)
+        (printout t "  Sistema de recomendacion de libros" crlf)
+        (printout t crlf)
+        (printout t "//////////////////////////////////////////////////" crlf)
+        (printout t crlf)
+        (printout t "¡Bienvenido al sistema de recomendacion de libros!")
+        (printout t crlf)
+        (printout t "A continuacion le formularemos una serie de preguntas")
+        (printout t crlf)       
+)
+
+
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;PREFERENCIAS.CLP;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;; Declaracion de templates --------------------------
+
+;;; Declaracion de funciones --------------------------
+
+
 ;;; Modulo recopilacion
 
 (defrule recopilacion-usuario::establecer-nombre "Establece el nombre de usuario, es la primera pregunta"
         (not (Usuario))
         =>
-        (bind ?nombre (pregunta-general "¿Cómo se llama? "))
+        (bind ?nombre (pregunta-general "¿Cómo te llamas? "))
         (assert (Usuario (nombre ?nombre)))
 )
 
@@ -741,7 +715,7 @@
         ?u <- (Usuario (edad ?edad))
         (test (< ?edad 0))
         =>
-        (bind ?e (pregunta-numerica "¿Qué edad tiene? " 1 110))
+        (bind ?e (pregunta-numerica "¿Qué edad tienes? " 1 110))
         (modify ?u (edad ?e))
 )
 
@@ -755,13 +729,181 @@
 )
 
 (deffacts recopilacion-prefs::hechos-iniciales "Establece hechos para poder recopilar informacion"
-        (generos-favoritos ask)
+        (generos-libros ask)
+        (subgenero-fant-fav ask)
+        (subgenero-cf-fav ask)
+        (subgenero-mist-fav ask)
+        (saga-libros ask)
+        (transporte-publico ask)
+        (libro-best-seller ask)
+        (cf-hard ask)
         (preferencias )
 )
 
+(defrule recopilacion-prefs::preguntar-generos "Establece los generos que le gustaira leer al lector"
+        ?gen <- (generos-libros ask)
+        =>
+        (bind ?generos-libros (create$ "Fantasia" "Ciencia ficcion" "Misterio"))
+        (bind ?respuesta (pregunta-multi "¿Que genero(s) le gustaria leer? (Fantasia/Ciencia ficcion/Misterio)"))
+        (progn$ (?res ?respuesta)
+                (switch ?res
+                        (case 1
+                                then
+                                (assert (genero-libro Fantasia))
+                        )
+                        (case 2
+                                then
+                                (assert (genero-libro Ciencia_ficcion))
+                                (assert (cf-hard ask))
+                        )
+                        (case 3
+                                then 
+                                (assert (genero-libro Misterio))
+                        )
+                )
+        )
+        (retract ?gen)
+        (assert (generos-libros TRUE))
+)
+
+(defrule recopilacion-prefs::relacionado-ciencia-ficcion "Descarta preguntas no relacionadas con Misterio"
+        (generos-libros TRUE)
+        (not (genero-libro Ciencia_ficcion))
+        =>
+        (assert (subgenero-cf-fav FALSE))
+        (assert (cf-hard FALSE))
+)
+
+(defrule recopilacion-prefs::relacionado-misterio "Descarta preguntas no relacionadas con Misterio"
+        (generos-libros TRUE)
+        (not (genero-libro Misterio))
+        =>
+        (assert (subgenero-mist-fav FALSE))
+)
+
+(defrule recopilacion-prefs::relacionado-fantasia "Descarta preguntas no relacionadas con Misterio"
+        (generos-libros TRUE)
+        (not (genero-libro Fantasia))
+        =>
+        (assert (subgenero-fant-fav FALSE))
+)
+
+(defrule recopilacion-prefs::pregunta-subgeneros-fant-favoritos "Pregunta al usuario"
+        ?hecho <- (subgenero-fant-fav ask)
+        (genero-libro Fantasia)
+        =>
+        (bind ?res (pregunta-si-no "¿Algun subgenero de fantasia es tu favorito?"))
+        (retract ?hecho)
+        (if (eq ?res TRUE)
+                then
+                (assert (subgenero-fant-fav elegir))
+        else 
+                (assert (subgenero-fant-fav FALSE))
+        )               
+)
+
+(defrule recopilacion-prefs::seleccionar-sub-fant-fav "Establece los generos de fantasia favoritos del usuario"
+        ?hecho <- (subgenero-fant-fav elegir)
+        ?pref <- (preferencias)
+        =>
+        (bind $?all-sub-fant (find-all-instances ((?inst Subgenero_fantasia)) TRUE))
+        (bind $?n-subgeneros (create$ ))
+        (loop-for-count (?i 1 (length$ $?all-sub-fant)) do
+                (bind ?obj (nth$ ?i ?all-sub-fant))
+                (bind ?nombre (send ?obj get-subgenero_fantasia))
+                (bind $?n-subgeneros(insert$ $?n-subgeneros (+ (length$ $?n-subgeneros) 1) ?nombre))
+        )
+        (bind ?escoger (pregunta-multi "Escoja sus subgeneros de fantasia favoritos: " $?n-subgeneros))
+        (bind $?res (create$ ))
+        (loop-for-count (?i 1 (length$ ?escoger)) do
+                (bind ?ind (nth$ ?i ?escoger))
+                (bind ?gen (nth$ ?ind ?all-sub-fant))
+                (bind $?res (insert$ $?res (+ (length$ $?res) 1) ?gen))
+        )
+        (retract ?hecho)
+        (assert (subgenero-fant-fav TRUE))
+        (modify ?pref (subgeneros-fant-favoritos $?res))
+)
+
+(defrule recopilacion-prefs::pregunta-subgeneros-cf-fav "Pregunta al usuario"
+        ?hecho <- (subgenero-cf-fav ask)
+        (genero-libro Ciencia_ficcion)
+        =>
+        (bind ?res (pregunta-si-no "¿Algun subgenero de ciencia ficcion es su favorito?"))
+        (retract ?hecho)
+        (if (eq ?res TRUE)
+                then
+                (assert (subgenero-cf-fav elegir))
+        else 
+                (assert (subgenero-cf-fav FALSE))
+        )               
+)
+
+(defrule recopilacion-prefs::seleccionar-sub-cf-fav "Establece los generos de ciencia ficcion favorito del usuario"
+        ?hecho <- (subgenero-cf-fav elegir)
+        ?pref <- (preferencias)
+        =>
+        (bind $?all-sub-cf (find-all-instances ((?inst Subgenero_ciencia_ficcion)) TRUE))
+        (bind $?n-subgeneros (create$ ))
+        (loop-for-count (?i 1 (length$ $?all-sub-cf)) do
+                (bind ?obj (nth$ ?i ?all-sub-cf))
+                (bind ?nombre (send ?obj get-subgenero_ciencia_ficcion))
+                (bind $?n-subgeneros(insert$ $?n-subgeneros (+ (length$ $?n-subgeneros) 1) ?nombre))
+        )
+        (bind ?escoger (pregunta-multi "Escoja sus subgeneros de ciencia ficcion favoritos: " $?n-subgeneros))
+        (bind $?res (create$ ))
+        (loop-for-count (?i 1 (length$ ?escoger)) do
+                (bind ?ind (nth$ ?i ?escoger))
+                (bind ?gen (nth$ ?ind ?all-sub-cf))
+                (bind $?res (insert$ $?res (+ (length$ $?res) 1) ?gen))
+        )
+        (retract ?hecho)
+        (assert (subgenero-cf-fav TRUE))
+        (modify ?pref (subgeneros-cf-favoritos $?res))
+)
+
+(defrule recopilacion-prefs::pregunta-subgeneros-mist-fav "Pregunta al usuario"
+        ?hecho <- (subgenero-mist-fav ask)
+        (genero-libro Misterio)
+        =>
+        (bind ?res (pregunta-si-no "¿Algun subgenero de misterio es su favorito?"))
+        (retract ?hecho)
+        (if (eq ?res TRUE)
+                then
+                (assert (subgenero-mist-fav elegir))
+        else 
+                (assert (subgenero-mist-fav FALSE))
+        )               
+)
+
+(defrule recopilacion-prefs::seleccionar-sub-mist-fav "Establece los generos de misterio favorito del usuario"
+        ?hecho <- (subgenero-cmist-fav elegir)
+        ?pref <- (preferencias)
+        =>
+        (bind $?all-sub-mist (find-all-instances ((?inst Subgenero_misterio)) TRUE))
+        (bind $?n-subgeneros (create$ ))
+        (loop-for-count (?i 1 (length$ $?all-sub-mist)) do
+                (bind ?obj (nth$ ?i ?all-sub-mist))
+                (bind ?nombre (send ?obj get-subgenero_misterio))
+                (bind $?n-subgeneros(insert$ $?n-subgeneros (+ (length$ $?n-subgeneros) 1) ?nombre))
+        )
+        (bind ?escoger (pregunta-multi "Escoja sus subgeneros de misterio favoritos: " $?n-subgeneros))
+        (bind $?res (create$ ))
+        (loop-for-count (?i 1 (length$ ?escoger)) do
+                (bind ?ind (nth$ ?i ?escoger))
+                (bind ?gen (nth$ ?ind ?all-sub-mist))
+                (bind $?res (insert$ $?res (+ (length$ $?res) 1) ?gen))
+        )
+        (retract ?hecho)
+        (assert (subgenero-mist-fav TRUE))
+        (modify ?pref (subgeneros-mist-favoritos $?res))
+)
+
 (defrule recopilacion-prefs::sagas "Establece si le gustan las sagas"
+        ?hecho <- (saga-libros ask)
         =>
         (bind ?sagas (pregunta-si-no "¿Le gustan las sagas?"))
+        (retract ?hecho)
         (if (eq ?sagas TRUE) then
                 (assert (saga-libros TRUE))
         else    
@@ -770,8 +912,10 @@
 )
 
 (defrule recopilacion-prefs::lugar "Establece el lugar de lectura de preferencia"
+        ?hecho <- (transporte-publico ask)
         =>
         (bind ?s (pregunta-si-no "¿Va a leer mientras viaja?"))
+        (retract ?hecho)
         (if (eq ?s TRUE) then   
                 (assert (transporte-publico TRUE))
         else 
@@ -780,8 +924,10 @@
 )
 
 (defrule recopilacion-prefs::libros-populares "Establece si le gustan los libros populares"
+        ?hecho <- (libro-best-seller ask)
         =>
         (bind ?populares (pregunta-si-no "¿Le gustan los libros populares?"))
+        (retract ?hecho)
         (if (eq ?populares TRUE) then
                 (assert (libro-best-seller TRUE))
         else    
@@ -790,8 +936,10 @@
 )
 
 (defrule recopilacion-prefs::clasicos-literatura "Establece si le gustan los clasicos de la literatura"
+        ?hecho <- (clasico-literatura)
         =>
         (bind ?clasicos (pregunta-si-no "¿Le gustan los clasicos de la literatura?"))
+        (retract ?hecho)
         (if (eq ?clasicos TRUE) then
                 (assert (clasico-literatura TRUE))
         else 
@@ -799,41 +947,37 @@
         )
 )
 
-(defrule recopilacion-prefs::pasar-a-presentacion "Se pasa al modulo de presentacion"
+(defrule recopilacion-prefs::ciencia-ficcion-hard "Establece si le gustan los libros de ciencia ficcion hard"
+        ?hecho <- (cf-hard ask)
+        =>
+        (bind ?cfhard (pregunta-si-no "¿Le gustan los libros de ciencia ficcion hard?"))
+        (retract hecho)
+        (if (eq ?cfhard TRUE) then
+                (assert (cf-hard TRUE))
+        else 
+                (assert (cf-hard FALSE))
+        )
+)
+
+(defrule recopilacion-prefs::pasar-a-procesado "Se pasa al modulo de procesado"
+        (declare (salience -1))
+        ?h1 <- (subgenero-fant-fav TRUE|FALSE)
+        ?h3 <- (subgenero-cf-fav TRUE|FALSE)
+        ?h5 <- (subgenero-mist-fav TRUE|FALSE)
+        ?h6 <- (saga-libros TRUE|FALSE)
+        ?h7 <- (transporte-publico TRUE|FALSE)
+        ?h9 <- (libro-best-seller TRUE|FALSE)
+        ?h11 <- (cf-hard TRUE|FALSE)
         =>
         (focus procesado)
 )
 
 
 
+
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;PROCESADO.CLP;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-
-
-
-;;; Declaracion de templates --------------------------
-
-;;; Template para una lista de recomendaciones sin orden
-(deftemplate MAIN::lista-rec
-        (multislot soluciones (type INSTANCE))
-)
-
-;;; Template para una lista de recomendaciones con orden
-(deftemplate MAIN::lista-rec-ordenada
-        (multislot soluciones (type INSTANCE))
-)
-
-;;; Fin declaracion de templates ----------------------
-
-
-;;; Modulo de filtrado y procesado del contenido adequado al usuario
-(defmodule procesado
-        (import MAIN ?ALL)
-        (import recopilacion-usuario deftemplate ?ALL)
-        (import recopilacion-prefs deftemplate ?ALL)
-        (export ?ALL)
-)
 
 
 ;;; Filtrar libros segun el genero---------------------------------------------------
@@ -874,26 +1018,26 @@
 ;-----Cristian
 (defrule procesado::aux-subgenero-cf "Crea hechos para poder procesar los subgeneros favoritos"
         (preferencias (subgeneros-cf-favoritos $?gen))
-        ?hecho <- (subgenero-cf-favorito ?aux)
+        ?hecho <- (subgenero-fant-fav ?aux)
         (test (or (eq ?aux TRUE) (eq ?aux FALSE)))
         =>
         (retract ?hecho)
         (if (eq ?aux TRUE)then 
                 (progn$ (?curr-gen $?gen)
-                        (assert (subgenero-cf-favorito ?curr-gen))
+                        (assert (subgenero-fant-fav ?curr-gen))
                 )
         )
 )
 
 (defrule procesado::aux-subgenero-mist "Crea hechos para poder procesar los subgeneros favoritos"
         (preferencias (subgeneros-mist-favoritos $?gen))
-        ?hecho <- (subgenero-mist-favorito ?aux)
+        ?hecho <- (subgenero-mist-fav ?aux)
         (test (or (eq ?aux TRUE) (eq ?aux FALSE)))
         =>
         (retract ?hecho)
         (if (eq ?aux TRUE)then 
                 (progn$ (?curr-gen $?gen)
-                        (assert (subgenero-mist-favorito ?curr-gen))
+                        (assert (subgenero-mist-fav ?curr-gen))
                 )
         )
 )
@@ -901,13 +1045,13 @@
 
 (defrule procesado::aux-subgenero-fant "Crea hechos para poder procesar los subgeneros favoritos"
         (preferencias (subgeneros-fant-favoritos $?gen))
-        ?hecho <- (subgenero-fant-favorito ?aux)
+        ?hecho <- (subgenero-fant-fav ?aux)
         (test (or (eq ?aux TRUE) (eq ?aux FALSE)))
         =>
         (retract ?hecho)
         (if (eq ?aux TRUE)then 
                 (progn$ (?curr-gen $?gen)
-                        (assert (subgenero-fant-favorito ?curr-gen))
+                        (assert (subgenero-fant-fav ?curr-gen))
                 )
         )
 )
@@ -1200,9 +1344,9 @@
 
 
 (defrule procesado::valorar-subgenero-favorito-ciencia-ficcion "Se mejora la puntuacion de los libros de los subgeneros de ciencia ficcion favoritos"
-        ?hecho <- (subgenero-cf-favorito ?gen)
-        ?cont <-(object (is-a Ciencia_ficcion) (subgenero_cf $?generos))
-        (test (member$ ?gen $?generos))
+        ?hecho <- (subgenero-cf-fav ?gen)
+        ?cont <-(object (is-a Ciencia_ficcion) (subgenero_cf ?generos))
+        (test (eq ?gen ?generos))
         ?rec <- (object (is-a Solucion) (libro ?lib) (puntuacion ?p))
         (test (eq (instance-name ?cont) (instance-name ?lib)))
         (not (valorado-subgenero-favorito-ciencia-ficcion ?cont ?gen))
@@ -1214,9 +1358,9 @@
 )
 
 (defrule procesado::valorar-subgenero-favorito-fantasia "Se mejora la puntuacion de los libros de los subgeneros de fantasia favoritos"
-        ?hecho <- (subgenero-fant-favorito ?gen)
-        ?cont <-(object (is-a Fantasia) (subgenero_fant $?generos))
-        (test (member$ ?gen $?generos))
+        ?hecho <- (subgenero-fant-fav ?gen)
+        ?cont <-(object (is-a Fantasia) (subgenero_fant ?generos))
+        (test (eq ?gen ?generos))
         ?rec <- (object (is-a Solucion) (libro ?lib) (puntuacion ?p))
         (test (eq (instance-name ?cont) (instance-name ?lib)))
         (not (valorado-subgenero-favorito-fantasia ?cont ?gen))
@@ -1228,9 +1372,9 @@
 )
 
 (defrule procesado::valorar-subgenero-favorito-misterio "Se mejora la puntuacion de los libros de los subgeneros de misterio favoritos"
-        ?hecho <- (subgenero-mist-favorito ?gen)
-        ?cont <-(object (is-a Misterio) (subgenero_mist $?generos))
-        (test (member$ ?gen $?generos))
+        ?hecho <- (subgenero-mist-fav ?gen)
+        ?cont <-(object (is-a Misterio) (subgenero_mist ?generos))
+        (test (eq ?gen ?generos))
         ?rec <- (object (is-a Solucion) (libro ?lib) (puntuacion ?p))
         (test (eq (instance-name ?cont) (instance-name ?lib)))
         (not (valorado-subgenero-favorito-misterio ?cont ?gen))
@@ -1268,7 +1412,7 @@
         ?cont <- (object (is-a Libro) (best_seller TRUE))
         ?rec <- (object (is-a Solucion) (libro ?lib))
         (test (eq (instance-name ?cont) (instance-name ?lib)))
-        =>
+       =>
         (send ?rec delete)
 )
 
@@ -1282,6 +1426,26 @@
 ;        (send ?rec delete)
 ;)
 
+(defrule procesado::descartar-sin-ediciones-de-bolsillo "Descarta los libros sin edicion de bolisllo"
+        (declare (salience 10))
+        (transporte-publico FALSE)
+        ?cont <- (object (is-a Libro) (edicion_bolsillo FALSE))
+        ?rec <- (object (is-a Solucion) (libro ?lib))
+        (test (eq (instance-name ?cont) (instance-name ?lib)))
+        =>
+        (send ?rec delete)
+)
+
+(defrule procesado::descartar-clasicos-literatura "Descarta los clasicos de la literatura"
+        (declare (salience 10))
+        (clasico-literatura FALSE)
+        ?cont <- (object (is-a Libro) (clasico-literatura FALSE))
+        ?rec <- (object (is-a Solucion) (libro ?lib))
+        (test (eq (instance-name ?cont) (instance-name ?lib)))
+        =>
+        (send ?rec delete)        
+)
+
 (defrule procesado::valorar-saga "Mejora la puntuacion de los libros que pertenezcan a saga"
         (saga-libros TRUE)
         ?cont <- (object (is-a Libro) (saga TRUE))
@@ -1294,7 +1458,6 @@
         (assert (saga-valorada ?cont))
 )
 
-
 (defrule procesado::valorar-best-seller "Mejora la puntuacion de los libros que hayan sido nombrados best sellers"
         (libro-best-seller TRUE)
         ?cont <- (object (is-a Libro) (best_seller TRUE))
@@ -1305,6 +1468,30 @@
         (bind ?p (+ ?p 150))
         (send ?rec put-puntuacion ?p)
         (assert (best-seller-valorado ?cont))
+)
+
+(defrule procesado::valorar-edicion-bolsillo "Mejora la puntuacion de los libros con edicion de bolisllo"
+        (libro-edicion-bolsillo TRUE)
+        ?cont <- (object (is-a Libro) (edicion_bolsillo TRUE))
+        ?rec <- (object (is-a Solucion) (libro ?lib) (puntuacion ?p))
+        (test (eq (instance-name ?cont) (instance-name ?lib)))
+        (not (edicion-bolsillo-valorado ?cont))
+        =>
+        (bind ?p (+ ?p 150))
+        (send ?rec put-puntuacion ?p)
+        (assert (edicion-bolsillo-valorado ?cont))
+)
+
+(defrule procesado::valorar-clasico-literatura "Mejora la puntuacion de los clasicos de la literatura"
+        (clasico-literatura TRUE)
+        ?cont <- (object (is-a Libro) (clasico_literatura TRUE))
+        ?rec <- (object (is-a Solucion) (libro ?lib) (puntuacion ?p))
+        (test (eq (instance-name ?cont) (instance-name ?lib)))
+        (not (clasico-literatura-valorado ?cont))
+        =>
+        (bind ?p (+ ?p 150))
+        (send ?rec put-puntuacion ?p)
+        (assert (clasico-literatura-valorado ?cont))
 )
 
 ;------FIN Jose
@@ -1357,3 +1544,58 @@
         (focus generacion)
 )
 
+
+
+
+
+;;;;;;;;;Generacion soluciones
+;; 
+
+(defrule generador::lista-soluciones
+        (not (soluciones-desordenada))
+        =>
+        (assert (soluciones-desordenada))
+)
+
+(defrule generador::add-solucion 
+        (declare (salience 10))
+        ?sol <- (object (is-a Solucion))
+        ?aux <- (soluciones-desordenada (soluciones $?lista))
+        (test (not (member$ ?rec $?lista)))
+        =>
+        (bind $?lista (insert$ $?lista (+ (length $ $?lista) 1) ?sol))
+        (modify ?aux (soluciones $?lista))
+)
+
+(defrule generador::ordenar-lista
+        (not (soluciones-ordenada))
+        (soluciones-desordenada (soluciones $?lista))
+        =>
+        (bind $?ordenada (create$ ))
+        (while (and (not (eq (length$ $?lista) 0)) (< (length$ $?ordenada) 3)) do 
+                (bind ?sol (puntuacion-maxima $?lista))
+                (bind $?lista (delete-member$ $?lista ?sol))
+                (bind $?ordenada (insert$ $?ordenada (+ (length$ $?ordenada) 1) ?sol))
+        )
+        (assert (soluciones-ordenada (soluciones $?ordenada)))
+)
+
+(defrule generador::enviar-presentacion
+        (soluciones-ordenada)
+        =>
+        (focus representacion)
+)
+
+;; Representacion
+
+(defrule representacion::solucion-final
+        (soluciones-ordenada (soluciones $?soluciones))
+        (not (final))
+        =>
+        (printout t "Estos son los 3 libros que le recomendamos" crlf)
+        (printout t crlf)
+        (printout t (send (nth 0 ?soluciones) mostrar))
+        (printout t (send (nth 1 ?soluciones) mostrar))
+        (printout t (send (nth 2 ?soluciones) mostrar)) 
+        (assert (final))
+)

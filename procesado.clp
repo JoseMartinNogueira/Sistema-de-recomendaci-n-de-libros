@@ -13,15 +13,6 @@
 ;;; Fin declaracion de templates ----------------------
 
 
-;;; Modulo de filtrado y procesado del contenido adequado al usuario
-(defmodule procesado
-        (import MAIN ?ALL)
-        (import recopilacion-usuario deftemplate ?ALL)
-        (import recopilacion-prefs deftemplate ?ALL)
-        (export ?ALL)
-)
-
-
 ;;; Filtrar libros segun el genero---------------------------------------------------
 
 
