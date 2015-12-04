@@ -18,7 +18,6 @@
 ;;; Template para los datos socio-demograficos del usuario
 (deftemplate MAIN::Usuario
 	(slot nombre (type STRING))
-	(slot sexo (type SYMBOL) (default desconocido))
 	(slot edad (type INTEGER) (default -1))
 	;;(multislot idiomas (type INSTANCE))
 	;;(nacionalidad)
@@ -112,16 +111,10 @@
 	(modify ?u (edad ?e))
 )
 
-(defrule recopilacion-usuario::establecer-sexo "Establece el sexo del usuario"
-	?u <- (Usuario (sexo desconocido))
-	=>
-	(bind ?s (pregunta-opciones "¿Es hombre o mujer?" hombre mujer))
-	(modify ?u (sexo ?s))
-)
 
 (defrule recopilacion-usuario::pasar-a-preferencias "Pasa a la recopilacion de preferencias"
 	(declare (salience 10))
-	?u <- (Usuario (edad ?e) (sexo ~desconocido))
+	?u <- (Usuario (edad ?e))
 	(test (> ?e 0))
 	=>
 	(focus recopilacion-prefs)
@@ -129,44 +122,27 @@
 
 (deffacts recopilacion-prefs::hechos-iniciales "Establece hechos para poder recopilar informacion"
 	(generos-favoritos ask)
-	(tematicas-favoritas ask)
 	(preferencias )
 )
 
 (defrule recopilacion-prefs::sagas "Establece si le gustan las sagas"
-	?p <- (preferencias (sagas desconocido))
 	=>
 	(bind ?sagas (pregunta-si-no "¿Le gustan las sagas?"))
 	(if (eq ?sagas TRUE) then
-		(modify ?p (sagas TRUE))
+		(assert (saga-libros TRUE))
 	else 	
-		(modify ?p (sagas FALSE))
+		(assert (saga-libros FALSE))
 	)
 )
 
-(defrule recopilacion-prefs::frecuencia "Establece la frecuencia de lectura"
-	?p <- (preferencias (frecuencia desconocido))
-	=>
-	(bind ?s (pregunta-opciones "¿Normalmente lee mucho o poco?" mucho poco))
-	(modify ?p (frecuencia ?s))
-)
-)
-
-(defrule recopilacion-prefs::momento "Establece el momento frecuente de lectura"
-	?p <- (preferencias (momento desconocido))
-	=>
-	(bind ?s (pregunta-opciones "¿En que momento de día prefieres leer?" mañana tarde noche))
-	(modify ?p (momento ?s))
-)
-)
-
-
 (defrule recopilacion-prefs::lugar "Establece el lugar de lectura de preferencia"
-	?p <- (preferencias (lugar desconocido))
 	=>
-	(bind ?s (pregunta-opciones "¿En que lugar sueles leer más?" cama transporte parque biblioteca nsnc))
-	(modify ?p (lugar ?s))
-)
+	(bind ?s (pregunta-si-no "¿Va a leer mientras viaja?"))
+	(if (eq ?s TRUE) then	
+		(assert (transporte-publico TRUE))
+	else 
+		(assert (transporte-publico FALSE))
+	)
 )
 
 (defrule recopilacion-prefs::libros-populares "Establece si le gustan los libros populares"
