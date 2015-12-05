@@ -536,6 +536,31 @@
         (assert (clasico-literatura-valorado ?cont))
 )
 
+(defrule procesado::valorar-cf-hard "Mejora la puntuacion de los libros de ciencia ficcion hard"
+        (cf-hard TRUE)
+        ?cont <- (object (is-a Libro) (hard TRUE))
+        ?rec <- (object (is-a Solucion) (libro ?lib) (puntuacion ?p))
+        (test (eq (instance-name ?cont) (instance-name ?lib)))
+        (not (clasico-literatura-valorado ?cont))
+        =>
+        (bind ?p (+ ?p 150))
+        (send ?rec put-puntuacion ?p)
+        (assert (cf-hard-valorado ?cont))
+)
+
+
+(defrule procesado::valorar-cf-soft "Mejora la puntuacion de los libros de ciencia ficcion soft"
+        (cf-hard TRUE)
+        ?cont <- (object (is-a Libro) (hard FALSE))
+        ?rec <- (object (is-a Solucion) (libro ?lib) (puntuacion ?p))
+        (test (eq (instance-name ?cont) (instance-name ?lib)))
+        (not (clasico-literatura-valorado ?cont))
+        =>
+        (bind ?p (+ ?p 150))
+        (send ?rec put-puntuacion ?p)
+        (assert (cf-hard-valorado ?cont))
+)
+
 ;------FIN Jose
 
 
