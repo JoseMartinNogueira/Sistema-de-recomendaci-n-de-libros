@@ -543,7 +543,7 @@
 
 (defmessage-handler MAIN::Solucion mostrar ()
         (printout t "+++++++++++++++++++++++++++++++++" crlf)
-        ;;(format t "Afinidad: %d %n" ?self:puntuacion)
+        (format t "Afinidad: %d %n" ?self:puntuacion)
         (printout t (send ?self:libro plantilla))
         (printout t crlf)
         (printout t "+++++++++++++++++++++++++++++++++" crlf)
@@ -728,23 +728,22 @@
         (focus recopilacion-prefs)
 )
 
-(deffacts recopilacion-prefs::hechos-iniciales "Establece hechos para poder recopilar informacion"
-        (generos-libros ask)
-        (subgenero-fant-fav ask)
-        (subgenero-cf-fav ask)
-        (subgenero-mist-fav ask)
-        (saga-libros ask)
-        (transporte-publico ask)
-        (libro-best-seller ask)
-        (cf-hard ask)
-        (preferencias )
-)
-
-(defrule recopilacion-prefs::preguntar-generos "Establece los generos que le gustaira leer al lector"
-        ?gen <- (generos-libros ask)
+(defrule recopilacion-prefs::hechos-iniciales "Establece hechos para poder recopilar informacion"
         =>
-        (bind ?generos-libros (create$ "Fantasia" "Ciencia ficcion" "Misterio"))
-        (bind ?respuesta (pregunta-multi "¿Que genero(s) le gustaria leer? (Fantasia/Ciencia ficcion/Misterio)"))
+        (assert (generos-libros ask))
+        (assert (subgenero-fant-fav ask))
+        (assert (subgenero-cf-fav ask))
+        (assert (subgenero-mist-fav ask))
+        (assert (saga-libros ask))
+        (assert (transporte-publico ask))
+        (assert (libro-best-seller ask))
+        (assert (preferencias ))
+)
+(defrule recopilacion-prefs::preguntar-generos "Establece los generos que le gustaira leer al lector"
+        ?generos-libros <- (generos-libros ask)
+        =>
+        (bind ?genlib (create$ "Fantasia" "Ciencia ficcion" "Misterio"))
+        (bind ?respuesta (pregunta-multi "¿Que genero(s) le gustaria leer? (Fantasia/Ciencia ficcion/Misterio)" ?genlib))
         (progn$ (?res ?respuesta)
                 (switch ?res
                         (case 1
@@ -762,7 +761,7 @@
                         )
                 )
         )
-        (retract ?gen)
+        (retract ?generos-libros)
         (assert (generos-libros TRUE))
 )
 
