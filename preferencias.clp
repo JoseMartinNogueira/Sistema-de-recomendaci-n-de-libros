@@ -1,18 +1,3 @@
-;;; Modulo principal de utilidades, indicamos que exportamos todo
-(defmodule MAIN (export ?ALL))
-
-;;; Modulo de recopilacion de los datos del usuario
-(defmodule recopilacion-usuario
-	(import MAIN ?ALL)
-	(export ?ALL)
-)
-
-(defmodule recopilacion-prefs
-	(import MAIN ?ALL)
-	(import recopilacion-usuario deftemplate ?ALL)
-	(export ?ALL)
-)
-
 ;;; Declaracion de templates --------------------------
 
 ;;; Template para los datos socio-demograficos del usuario
