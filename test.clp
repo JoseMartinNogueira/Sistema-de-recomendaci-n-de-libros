@@ -319,7 +319,7 @@
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
-
+(definstances instances
 ([SBCFinal_Class0] of  Idioma
 
         (idioma "espanol")
@@ -478,7 +478,7 @@
 ([SBCFinal_Class9] of  Subgenero_fantasia
 
         (subgenero_fantasia "terror"))
-
+)
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
 
 (defclass Solucion
@@ -688,7 +688,8 @@
         (printout t "¡Bienvenido al sistema de recomendacion de libros!")
         (printout t crlf)
         (printout t "A continuacion le formularemos una serie de preguntas")
-        (printout t crlf)       
+        (printout t crlf)
+        (focus recopilacion-usuario)       
 )
 
 
@@ -718,7 +719,6 @@
         (bind ?e (pregunta-numerica "¿Qué edad tienes? " 1 110))
         (modify ?u (edad ?e))
 )
-
 
 (defrule recopilacion-usuario::pasar-a-preferencias "Pasa a la recopilacion de preferencias"
         (declare (salience 10))
@@ -1439,7 +1439,7 @@
 (defrule procesado::descartar-clasicos-literatura "Descarta los clasicos de la literatura"
         (declare (salience 10))
         (clasico-literatura FALSE)
-        ?cont <- (object (is-a Libro) (clasico-literatura FALSE))
+        ?cont <- (object (is-a Libro) (clasico_literatura FALSE))
         ?rec <- (object (is-a Solucion) (libro ?lib))
         (test (eq (instance-name ?cont) (instance-name ?lib)))
         =>
@@ -1509,39 +1509,11 @@
 ;        (send ?rec delete)
 ;)
 
-(defrule procesado::descartar-clasicos "Se descartan contenidos clasicos si no le gustan al usuario"
-        (declare (salience 10)) ; Para tener prioridad y descartar antes
-        (clasicos FALSE)
-        ?cont <- (object (is-a Contenido) (anyo ?anyo))
-        (test (<= ?anyo 1965))
-        ?rec <- (object (is-a Recomendacion) (contenido ?conta))
-        (test (eq (instance-name ?cont) (instance-name ?conta)))
-        =>
-        (send ?rec delete)
-)
-
-
-(defrule procesado::valorar-clasicos "Sube la puntuación de los contenidos clásicos"
-        (clasicos TRUE)
-        ?cont <- (object (is-a Contenido) (anyo ?a))
-        ?rec <- (object (is-a Recomendacion) (contenido ?conta) (puntuacion ?p) (justificaciones $?just))
-        (test (eq (instance-name ?cont) (instance-name ?conta)))
-        (test (<= ?a 1965))
-        (not (valorado-clasico ?cont))
-        =>
-        (bind ?p (+ ?p 75))
-        (send ?rec put-puntuacion ?p)
-        (bind ?text (str-cat "Es un contenido clásico -> +75"))
-        (bind $?just (insert$ $?just (+ (length$ $?just) 1) ?text))
-        (send ?rec put-justificaciones $?just)
-        (assert (valorado-clasico ?cont))
-)
-        
 (defrule procesado::pasar-a-generacion "Pasa al modulo de generacion de respuestas"
         (declare(salience -10))
         =>
         (printout t "Generando respuesta..." crlf)
-        (focus generacion)
+        (focus generador)
 )
 
 
@@ -1561,9 +1533,9 @@
         (declare (salience 10))
         ?sol <- (object (is-a Solucion))
         ?aux <- (soluciones-desordenada (soluciones $?lista))
-        (test (not (member$ ?rec $?lista)))
+        (test (not (member$ ?sol $?lista)))
         =>
-        (bind $?lista (insert$ $?lista (+ (length $ $?lista) 1) ?sol))
+        (bind $?lista (insert$ $?lista (+ (length$ $?lista) 1) ?sol))
         (modify ?aux (soluciones $?lista))
 )
 
