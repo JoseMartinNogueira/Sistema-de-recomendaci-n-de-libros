@@ -555,11 +555,11 @@
 (defmessage-handler MAIN::Libro plantilla ()
         (format t "Titulo: %s %n" ?self:titulo)
         (format t "Editorial: %s" ?self:editorial)
-        (format t "Autor: %s" (send ?self:escrito_por get-autor))
-        (format t "Anyo de publicacion: %d" ?self:anyo_publicacion)
-        (progn$ (?id-disp (send ?self idioma_disponible))
-                (format t "%s" (send ?id-disp get-idioma))
-        )
+		(printout t crlf)
+        (format t "Autor: %s" (send ?self:escrito_por get-Nombre))
+		(printout t crlf)
+        (format t "Anyo de publicacion: %d %n" ?self:anyo_publicacion)
+		(printout t crlf)
 )
 
 (defmessage-handler MAIN::Solucion mostrar ()
@@ -971,7 +971,7 @@
         ?hecho <- (cf-hard ask)
         =>
         (bind ?cfhard (pregunta-si-no "¿Le gustan los libros de ciencia ficcion hard?"))
-        (retract hecho)
+        (retract ?hecho)
         (if (eq ?cfhard TRUE) then
                 (assert (cf-hard TRUE))
         else 
