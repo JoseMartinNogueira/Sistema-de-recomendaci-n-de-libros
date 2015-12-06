@@ -559,7 +559,11 @@
         (format t "Autor: %s" (send ?self:escrito_por get-Nombre))
 		(printout t crlf)
         (format t "Anyo de publicacion: %d %n" ?self:anyo_publicacion)
-		(printout t crlf)
+		(printout t "Idiomas disponibles:" crlf)
+        (progn$ (?id-disp (send ?self get-idioma_disponible))
+                (format t " - %s" (send ?id-disp get-idioma))
+			(printout t crlf)
+        )
 )
 
 (defmessage-handler MAIN::Solucion mostrar ()
