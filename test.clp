@@ -319,7 +319,8 @@
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
-(definstances instances
+(definstances instancies
+
 ([SBCFinal_Class0] of  Idioma
 
         (idioma "espanol")
@@ -531,7 +532,7 @@
 
 ;;Mensajes
 
-(defmessage-handler MAIN::Libro plantilla ()
+(defmessage-handler Libro plantilla ()
         (format t "Titulo: %s %n" ?self:titulo)
         (format t "Editorial: %s" ?self:editorial)
         (format t "Autor: %s" (send ?self:escrito_por get-autor))
@@ -541,7 +542,7 @@
         )
 )
 
-(defmessage-handler MAIN::Solucion mostrar ()
+(defmessage-handler Solucion mostrar ()
         (printout t "+++++++++++++++++++++++++++++++++" crlf)
         (format t "Afinidad: %d %n" ?self:puntuacion)
         (printout t (send ?self:libro plantilla))
@@ -569,13 +570,13 @@
 
 
 ;;; Template para una lista de recomendaciones sin orden
-(deftemplate MAIN::soluciones-desordenada
-        (multislot soluciones (type INSTANCE))
-)
+;(deftemplate MAIN::soluciones-desordenada
+;        (multislot soluciones (type INSTANCE))
+;)
 
 ;;; Template para una lista de recomendaciones con orden
 (deftemplate MAIN::soluciones-ordenada
-        (multislot soluciones (type INSTANCE))
+        (slot soluciones (type INSTANCE) (allowed-classes Solucion))
 )
 
 
@@ -748,16 +749,16 @@
                 (switch ?res
                         (case 1
                                 then
-                                (assert (genero-libro Fantasia))
+                                (assert (genero-elegido Fantasia))
                         )
                         (case 2
                                 then
-                                (assert (genero-libro Ciencia_ficcion))
+                                (assert (genero-elegido Ciencia_ficcion))
                                 (assert (cf-hard ask))
                         )
                         (case 3
                                 then 
-                                (assert (genero-libro Misterio))
+                                (assert (genero-elegido Misterio))
                         )
                 )
         )
@@ -767,7 +768,7 @@
 
 (defrule recopilacion-prefs::relacionado-ciencia-ficcion "Descarta preguntas no relacionadas con Misterio"
         (generos-libros TRUE)
-        (not (genero-libro Ciencia_ficcion))
+        (not (genero-elegido Ciencia_ficcion))
         =>
         (assert (subgenero-cf-fav FALSE))
         (assert (cf-hard FALSE))
@@ -775,21 +776,21 @@
 
 (defrule recopilacion-prefs::relacionado-misterio "Descarta preguntas no relacionadas con Misterio"
         (generos-libros TRUE)
-        (not (genero-libro Misterio))
+        (not (genero-elegido Misterio))
         =>
         (assert (subgenero-mist-fav FALSE))
 )
 
 (defrule recopilacion-prefs::relacionado-fantasia "Descarta preguntas no relacionadas con Misterio"
         (generos-libros TRUE)
-        (not (genero-libro Fantasia))
+        (not (genero-elegido Fantasia))
         =>
         (assert (subgenero-fant-fav FALSE))
 )
 
 (defrule recopilacion-prefs::pregunta-subgeneros-fant-favoritos "Pregunta al usuario"
         ?hecho <- (subgenero-fant-fav ask)
-        (genero-libro Fantasia)
+        (genero-elegido Fantasia)
         =>
         (bind ?res (pregunta-si-no "¿Algun subgenero de fantasia es tu favorito?"))
         (retract ?hecho)
@@ -826,7 +827,7 @@
 
 (defrule recopilacion-prefs::pregunta-subgeneros-cf-fav "Pregunta al usuario"
         ?hecho <- (subgenero-cf-fav ask)
-        (genero-libro Ciencia_ficcion)
+        (genero-elegido Ciencia_ficcion)
         =>
         (bind ?res (pregunta-si-no "¿Algun subgenero de ciencia ficcion es su favorito?"))
         (retract ?hecho)
@@ -863,7 +864,7 @@
 
 (defrule recopilacion-prefs::pregunta-subgeneros-mist-fav "Pregunta al usuario"
         ?hecho <- (subgenero-mist-fav ask)
-        (genero-libro Misterio)
+        (genero-elegido Misterio)
         =>
         (bind ?res (pregunta-si-no "¿Algun subgenero de misterio es su favorito?"))
         (retract ?hecho)
@@ -995,11 +996,14 @@
 (defrule procesado::anadir-fantasia "Se añade todos los libros, luego se filtran"
         ?hecho <- (genero-elegido Fantasia)
         =>
-        (bind $?lista (find-all-instances ((?inst Fantasia)) TRUE))
+        (bind ?lista (find-all-instances((?inst Fantasia)) TRUE))
+        (bind ?prueba (find-all-instances ((?inst Idioma)) (eq ?inst:idioma espanol)))
+        (printout t (length$ ?prueba) crlf)
         (progn$ (?curr-con ?lista)
                 (make-instance (gensym) of Solucion (libro ?curr-con) (puntuacion (send ?curr-con get-puntuacion)))
         )       
         (retract ?hecho)
+        (printout t "anadir fantasia" crlf)
 )
 
 (defrule procesado::anadir-misterio "Se añade todos los libros, luego se filtran"
@@ -1522,51 +1526,17 @@
 ;;;;;;;;;Generacion soluciones
 ;; 
 
-(defrule generador::lista-soluciones
-        (not (soluciones-desordenada))
+(defrule generador::obtener-soluciones
         =>
-        (assert (soluciones-desordenada))
-)
-
-(defrule generador::add-solucion 
-        (declare (salience 10))
-        ?sol <- (object (is-a Solucion))
-        ?aux <- (soluciones-desordenada (soluciones $?lista))
-        (test (not (member$ ?sol $?lista)))
-        =>
-        (bind $?lista (insert$ $?lista (+ (length$ $?lista) 1) ?sol))
-        (modify ?aux (soluciones $?lista))
-)
-
-(defrule generador::ordenar-lista
-        (not (soluciones-ordenada))
-        (soluciones-desordenada (soluciones $?lista))
-        =>
-        (bind $?ordenada (create$ ))
-        (while (and (not (eq (length$ $?lista) 0)) (< (length$ $?ordenada) 3)) do 
-                (bind ?sol (puntuacion-maxima $?lista))
-                (bind $?lista (delete-member$ $?lista ?sol))
-                (bind $?ordenada (insert$ $?ordenada (+ (length$ $?ordenada) 1) ?sol))
+        (bind ?pos 1)
+        (bind $?lista (find-all-instances ((?inst Solucion)) TRUE))
+        (printout t "Le recomendamos: " crlf)
+        (progn$ (?i $?lista)
+                (assert (soluciones-ordenada (soluciones ?i)))
+                (bind ?afin (send ?i get-puntuacion))
+                (printout t " " (instance-name ?i) " " ?afin crlf)
+                (bind ?pos (+ ?pos 1))
+                
         )
-        (assert (soluciones-ordenada (soluciones $?ordenada)))
 )
 
-(defrule generador::enviar-presentacion
-        (soluciones-ordenada)
-        =>
-        (focus representacion)
-)
-
-;; Representacion
-
-(defrule representacion::solucion-final
-        (soluciones-ordenada (soluciones $?soluciones))
-        (not (final))
-        =>
-        (printout t "Estos son los 3 libros que le recomendamos" crlf)
-        (printout t crlf)
-        (printout t (send (nth 0 ?soluciones) mostrar))
-        (printout t (send (nth 1 ?soluciones) mostrar))
-        (printout t (send (nth 2 ?soluciones) mostrar)) 
-        (assert (final))
-)
