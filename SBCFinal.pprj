@@ -1,4 +1,4 @@
-; Tue Dec 01 08:43:28 CET 2015
+; Sun Dec 06 23:46:23 CET 2015
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
@@ -20,14 +20,14 @@
 ([BROWSER_SLOT_NAMES] of  Property_List
 
 	(properties
-		[SBCFinal_ProjectKB_Class10294]
-		[SBCFinal_ProjectKB_Class10295]
-		[SBCFinal_ProjectKB_Class10296]
-		[SBCFinal_ProjectKB_Class10297]
-		[SBCFinal_ProjectKB_Class10298]
-		[SBCFinal_ProjectKB_Class10299]
-		[SBCFinal_ProjectKB_Class10300]
-		[SBCFinal_ProjectKB_Class10301]))
+		[SBCFinal_ProjectKB_Class10226]
+		[SBCFinal_ProjectKB_Class10227]
+		[SBCFinal_ProjectKB_Class10228]
+		[SBCFinal_ProjectKB_Class10229]
+		[SBCFinal_ProjectKB_Class10230]
+		[SBCFinal_ProjectKB_Class10231]
+		[SBCFinal_ProjectKB_Class10232]
+		[SBCFinal_ProjectKB_Class10233]))
 
 ([CLSES_TAB] of  Widget
 
@@ -67,9 +67,6 @@
 ([INSTANCES_TAB] of  Widget
 
 	(widget_class_name "edu.stanford.smi.protege.widget.InstancesTab"))
-
-([KB_707848_Class0] of  Map
-)
 
 ([KB_865492_Class0] of  String
 
@@ -171,6 +168,9 @@
 	(name "instances_file_name")
 	(string_value "SBCFinal.pins"))
 
+([KB_931941_Class0] of  Map
+)
+
 ([LAYOUT_PROPERTIES] of  Property_List
 
 	(name "layout properties")
@@ -253,11 +253,11 @@
 
 	(browser_slot_names [BROWSER_SLOT_NAMES])
 	(customized_instance_widgets
-		[STANDARD_FACET_FORM_WIDGET]
+		[INSTANCE_ANNOTATION_FORM_WIDGET]
 		[STANDARD_SLOT_FORM_WIDGET]
-		[STANDARD_CLASS_FORM_WIDGET]
+		[STANDARD_FACET_FORM_WIDGET]
 		[PAL_FORM_WIDGET]
-		[INSTANCE_ANNOTATION_FORM_WIDGET])
+		[STANDARD_CLASS_FORM_WIDGET])
 	(default_cls_metaclass ":STANDARD-CLASS")
 	(default_facet_metaclass ":STANDARD-FACET")
 	(default_instance_widget_class_name "edu.stanford.smi.protege.widget.FormWidget")
@@ -282,115 +282,56 @@
 
 	(is_hidden TRUE)
 	(property_list [SBCFinal_ProjectKB_Class2])
-	(widget_class_name "TGViztab.TGVizTab"))
+	(widget_class_name "se.liu.ida.JessTab.JessTab"))
 
 ([SBCFinal_ProjectKB_Class10] of  Property_List
 )
 
-([SBCFinal_ProjectKB_Class10109] of  Widget
-
-	(is_hidden FALSE)
-	(name "Subgenero_romance")
-	(property_list [SBCFinal_ProjectKB_Class10110])
-	(widget_class_name "edu.stanford.smi.protege.widget.FormWidget"))
-
-([SBCFinal_ProjectKB_Class10110] of  Property_List
-
-	(properties
-		[SBCFinal_ProjectKB_Class10111]
-		[SBCFinal_ProjectKB_Class10112]
-		[SBCFinal_ProjectKB_Class10114]))
-
-([SBCFinal_ProjectKB_Class10111] of  Property_List
-
-	(name "layout properties"))
-
-([SBCFinal_ProjectKB_Class10112] of  Widget
-
-	(height 60)
-	(is_hidden FALSE)
-	(name "subgenero_romance")
-	(property_list [SBCFinal_ProjectKB_Class10113])
-	(widget_class_name "edu.stanford.smi.protege.widget.TextFieldWidget")
-	(width 200)
-	(x 0)
-	(y 0))
-
-([SBCFinal_ProjectKB_Class10113] of  Property_List
-)
-
-([SBCFinal_ProjectKB_Class10114] of  Widget
-
-	(height 120)
-	(is_hidden FALSE)
-	(name "inverse_of_sugnerero_rom")
-	(property_list [SBCFinal_ProjectKB_Class10115])
-	(widget_class_name "edu.stanford.smi.protege.widget.InstanceListWidget")
-	(width 200)
-	(x 0)
-	(y 60))
-
-([SBCFinal_ProjectKB_Class10115] of  Property_List
-
-	(properties
-		[SBCFinal_ProjectKB_Class10116]
-		[SBCFinal_ProjectKB_Class10117]))
-
-([SBCFinal_ProjectKB_Class10116] of  Boolean
-
-	(boolean_value FALSE)
-	(name "ButtonDisplayed-View References to Value"))
-
-([SBCFinal_ProjectKB_Class10117] of  Boolean
-
-	(boolean_value FALSE)
-	(name "ButtonDisplayed-Delete Instance"))
-
-([SBCFinal_ProjectKB_Class10294] of  String
+([SBCFinal_ProjectKB_Class10226] of  String
 
 	(name ":INSTANCE-ANNOTATION")
 	(string_value "%3AANNOTATION-TEXT"))
 
-([SBCFinal_ProjectKB_Class10295] of  String
-
-	(name ":META-CLASS")
-	(string_value "%3ANAME"))
-
-([SBCFinal_ProjectKB_Class10296] of  String
+([SBCFinal_ProjectKB_Class10227] of  String
 
 	(name "Autor")
 	(string_value "Nombre"))
 
-([SBCFinal_ProjectKB_Class10297] of  String
+([SBCFinal_ProjectKB_Class10228] of  String
 
-	(name "Subgenero_ciencia_ficcion")
-	(string_value "subgenero_ciencia_ficcion"))
+	(name ":PAL-CONSTRAINT")
+	(string_value "%3APAL-NAME"))
 
-([SBCFinal_ProjectKB_Class10298] of  String
+([SBCFinal_ProjectKB_Class10229] of  String
 
-	(name "Idioma")
-	(string_value "idioma"))
+	(name ":META-CLASS")
+	(string_value "%3ANAME"))
 
-([SBCFinal_ProjectKB_Class10299] of  String
-
-	(name "Subgenero_misterio")
-	(string_value "subgenero_misterio"))
-
-([SBCFinal_ProjectKB_Class10300] of  String
+([SBCFinal_ProjectKB_Class10230] of  String
 
 	(name "Subgenero_fantasia")
 	(string_value "subgenero_fantasia"))
 
-([SBCFinal_ProjectKB_Class10301] of  String
+([SBCFinal_ProjectKB_Class10231] of  String
 
-	(name ":PAL-CONSTRAINT")
-	(string_value "%3APAL-NAME"))
+	(name "Subgenero_misterio")
+	(string_value "subgenero_misterio"))
+
+([SBCFinal_ProjectKB_Class10232] of  String
+
+	(name "Idioma")
+	(string_value "idioma"))
+
+([SBCFinal_ProjectKB_Class10233] of  String
+
+	(name "Subgenero_ciencia_ficcion")
+	(string_value "subgenero_ciencia_ficcion"))
 
 ([SBCFinal_ProjectKB_Class11] of  Widget
 
 	(is_hidden TRUE)
 	(property_list [SBCFinal_ProjectKB_Class12])
-	(widget_class_name "edu.stanford.smi.protege.keywordsearch.StringSearch"))
+	(widget_class_name "ezpal.EZPalTab"))
 
 ([SBCFinal_ProjectKB_Class12] of  Property_List
 )
@@ -399,7 +340,7 @@
 
 	(is_hidden TRUE)
 	(property_list [SBCFinal_ProjectKB_Class14])
-	(widget_class_name "edu.stanford.smi.RemoteKBTab.WordNetTab"))
+	(widget_class_name "edu.stanford.smi.protegex.server_changes.prompt.UsersTab"))
 
 ([SBCFinal_ProjectKB_Class14] of  Property_List
 )
@@ -408,7 +349,7 @@
 
 	(is_hidden TRUE)
 	(property_list [SBCFinal_ProjectKB_Class16])
-	(widget_class_name "edu.stanford.smi.protegex.owl.ui.metadatatab.OWLMetadataTab"))
+	(widget_class_name "ca.uvic.csr.shrimp.jambalaya.JambalayaTab"))
 
 ([SBCFinal_ProjectKB_Class16] of  Property_List
 )
@@ -417,7 +358,7 @@
 
 	(is_hidden TRUE)
 	(property_list [SBCFinal_ProjectKB_Class18])
-	(widget_class_name "edu.stanford.smi.protegex.changes.ChangesTab"))
+	(widget_class_name "edu.stanford.smi.protege.widget.instance_tree.InstanceTreeTab"))
 
 ([SBCFinal_ProjectKB_Class18] of  Property_List
 )
@@ -426,7 +367,7 @@
 
 	(is_hidden TRUE)
 	(property_list [SBCFinal_ProjectKB_Class20])
-	(widget_class_name "edu.stanford.smi.protegex.owl.ui.widget.OWLFormsTab"))
+	(widget_class_name "edu.stanford.smi.protegex.widget.pal.PalConstraintsTab"))
 
 ([SBCFinal_ProjectKB_Class2] of  Property_List
 )
@@ -438,7 +379,7 @@
 
 	(is_hidden TRUE)
 	(property_list [SBCFinal_ProjectKB_Class22])
-	(widget_class_name "ezpal.EZPalTab"))
+	(widget_class_name "edu.stanford.smi.RemoteKBTab.WordNetTab"))
 
 ([SBCFinal_ProjectKB_Class22] of  Property_List
 )
@@ -447,7 +388,7 @@
 
 	(is_hidden TRUE)
 	(property_list [SBCFinal_ProjectKB_Class24])
-	(widget_class_name "edu.stanford.smi.protegex.owl.swrl.ui.tab.SWRLTab"))
+	(widget_class_name "uk.ac.man.ac.mig.coode.individuals.ui.OWLDLIndividualsTab"))
 
 ([SBCFinal_ProjectKB_Class24] of  Property_List
 )
@@ -456,7 +397,7 @@
 
 	(is_hidden TRUE)
 	(property_list [SBCFinal_ProjectKB_Class26])
-	(widget_class_name "edu.stanford.smi.protegex.fctab.FacetConstraintsTab"))
+	(widget_class_name "edu.stanford.smi.protege.widget.ClsesAndInstancesTab"))
 
 ([SBCFinal_ProjectKB_Class26] of  Property_List
 )
@@ -465,7 +406,7 @@
 
 	(is_hidden TRUE)
 	(property_list [SBCFinal_ProjectKB_Class28])
-	(widget_class_name "edu.stanford.smi.protegex.changes.changesKBViewTab.ChangesKBViewTab"))
+	(widget_class_name "edu.stanford.smi.protegex.evaluation.MetaAnalysis"))
 
 ([SBCFinal_ProjectKB_Class28] of  Property_List
 )
@@ -474,13 +415,13 @@
 
 	(is_hidden TRUE)
 	(property_list [SBCFinal_ProjectKB_Class30])
-	(widget_class_name "edu.stanford.smi.protegex.xml.tab.XMLTab"))
+	(widget_class_name "uk.ac.man.cs.mig.coode.owlviz.ui.OWLVizTab"))
 
 ([SBCFinal_ProjectKB_Class3] of  Widget
 
 	(is_hidden TRUE)
 	(property_list [SBCFinal_ProjectKB_Class4])
-	(widget_class_name "dfki.protege.ontoviz_tab.OntovizTab"))
+	(widget_class_name "edu.stanford.smi.protegex.owl.ui.metadatatab.OWLMetadataTab"))
 
 ([SBCFinal_ProjectKB_Class30] of  Property_List
 )
@@ -489,7 +430,7 @@
 
 	(is_hidden TRUE)
 	(property_list [SBCFinal_ProjectKB_Class32])
-	(widget_class_name "edu.stanford.smi.protegex.prompt.PromptTab"))
+	(widget_class_name "edu.stanford.smi.protegex.owl.ui.cls.OWLClassesTab"))
 
 ([SBCFinal_ProjectKB_Class32] of  Property_List
 )
@@ -498,7 +439,7 @@
 
 	(is_hidden TRUE)
 	(property_list [SBCFinal_ProjectKB_Class34])
-	(widget_class_name "edu.stanford.smi.protege.widget.KAToolTab"))
+	(widget_class_name "edu.stanford.smi.RemoteKBTab.UMLSTab"))
 
 ([SBCFinal_ProjectKB_Class34] of  Property_List
 )
@@ -507,7 +448,7 @@
 
 	(is_hidden TRUE)
 	(property_list [SBCFinal_ProjectKB_Class36])
-	(widget_class_name "edu.stanford.smi.protegex.owl.ui.properties.OWLPropertiesTab"))
+	(widget_class_name "edu.stanford.smi.protegex.owl.ui.individuals.OWLIndividualsTab"))
 
 ([SBCFinal_ProjectKB_Class36] of  Property_List
 )
@@ -516,7 +457,7 @@
 
 	(is_hidden TRUE)
 	(property_list [SBCFinal_ProjectKB_Class38])
-	(widget_class_name "edu.stanford.smi.protege.widget.ProtegePropertiesTab"))
+	(widget_class_name "TGViztab.TGVizTab"))
 
 ([SBCFinal_ProjectKB_Class38] of  Property_List
 )
@@ -525,7 +466,7 @@
 
 	(is_hidden TRUE)
 	(property_list [SBCFinal_ProjectKB_Class40])
-	(widget_class_name "edu.stanford.smi.protegex.widget.pal.PalConstraintsTab"))
+	(widget_class_name "org.algernon.kb.okbc.protege.plugins.AlgernonTab"))
 
 ([SBCFinal_ProjectKB_Class4] of  Property_List
 )
@@ -537,7 +478,7 @@
 
 	(is_hidden TRUE)
 	(property_list [SBCFinal_ProjectKB_Class42])
-	(widget_class_name "edu.stanford.smi.protege.widget.instance_tree.KnowledgeTreeTab"))
+	(widget_class_name "edu.stanford.smi.protegex.changes.changesKBViewTab.ChangesKBViewTab"))
 
 ([SBCFinal_ProjectKB_Class42] of  Property_List
 )
@@ -546,7 +487,7 @@
 
 	(is_hidden TRUE)
 	(property_list [SBCFinal_ProjectKB_Class44])
-	(widget_class_name "edu.stanford.smi.protege.widget.instance_tree.InstanceTreeTab"))
+	(widget_class_name "edu.stanford.smi.protege.widget.KAToolTab"))
 
 ([SBCFinal_ProjectKB_Class44] of  Property_List
 )
@@ -555,7 +496,7 @@
 
 	(is_hidden TRUE)
 	(property_list [SBCFinal_ProjectKB_Class46])
-	(widget_class_name "edu.stanford.smi.protegex.changes.stats.ChangeStatisticsTab"))
+	(widget_class_name "edu.stanford.smi.protegex.xml.tab.XMLTab"))
 
 ([SBCFinal_ProjectKB_Class46] of  Property_List
 )
@@ -564,7 +505,7 @@
 
 	(is_hidden TRUE)
 	(property_list [SBCFinal_ProjectKB_Class48])
-	(widget_class_name "se.liu.ida.JessTab.JessTab"))
+	(widget_class_name "edu.stanford.smi.protegex.widget.pal.PalQueriesTab"))
 
 ([SBCFinal_ProjectKB_Class48] of  Property_List
 )
@@ -573,13 +514,13 @@
 
 	(is_hidden TRUE)
 	(property_list [SBCFinal_ProjectKB_Class50])
-	(widget_class_name "ca.uvic.csr.shrimp.jambalaya.JambalayaTab"))
+	(widget_class_name "edu.stanford.smi.protegex.chatPlugin.ChatTab"))
 
 ([SBCFinal_ProjectKB_Class5] of  Widget
 
 	(is_hidden TRUE)
 	(property_list [SBCFinal_ProjectKB_Class6])
-	(widget_class_name "script.ProtegeScriptTab"))
+	(widget_class_name "edu.stanford.smi.protegex.owl.ui.properties.OWLPropertiesTab"))
 
 ([SBCFinal_ProjectKB_Class50] of  Property_List
 )
@@ -588,7 +529,7 @@
 
 	(is_hidden TRUE)
 	(property_list [SBCFinal_ProjectKB_Class52])
-	(widget_class_name "edu.stanford.smi.protegex.datamaster.DataMasterTab"))
+	(widget_class_name "edu.stanford.smi.protege.keywordsearch.StringSearch"))
 
 ([SBCFinal_ProjectKB_Class52] of  Property_List
 )
@@ -597,7 +538,7 @@
 
 	(is_hidden TRUE)
 	(property_list [SBCFinal_ProjectKB_Class54])
-	(widget_class_name "edu.stanford.smi.protegex.owl.ui.individuals.OWLIndividualsTab"))
+	(widget_class_name "edu.stanford.smi.protegex.owl.ui.widget.OWLFormsTab"))
 
 ([SBCFinal_ProjectKB_Class54] of  Property_List
 )
@@ -606,7 +547,7 @@
 
 	(is_hidden TRUE)
 	(property_list [SBCFinal_ProjectKB_Class56])
-	(widget_class_name "uk.ac.man.cs.mig.coode.debugger.test.DebuggerTestTab"))
+	(widget_class_name "script.ProtegeScriptTab"))
 
 ([SBCFinal_ProjectKB_Class56] of  Property_List
 )
@@ -615,7 +556,7 @@
 
 	(is_hidden TRUE)
 	(property_list [SBCFinal_ProjectKB_Class58])
-	(widget_class_name "edu.stanford.smi.protegex.owl.ui.cls.OWLClassesTab"))
+	(widget_class_name "edu.stanford.smi.protegex.changes.ChangesTab"))
 
 ([SBCFinal_ProjectKB_Class58] of  Property_List
 )
@@ -624,7 +565,7 @@
 
 	(is_hidden TRUE)
 	(property_list [SBCFinal_ProjectKB_Class60])
-	(widget_class_name "org.algernon.kb.okbc.protege.plugins.AlgernonTab"))
+	(widget_class_name "edu.stanford.smi.protegex.owl.swrl.ui.tab.SWRLTab"))
 
 ([SBCFinal_ProjectKB_Class6] of  Property_List
 )
@@ -636,7 +577,7 @@
 
 	(is_hidden TRUE)
 	(property_list [SBCFinal_ProjectKB_Class62])
-	(widget_class_name "edu.stanford.smi.protegex.widget.pal.PalQueriesTab"))
+	(widget_class_name "edu.stanford.smi.protegex.fctab.FacetConstraintsTab"))
 
 ([SBCFinal_ProjectKB_Class62] of  Property_List
 )
@@ -645,7 +586,7 @@
 
 	(is_hidden TRUE)
 	(property_list [SBCFinal_ProjectKB_Class64])
-	(widget_class_name "edu.stanford.smi.protegex.chatPlugin.ChatTab"))
+	(widget_class_name "edu.stanford.smi.protege.widget.instance_tree.KnowledgeTreeTab"))
 
 ([SBCFinal_ProjectKB_Class64] of  Property_List
 )
@@ -654,7 +595,7 @@
 
 	(is_hidden TRUE)
 	(property_list [SBCFinal_ProjectKB_Class66])
-	(widget_class_name "edu.stanford.smi.RemoteKBTab.UMLSTab"))
+	(widget_class_name "edu.stanford.smi.protegex.datamaster.DataMasterTab"))
 
 ([SBCFinal_ProjectKB_Class66] of  Property_List
 )
@@ -663,7 +604,7 @@
 
 	(is_hidden TRUE)
 	(property_list [SBCFinal_ProjectKB_Class68])
-	(widget_class_name "edu.stanford.smi.protegex.server_changes.prompt.UsersTab"))
+	(widget_class_name "dfki.protege.ontoviz_tab.OntovizTab"))
 
 ([SBCFinal_ProjectKB_Class68] of  Property_List
 )
@@ -672,13 +613,13 @@
 
 	(is_hidden TRUE)
 	(property_list [SBCFinal_ProjectKB_Class70])
-	(widget_class_name "uk.ac.man.ac.mig.coode.individuals.ui.OWLDLIndividualsTab"))
+	(widget_class_name "edu.stanford.smi.protegex.changes.stats.ChangeStatisticsTab"))
 
 ([SBCFinal_ProjectKB_Class7] of  Widget
 
 	(is_hidden TRUE)
 	(property_list [SBCFinal_ProjectKB_Class8])
-	(widget_class_name "edu.stanford.smi.protege.widget.ClsesAndInstancesTab"))
+	(widget_class_name "edu.stanford.smi.protege.widget.ProtegePropertiesTab"))
 
 ([SBCFinal_ProjectKB_Class70] of  Property_List
 )
@@ -687,7 +628,7 @@
 
 	(is_hidden TRUE)
 	(property_list [SBCFinal_ProjectKB_Class72])
-	(widget_class_name "uk.ac.man.cs.mig.coode.owlviz.ui.OWLVizTab"))
+	(widget_class_name "edu.stanford.smi.protegex.prompt.PromptTab"))
 
 ([SBCFinal_ProjectKB_Class72] of  Property_List
 )
@@ -699,7 +640,7 @@
 
 	(is_hidden TRUE)
 	(property_list [SBCFinal_ProjectKB_Class10])
-	(widget_class_name "edu.stanford.smi.protegex.evaluation.MetaAnalysis"))
+	(widget_class_name "uk.ac.man.cs.mig.coode.debugger.test.DebuggerTestTab"))
 
 ([SBCFinal_ProjectKB_Class99] of  String
 

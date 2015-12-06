@@ -1276,7 +1276,7 @@
 
 (defrule procesado::valorar-mayor-ciencia-ficcion "Se mejora la puntuacion de los contenidos adecuados a personas mayores"
         (Usuario (edad ?e))
-        (test (>= ?e 63))
+        (test (>= ?e 18))
         ?rec <- (object (is-a Solucion) (libro ?lib) (puntuacion ?p))
         ?cont <-(object (is-a Ciencia_ficcion) (subgenero_cf $?subcf) (edad_recomendada ?edad_mayor))
         (test (eq (instance-name ?cont) (instance-name ?lib)))
