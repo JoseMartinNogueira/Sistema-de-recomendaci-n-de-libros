@@ -1,4 +1,4 @@
-; Tue Dec 01 08:43:28 CET 2015
+; Sun Dec 06 19:39:44 CET 2015
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
@@ -142,6 +142,10 @@
 		(type STRING)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
+	(single-slot puntuacion
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
 	(single-slot anyo_publicacion
 		(type INTEGER)
 ;+		(cardinality 1 1)
@@ -153,24 +157,6 @@
 	(single-slot escrito_por
 		(type INSTANCE)
 ;+		(allowed-classes Autor)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot saga
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot titulo
-		(type STRING)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot best_seller
-		(type SYMBOL)
-		(allowed-values FALSE TRUE)
-;+		(cardinality 1 1)
-		(create-accessor read-write))
-	(single-slot num_pag
-		(type INTEGER)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot edicion_bolsillo
@@ -190,6 +176,28 @@
 	(single-slot clasico_literatura
 		(type SYMBOL)
 		(allowed-values FALSE TRUE)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot saga
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot titulo
+		(type STRING)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot puntuacion
+		(type INTEGER)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot best_seller
+		(type SYMBOL)
+		(allowed-values FALSE TRUE)
+;+		(cardinality 1 1)
+		(create-accessor read-write))
+	(single-slot num_pag
+		(type INTEGER)
 ;+		(cardinality 1 1)
 		(create-accessor read-write))
 	(single-slot editorial
