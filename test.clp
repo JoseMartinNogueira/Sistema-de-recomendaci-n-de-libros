@@ -531,7 +531,7 @@
 
 ;;Mensajes
 
-(defmessage-handler MAIN::Libro plantilla ()
+(defmessage-handler MAIN::Libro imprimir ()
         (format t "Titulo: %s %n" ?self:titulo)
         (format t "Editorial: %s" ?self:editorial)
         (format t "Autor: %s" (send ?self:escrito_por get-autor))
@@ -541,10 +541,10 @@
         )
 )
 
-(defmessage-handler MAIN::Solucion mostrar ()
+(defmessage-handler MAIN::Solucion imprimir ()
         (printout t "+++++++++++++++++++++++++++++++++" crlf)
         (format t "Afinidad: %d %n" ?self:puntuacion)
-        (printout t (send ?self:libro plantilla))
+        (printout t (send ?self:libro imprimir))
         (printout t crlf)
         (printout t "+++++++++++++++++++++++++++++++++" crlf)
 )
@@ -1561,12 +1561,13 @@
 
 (defrule representacion::solucion-final
         (soluciones-ordenada (soluciones $?soluciones))
+        (Usuario (nombre ?nombre))
         (not (final))
         =>
         (printout t "Estos son los 3 libros que le recomendamos" crlf)
         (printout t crlf)
-        (printout t (send (nth 0 ?soluciones) mostrar))
-        (printout t (send (nth 1 ?soluciones) mostrar))
-        (printout t (send (nth 2 ?soluciones) mostrar)) 
+        (printout t (send (nth 0 ?soluciones) imprimir))
+        ;(printout t (send (nth 1 ?soluciones) imprimir))
+        ;(printout t (send (nth 2 ?soluciones) imprimir)) 
         (assert (final))
 )
