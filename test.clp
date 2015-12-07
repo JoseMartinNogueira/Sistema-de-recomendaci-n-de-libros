@@ -322,7 +322,7 @@
 ;;Instancias
 
 (definstances instances
-; Mon Dec 07 13:20:12 CET 2015
+; Mon Dec 07 23:17:56 CET 2015
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
@@ -794,12 +794,14 @@
         (best_seller TRUE)
         (clasico_literatura TRUE)
         (edad_recomendada 1)
+        (edicion_bolsillo FALSE)
         (editorial "edit3")
         (escrito_por [SBCFinal_Class23])
         (hard FALSE)
         (idioma_disponible [SBCFinal_Class2])
         (num_pag 600)
         (puntuacion 50)
+        (saga FALSE)
         (subgenero_cf [SBCFinal_Class11])
         (titulo "lib20"))
 
@@ -807,7 +809,9 @@
 
         (anyo_publicacion 2000)
         (best_seller FALSE)
+        (clasico_literatura FALSE)
         (edad_recomendada 16)
+        (edicion_bolsillo FALSE)
         (editorial "ed6")
         (escrito_por [SBCFinal_Class21])
         (hard TRUE)
@@ -824,6 +828,7 @@
 
         (anyo_publicacion 1900)
         (best_seller TRUE)
+        (clasico_literatura FALSE)
         (edad_recomendada 1)
         (edicion_bolsillo TRUE)
         (editorial "edi1")
@@ -832,14 +837,17 @@
         (idioma_disponible [SBCFinal_Class0])
         (num_pag 350)
         (puntuacion 12)
+        (saga FALSE)
         (subgenero_cf [SBCFinal_Class10])
         (titulo "lib22"))
 
 ([SBCFinal_Class20003] of  Ciencia_ficcion
 
         (anyo_publicacion 2000)
+        (best_seller FALSE)
         (clasico_literatura TRUE)
         (edad_recomendada 16)
+        (edicion_bolsillo FALSE)
         (editorial "edi6")
         (escrito_por [SBCFinal_Class21])
         (hard TRUE)
@@ -854,6 +862,7 @@
 
         (anyo_publicacion 1990)
         (best_seller TRUE)
+        (clasico_literatura FALSE)
         (edad_recomendada 1)
         (edicion_bolsillo TRUE)
         (editorial "ed4")
@@ -864,6 +873,7 @@
                 [SBCFinal_Class0])
         (num_pag 100)
         (puntuacion 13)
+        (saga FALSE)
         (subgenero_cf [SBCFinal_Class12])
         (titulo "lib24"))
 
@@ -871,9 +881,12 @@
 
         (anyo_publicacion 2005)
         (best_seller TRUE)
+        (clasico_literatura FALSE)
         (edad_recomendada 1)
+        (edicion_bolsillo FALSE)
         (editorial "edit1")
         (escrito_por [SBCFinal_Class19])
+        (hard FALSE)
         (idioma_disponible [SBCFinal_Class0])
         (num_pag 200)
         (puntuacion 15)
@@ -885,15 +898,18 @@
 
         (anyo_publicacion 2015)
         (best_seller TRUE)
+        (clasico_literatura FALSE)
         (edad_recomendada 1)
         (edicion_bolsillo TRUE)
         (editorial "edit2")
         (escrito_por [SBCFinal_Class22])
+        (hard FALSE)
         (idioma_disponible
                 [SBCFinal_Class0]
                 [SBCFinal_Class1])
         (num_pag 321)
         (puntuacion 20)
+        (saga FALSE)
         (subgenero_cf [SBCFinal_Class12])
         (titulo "lib26"))
 
@@ -901,10 +917,12 @@
 
         (anyo_publicacion 2009)
         (best_seller TRUE)
+        (clasico_literatura FALSE)
         (edad_recomendada 1)
         (edicion_bolsillo TRUE)
         (editorial "edit1")
         (escrito_por [SBCFinal_Class21])
+        (hard FALSE)
         (idioma_disponible
                 [SBCFinal_Class1]
                 [SBCFinal_Class3])
@@ -920,8 +938,10 @@
         (best_seller FALSE)
         (clasico_literatura TRUE)
         (edad_recomendada 16)
+        (edicion_bolsillo FALSE)
         (editorial "edit6")
         (escrito_por [SBCFinal_Class20])
+        (hard FALSE)
         (idioma_disponible
                 [SBCFinal_Class2]
                 [SBCFinal_Class3])
@@ -935,7 +955,9 @@
 
         (anyo_publicacion 2005)
         (best_seller FALSE)
+        (clasico_literatura FALSE)
         (edad_recomendada 18)
+        (edicion_bolsillo FALSE)
         (editorial "edit4")
         (escrito_por [SBCFinal_Class19])
         (hard TRUE)
@@ -956,6 +978,7 @@
         (best_seller TRUE)
         (clasico_literatura TRUE)
         (edad_recomendada 1)
+        (edicion_bolsillo FALSE)
         (editorial "edit4")
         (escrito_por [SBCFinal_Class19])
         (hard TRUE)
@@ -964,6 +987,7 @@
                 [SBCFinal_Class1])
         (num_pag 600)
         (puntuacion 23)
+        (saga FALSE)
         (subgenero_cf [SBCFinal_Class14])
         (titulo "lib30"))
 
@@ -990,7 +1014,9 @@
 
         (anyo_publicacion 1999)
         (best_seller TRUE)
+        (clasico_literatura FALSE)
         (edad_recomendada 18)
+        (edicion_bolsillo FALSE)
         (editorial "ed4")
         (escrito_por [SBCFinal_Class21])
         (hard TRUE)
@@ -1022,9 +1048,12 @@
 
         (anyo_publicacion 2008)
         (best_seller TRUE)
+        (clasico_literatura FALSE)
         (edad_recomendada 16)
+        (edicion_bolsillo FALSE)
         (editorial "edit6")
         (escrito_por [SBCFinal_Class23])
+        (hard FALSE)
         (idioma_disponible
                 [SBCFinal_Class2]
                 [SBCFinal_Class1])
@@ -1040,6 +1069,7 @@
         (best_seller TRUE)
         (clasico_literatura TRUE)
         (edad_recomendada 18)
+        (edicion_bolsillo FALSE)
         (editorial "edit1")
         (escrito_por [SBCFinal_Class19])
         (hard TRUE)
@@ -1051,6 +1081,7 @@
                 [SBCFinal_Class2])
         (num_pag 1000)
         (puntuacion 30)
+        (saga FALSE)
         (subgenero_cf [SBCFinal_Class13])
         (titulo "lib34"))
 
@@ -1060,6 +1091,7 @@
         (best_seller TRUE)
         (clasico_literatura TRUE)
         (edad_recomendada 16)
+        (edicion_bolsillo FALSE)
         (editorial "ed1")
         (escrito_por [SBCFinal_Class19])
         (idioma_disponible
@@ -1086,6 +1118,7 @@
         (idioma_disponible [SBCFinal_Class1])
         (num_pag 50)
         (puntuacion 11)
+        (saga FALSE)
         (subgenero_fant [SBCFinal_Class5])
         (titulo "lib37"))
 
@@ -1093,7 +1126,9 @@
 
         (anyo_publicacion 2001)
         (best_seller TRUE)
+        (clasico_literatura FALSE)
         (edad_recomendada 1)
+        (edicion_bolsillo FALSE)
         (editorial "ed2")
         (escrito_por [SBCFinal_Class20])
         (idioma_disponible
@@ -1112,6 +1147,7 @@
         (best_seller FALSE)
         (clasico_literatura TRUE)
         (edad_recomendada 1)
+        (edicion_bolsillo FALSE)
         (editorial "ed3")
         (escrito_por [SBCFinal_Class23])
         (idioma_disponible
@@ -1122,6 +1158,7 @@
                 [SBCFinal_Class2])
         (num_pag 70)
         (puntuacion 25)
+        (saga FALSE)
         (subgenero_fant [SBCFinal_Class5])
         (titulo "lib38"))
 
@@ -1129,7 +1166,9 @@
 
         (anyo_publicacion 2011)
         (best_seller TRUE)
+        (clasico_literatura FALSE)
         (edad_recomendada 1)
+        (edicion_bolsillo FALSE)
         (editorial "edit1")
         (escrito_por [SBCFinal_Class21])
         (idioma_disponible
@@ -1163,7 +1202,9 @@
 
         (anyo_publicacion 2012)
         (best_seller TRUE)
+        (clasico_literatura FALSE)
         (edad_recomendada 16)
+        (edicion_bolsillo FALSE)
         (editorial "edit7")
         (escrito_por [SBCFinal_Class20])
         (idioma_disponible
@@ -1198,6 +1239,7 @@
 
         (anyo_publicacion 1960)
         (best_seller TRUE)
+        (clasico_literatura FALSE)
         (edad_recomendada 16)
         (edicion_bolsillo TRUE)
         (editorial "edt4")
@@ -1205,14 +1247,17 @@
         (idioma_disponible [SBCFinal_Class2])
         (num_pag 300)
         (puntuacion 12)
+        (saga FALSE)
         (subgenero_fant [SBCFinal_Class8])
         (titulo "lib43"))
 
 ([SBCFinal_Class20026] of  Fantasia
 
         (anyo_publicacion 1800)
+        (best_seller FALSE)
         (clasico_literatura TRUE)
         (edad_recomendada 1)
+        (edicion_bolsillo FALSE)
         (editorial "edit5")
         (escrito_por [SBCFinal_Class22])
         (idioma_disponible
@@ -1223,6 +1268,7 @@
                 [SBCFinal_Class2])
         (num_pag 100)
         (puntuacion 20)
+        (saga FALSE)
         (subgenero_fant [SBCFinal_Class8])
         (titulo "lib44"))
 
@@ -1248,6 +1294,7 @@
 
         (anyo_publicacion 2005)
         (best_seller TRUE)
+        (clasico_literatura FALSE)
         (edad_recomendada 1)
         (edicion_bolsillo TRUE)
         (editorial "ed1")
@@ -1301,8 +1348,10 @@
 ([SBCFinal_Class20031] of  Misterio
 
         (anyo_publicacion 1998)
+        (best_seller FALSE)
         (clasico_literatura TRUE)
         (edad_recomendada 16)
+        (edicion_bolsillo FALSE)
         (editorial "edit4")
         (escrito_por [SBCFinal_Class19])
         (idioma_disponible
@@ -1334,7 +1383,9 @@
 
         (anyo_publicacion 2006)
         (best_seller TRUE)
+        (clasico_literatura FALSE)
         (edad_recomendada 18)
+        (edicion_bolsillo FALSE)
         (editorial "edit4")
         (escrito_por [SBCFinal_Class22])
         (idioma_disponible [SBCFinal_Class0])
