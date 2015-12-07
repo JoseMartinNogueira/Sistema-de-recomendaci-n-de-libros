@@ -2564,6 +2564,30 @@
 ;;        (send ?rec delete)        
 ;;)
 
+(defrule procesado::valorar-cf-hard "Mejora la puntuacion de los libros de ciencia ficcion hard"
+        (cf-hard TRUE)
+        ?cont <- (object (is-a Libro) (hard TRUE))
+        ?rec <- (object (is-a Solucion) (libro ?lib) (puntuacion ?p))
+        (test (eq (instance-name ?cont) (instance-name ?lib)))
+        (not (hard-valorado ?cont))
+        =>
+        (bind ?p (+ ?p 50))
+        (send ?rec put-puntuacion ?p)
+        (assert (hard-valorado ?cont))
+)
+
+(defrule procesado::valorar-cf-hard-no "Mejora la puntuacion de los libros de ciencia ficcion hard"
+        (cf-hard FALSE)
+        ?cont <- (object (is-a Libro) (hard FALSE))
+        ?rec <- (object (is-a Solucion) (libro ?lib) (puntuacion ?p))
+        (test (eq (instance-name ?cont) (instance-name ?lib)))
+        (not (hard-valorado-no ?cont))
+        =>
+        (bind ?p (+ ?p 50))
+        (send ?rec put-puntuacion ?p)
+        (assert (hard-valorado-no ?cont))
+)
+
 (defrule procesado::valorar-saga "Mejora la puntuacion de los libros que pertenezcan a saga"
         (saga-libros TRUE)
         ?cont <- (object (is-a Libro) (saga TRUE))
