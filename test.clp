@@ -2153,13 +2153,13 @@
 ;-----Cristian
 (defrule procesado::aux-subgenero-cf "Crea hechos para poder procesar los subgeneros favoritos"
         (preferencias (subgeneros-cf-favoritos $?gen))
-        ?hecho <- (subgenero-fant-fav ?aux)
+        ?hecho <- (subgenero-cf-fav ?aux)
         (test (or (eq ?aux TRUE) (eq ?aux FALSE)))
         =>
         (retract ?hecho)
         (if (eq ?aux TRUE)then 
                 (progn$ (?curr-gen $?gen)
-                        (assert (subgenero-fant-fav ?curr-gen))
+                        (assert (subgenero-cf-fav ?curr-gen))
                 )
         )
 )
@@ -2459,8 +2459,6 @@
         (assert (mayor-valorado-mist ?cont))
 )
 
-
-
 (defrule procesado::valorar-subgenero-favorito-ciencia-ficcion "Se mejora la puntuacion de los libros de los subgeneros de ciencia ficcion favoritos"
         ?hecho <- (subgenero-cf-fav ?gen)
         ?cont <-(object (is-a Ciencia_ficcion) (subgenero_cf ?generos))
@@ -2471,7 +2469,6 @@
         =>
         (bind ?p (+ ?p 75))
         (send ?rec put-puntuacion ?p)
-        (bind ?text (str-cat "Pertenece al género favorito " (send ?gen get-subgenero_cf) " -> +75"))
         (assert (valorado-subgenero-favorito-ciencia-ficcion ?cont ?gen))
 )
 
@@ -2485,7 +2482,6 @@
         =>
         (bind ?p (+ ?p 75))
         (send ?rec put-puntuacion ?p)
-        (bind ?text (str-cat "Pertenece al género favorito " (send ?gen get-subgenero_fant) " -> +75"))
         (assert (valorado-subgenero-favorito-fantasia ?cont ?gen))
 )
 
@@ -2499,7 +2495,6 @@
         =>
         (bind ?p (+ ?p 75))
         (send ?rec put-puntuacion ?p)
-        (bind ?text (str-cat "Pertenece al género favorito " (send ?gen get-subgenero_mist) " -> +75"))
         (assert (valorado-subgenero-favorito-misterio ?cont ?gen))
 )
 
@@ -2563,6 +2558,7 @@
 ;;        =>
 ;;        (send ?rec delete)        
 ;;)
+
 
 (defrule procesado::valorar-cf-hard "Mejora la puntuacion de los libros de ciencia ficcion hard"
         (cf-hard TRUE)
