@@ -1,4 +1,4 @@
-; Sun Dec 06 23:46:23 CET 2015
+; Mon Dec 07 02:23:21 CET 2015
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
@@ -20,14 +20,14 @@
 ([BROWSER_SLOT_NAMES] of  Property_List
 
 	(properties
-		[SBCFinal_ProjectKB_Class10226]
-		[SBCFinal_ProjectKB_Class10227]
-		[SBCFinal_ProjectKB_Class10228]
-		[SBCFinal_ProjectKB_Class10229]
-		[SBCFinal_ProjectKB_Class10230]
-		[SBCFinal_ProjectKB_Class10231]
-		[SBCFinal_ProjectKB_Class10232]
-		[SBCFinal_ProjectKB_Class10233]))
+		[SBCFinal_ProjectKB_Class10250]
+		[SBCFinal_ProjectKB_Class10251]
+		[SBCFinal_ProjectKB_Class10252]
+		[SBCFinal_ProjectKB_Class10253]
+		[SBCFinal_ProjectKB_Class10254]
+		[SBCFinal_ProjectKB_Class10255]
+		[SBCFinal_ProjectKB_Class10256]
+		[SBCFinal_ProjectKB_Class10257]))
 
 ([CLSES_TAB] of  Widget
 
@@ -287,42 +287,42 @@
 ([SBCFinal_ProjectKB_Class10] of  Property_List
 )
 
-([SBCFinal_ProjectKB_Class10226] of  String
+([SBCFinal_ProjectKB_Class10250] of  String
 
 	(name ":INSTANCE-ANNOTATION")
 	(string_value "%3AANNOTATION-TEXT"))
 
-([SBCFinal_ProjectKB_Class10227] of  String
+([SBCFinal_ProjectKB_Class10251] of  String
 
 	(name "Autor")
 	(string_value "Nombre"))
 
-([SBCFinal_ProjectKB_Class10228] of  String
+([SBCFinal_ProjectKB_Class10252] of  String
 
 	(name ":PAL-CONSTRAINT")
 	(string_value "%3APAL-NAME"))
 
-([SBCFinal_ProjectKB_Class10229] of  String
+([SBCFinal_ProjectKB_Class10253] of  String
 
 	(name ":META-CLASS")
 	(string_value "%3ANAME"))
 
-([SBCFinal_ProjectKB_Class10230] of  String
+([SBCFinal_ProjectKB_Class10254] of  String
 
 	(name "Subgenero_fantasia")
 	(string_value "subgenero_fantasia"))
 
-([SBCFinal_ProjectKB_Class10231] of  String
+([SBCFinal_ProjectKB_Class10255] of  String
 
 	(name "Subgenero_misterio")
 	(string_value "subgenero_misterio"))
 
-([SBCFinal_ProjectKB_Class10232] of  String
+([SBCFinal_ProjectKB_Class10256] of  String
 
 	(name "Idioma")
 	(string_value "idioma"))
 
-([SBCFinal_ProjectKB_Class10233] of  String
+([SBCFinal_ProjectKB_Class10257] of  String
 
 	(name "Subgenero_ciencia_ficcion")
 	(string_value "subgenero_ciencia_ficcion"))
