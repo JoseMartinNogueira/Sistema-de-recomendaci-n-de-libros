@@ -901,7 +901,7 @@
 )
 
 (defrule recopilacion-prefs::seleccionar-sub-mist-fav "Establece los generos de misterio favorito del usuario"
-        ?hecho <- (subgenero-cmist-fav elegir)
+        ?hecho <- (subgenero-mist-fav elegir)
         ?pref <- (preferencias)
         =>
         (bind $?all-sub-mist (find-all-instances ((?inst Subgenero_misterio)) TRUE))
@@ -1103,8 +1103,7 @@
         (test (eq (instance-name ?cont) (instance-name ?lib)))
         (not (infantil-valorado ?cont))
         =>
-        (progn$ (?curr-gen $?subfant) 
-                (bind ?nombre (send ?curr-gen get-subgenero_fant))
+        (bind ?nombre (send $?subfant get-subgenero_fantasia))
                 (switch ?nombre
                         (case "cuentos_clasicos" then 
                                 (bind ?p (+ ?p 150))
@@ -1115,7 +1114,6 @@
                         (case "alta_fantasia" then
                                 (bind ?p (+ ?p 100))
                         )
-                )
         )
         (send ?rec put-puntuacion ?p)
         (assert (infantil-valorado ?cont)) 
@@ -1129,8 +1127,7 @@
         (test (eq (instance-name ?cont) (instance-name ?lib)))
         (not (infantil-valorado ?cont))
         =>
-        (progn$ (?curr-gen $?subcf) 
-                (bind ?nombre (send ?curr-gen get-subgenero_cf))
+        (bind ?nombre (send $?subcf get-subgenero_ciencia_ficcion))
                 (switch ?nombre
                         (case "robotica_y_inteligencia_artificial" then 
                                 (bind ?p (+ ?p 125))
@@ -1150,7 +1147,6 @@
                         (case "social_distopia" then
                                 (bind ?p (+ ?p 125))
                         )
-                )
         )
         (send ?rec put-puntuacion ?p)
         (assert (infantil-valorado ?cont))
@@ -1160,12 +1156,11 @@
         (Usuario (edad ?e))
         (test (< ?e 13))
         ?rec <- (object (is-a Solucion) (libro ?lib) (puntuacion ?p))
-        ?cont <-(object (is-a Misterio) (subgenero_mist $?subcf) (edad_recomendada ?edad_min))
+        ?cont <-(object (is-a Misterio) (subgenero_mist $?submist) (edad_recomendada ?edad_min))
         (test (eq (instance-name ?cont) (instance-name ?lib)))
         (not (infantil-valorado ?cont))
         =>
-        (progn$ (?curr-gen $?subcf) 
-                (bind ?nombre (send ?curr-gen get-subgenero_mist))
+        (bind ?nombre (send $?submist get-subgenero_misterio))
                 (switch ?nombre
                         (case "policial" then 
                                 (bind ?p (+ ?p 125))
@@ -1173,7 +1168,6 @@
                         (case "suspense" then
                                 (bind ?p (+ ?p 125))
                         )
-                )
         )
         (send ?rec put-puntuacion ?p)
         (assert (infantil-valorado ?cont))
@@ -1190,8 +1184,7 @@
         (test (eq (instance-name ?cont) (instance-name ?lib)))
         (not (adolescente-valorado-cf ?cont))
         =>
-        (progn$ (?curr-gen $?subcf) 
-                (bind ?nombre (send ?curr-gen get-subgenero_cf))
+                (bind ?nombre (send $?subcf get-subgenero_ciencia_ficcion))
                 (switch ?nombre
                         (case "robotica_y_inteligencia_artificial" then 
                                 (bind ?p (+ ?p 125))
@@ -1211,7 +1204,6 @@
                         (case "social_distopia" then
                                 (bind ?p (+ ?p 125))
                         )
-                )
         )
         (send ?rec put-puntuacion ?p)
         (assert (adolescente-valorado-cf ?cont))
@@ -1225,8 +1217,7 @@
         (test (eq (instance-name ?cont) (instance-name ?lib)))
         (not (adolescente-valorado-fant ?cont))
         =>
-        (progn$ (?curr-gen $?subfant) 
-                (bind ?nombre (send ?curr-gen get-subgenero_fant))
+        (bind ?nombre (send $?subfant get-subgenero_fantasia))
                 (switch ?nombre
                         (case "cuentos_clasicos" then 
                                 (bind ?p (+ ?p 125))
@@ -1243,7 +1234,6 @@
                         (case "terror" then
                                 (bind ?p (+ ?p 125))
                         )
-                )
         )
         (send ?rec put-puntuacion ?p)
         (assert (adolescente-valorado-fant ?cont))
@@ -1258,8 +1248,7 @@
         (test (eq (instance-name ?cont) (instance-name ?lib)))
         (not (adolescente-valorado-mist ?cont))
         =>
-        (progn$ (?curr-gen $?submist) 
-                (bind ?nombre (send ?curr-gen get-subgenero_mist))
+	  (bind ?nombre (send $?submist get-subgenero_misterio))        
                 (switch ?nombre
                         (case "policial" then 
                                 (bind ?p (+ ?p 125))
@@ -1267,7 +1256,6 @@
                         (case "suspense" then
                                 (bind ?p (+ ?p 125))
                         )
-                )
         )
         (send ?rec put-puntuacion ?p)
         (assert (adolescente-valorado-mist ?cont))
@@ -1282,8 +1270,7 @@
         (test (eq (instance-name ?cont) (instance-name ?lib)))
         (not (mayor-valorado-cf ?cont))
         =>
-        (progn$ (?curr-gen $?subcf) 
-                (bind ?nombre (send ?curr-gen get-subgenero_cf))
+        (bind ?nombre (send $?subcf get-subgenero_ciencia_ficcion))
                 (switch ?nombre
                         (case "robotica_y_inteligencia_artificial" then 
                                 (bind ?p (+ ?p 125))
@@ -1303,7 +1290,6 @@
                         (case "social_distopia" then
                                 (bind ?p (+ ?p 125))
                         )
-                )
         )
         (send ?rec put-puntuacion ?p)
         (assert (mayor-valorado-cf ?cont))
@@ -1319,8 +1305,7 @@
         (test (eq (instance-name ?cont) (instance-name ?lib)))
         (not (mayor-valorado-fant ?cont))
         =>
-        (progn$ (?curr-gen $?subfant) 
-                (bind ?nombre (send ?curr-gen get-subgenero_fant))
+        (bind ?nombre (send $?subfant get-subgenero_fantasia))
                 (switch ?nombre
                         (case "cuentos_clasicos" then 
                                 (bind ?p (+ ?p 125))
@@ -1337,7 +1322,6 @@
                         (case "terror" then
                                 (bind ?p (+ ?p 125))
                         )
-                )
         )
         (send ?rec put-puntuacion ?p)
         (assert (mayor-valorado-fant ?cont))
@@ -1351,8 +1335,7 @@
         (test (eq (instance-name ?cont) (instance-name ?lib)))
         (not (mayor-valorado-mist ?cont))
         =>
-        (progn$ (?curr-gen $?submist) 
-                (bind ?nombre (send ?curr-gen get-subgenero_mist))
+        (bind ?nombre (send $?submist get-subgenero_misterio))
                 (switch ?nombre
                         (case "policial" then 
                                 (bind ?p (+ ?p 125))
@@ -1360,7 +1343,6 @@
                         (case "suspense" then
                                 (bind ?p (+ ?p 125))
                         )
-                )
         )
         (send ?rec put-puntuacion ?p)
         (assert (mayor-valorado-mist ?cont))
