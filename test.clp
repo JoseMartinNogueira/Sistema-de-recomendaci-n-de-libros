@@ -1188,7 +1188,7 @@
         ?rec <- (object (is-a Solucion) (libro ?lib) (puntuacion ?p))
         ?cont <-(object (is-a Ciencia_ficcion) (subgenero_cf $?subcf) (edad_recomendada ?edad_media))
         (test (eq (instance-name ?cont) (instance-name ?lib)))
-        (not (adolescente-valorado ?cont))
+        (not (adolescente-valorado-cf ?cont))
         =>
         (progn$ (?curr-gen $?subcf) 
                 (bind ?nombre (send ?curr-gen get-subgenero_cf))
@@ -1214,7 +1214,7 @@
                 )
         )
         (send ?rec put-puntuacion ?p)
-        (assert (adolescente-valorado ?cont))
+        (assert (adolescente-valorado-cf ?cont))
 )
 
 (defrule procesado::valorar-adolescente-fantasia "Se mejora la puntuacion de los contenidos adecuados a adolescentes"
@@ -1223,7 +1223,7 @@
         ?rec <- (object (is-a Solucion) (libro ?lib) (puntuacion ?p))
         ?cont <-(object (is-a Fantasia) (subgenero_fant $?subfant) (edad_recomendada ?edad_media))
         (test (eq (instance-name ?cont) (instance-name ?lib)))
-        (not (adolescente-valorado ?cont))
+        (not (adolescente-valorado-fant ?cont))
         =>
         (progn$ (?curr-gen $?subfant) 
                 (bind ?nombre (send ?curr-gen get-subgenero_fant))
@@ -1246,7 +1246,7 @@
                 )
         )
         (send ?rec put-puntuacion ?p)
-        (assert (adolescente-valorado ?cont))
+        (assert (adolescente-valorado-fant ?cont))
 )
 
 
@@ -1256,7 +1256,7 @@
         ?rec <- (object (is-a Solucion) (libro ?lib) (puntuacion ?p))
         ?cont <-(object (is-a Misterio) (subgenero_mist $?submist) (edad_recomendada ?edad_media))
         (test (eq (instance-name ?cont) (instance-name ?lib)))
-        (not (adolescente-valorado ?cont))
+        (not (adolescente-valorado-mist ?cont))
         =>
         (progn$ (?curr-gen $?submist) 
                 (bind ?nombre (send ?curr-gen get-subgenero_mist))
@@ -1270,7 +1270,7 @@
                 )
         )
         (send ?rec put-puntuacion ?p)
-        (assert (adolescente-valorado ?cont))
+        (assert (adolescente-valorado-mist ?cont))
 )
 
 
@@ -1280,7 +1280,7 @@
         ?rec <- (object (is-a Solucion) (libro ?lib) (puntuacion ?p))
         ?cont <-(object (is-a Ciencia_ficcion) (subgenero_cf $?subcf) (edad_recomendada ?edad_mayor))
         (test (eq (instance-name ?cont) (instance-name ?lib)))
-        (not (mayor-valorado ?cont))
+        (not (mayor-valorado-cf ?cont))
         =>
         (progn$ (?curr-gen $?subcf) 
                 (bind ?nombre (send ?curr-gen get-subgenero_cf))
@@ -1306,8 +1306,9 @@
                 )
         )
         (send ?rec put-puntuacion ?p)
-        (assert (valorado-mayor ?cont))
+        (assert (mayor-valorado-cf ?cont))
 )
+
 
 
 (defrule procesado::valorar-mayor-fantasia "Se mejora la puntuacion de los contenidos adecuados a personas mayores"
@@ -1316,7 +1317,7 @@
         ?rec <- (object (is-a Solucion) (libro ?lib) (puntuacion ?p))
         ?cont <-(object (is-a Fantasia) (subgenero_fant $?subfant) (edad_recomendada ?edad_mayor))
         (test (eq (instance-name ?cont) (instance-name ?lib)))
-        (not (mayor-valorado ?cont))
+        (not (mayor-valorado-fant ?cont))
         =>
         (progn$ (?curr-gen $?subfant) 
                 (bind ?nombre (send ?curr-gen get-subgenero_fant))
@@ -1339,7 +1340,7 @@
                 )
         )
         (send ?rec put-puntuacion ?p)
-        (assert (valorado-mayor ?cont))
+        (assert (mayor-valorado-fant ?cont))
 )
 
 (defrule procesado::valorar-mayor-misterio "Se mejora la puntuacion de los contenidos adecuados a personas mayores"
@@ -1348,7 +1349,7 @@
         ?rec <- (object (is-a Solucion) (libro ?lib) (puntuacion ?p))
         ?cont <-(object (is-a Misterio) (subgenero_mist $?submist) (edad_recomendada ?edad_mayor))
         (test (eq (instance-name ?cont) (instance-name ?lib)))
-        (not (mayor-valorado ?cont))
+        (not (mayor-valorado-mist ?cont))
         =>
         (progn$ (?curr-gen $?submist) 
                 (bind ?nombre (send ?curr-gen get-subgenero_mist))
@@ -1362,7 +1363,7 @@
                 )
         )
         (send ?rec put-puntuacion ?p)
-        (assert (valorado-mayor ?cont))
+        (assert (mayor-valorado-mist ?cont))
 )
 
 
