@@ -2241,22 +2241,22 @@
         (bind ?nombre (send $?subcf get-subgenero_ciencia_ficcion))
                 (switch ?nombre
                         (case "robotica_y_inteligencia_artificial" then 
-                                (bind ?p (+ ?p 100))
+                                (bind ?p (+ ?p 50))
                         )
                         (case "viajes_en_el_tiempo" then
-                                (bind ?p (+ ?p 100))
+                                (bind ?p (+ ?p 50))
                         )
                         (case "espacio" then
-                                (bind ?p (+ ?p 100))
+                                (bind ?p (+ ?p 50))
                         )
                         (case "social_utopia" then
-                                (bind ?p (+ ?p 75))
+                                (bind ?p (+ ?p 25))
                         )
                         (case "social_alterantivo" then
-                                (bind ?p (+ ?p 50))
+                                (bind ?p (+ ?p 0))
                         )
                         (case "social_distopia" then
-                                (bind ?p (+ ?p 50))
+                                (bind ?p (+ ?p 0))
                         )
         )
         (send ?rec put-puntuacion ?p)
@@ -2298,22 +2298,22 @@
                 (bind ?nombre (send $?subcf get-subgenero_ciencia_ficcion))
                 (switch ?nombre
                         (case "robotica_y_inteligencia_artificial" then 
-                                (bind ?p (+ ?p 150))
-                        )
-                        (case "viajes_en_el_tiempo" then
-                                (bind ?p (+ ?p 150))
-                        )
-                        (case "espacio" then
-                                (bind ?p (+ ?p 175))
-                        )
-                        (case "social_utopia" then
                                 (bind ?p (+ ?p 100))
                         )
-                        (case "social_alterantivo" then
+                        (case "viajes_en_el_tiempo" then
+                                (bind ?p (+ ?p 100))
+                        )
+                        (case "espacio" then
                                 (bind ?p (+ ?p 125))
                         )
+                        (case "social_utopia" then
+                                (bind ?p (+ ?p 50))
+                        )
+                        (case "social_alterantivo" then
+                                (bind ?p (+ ?p 75))
+                        )
                         (case "social_distopia" then
-                                (bind ?p (+ ?p 150))
+                                (bind ?p (+ ?p 100))
                         )
         )
         (send ?rec put-puntuacion ?p)
@@ -2384,22 +2384,22 @@
         (bind ?nombre (send $?subcf get-subgenero_ciencia_ficcion))
                 (switch ?nombre
                         (case "robotica_y_inteligencia_artificial" then 
-                                (bind ?p (+ ?p 150))
-                        )
-                        (case "viajes_en_el_tiempo" then
-                                (bind ?p (+ ?p 125))
-                        )
-                        (case "espacio" then
-                                (bind ?p (+ ?p 125))
-                        )
-                        (case "social_utopia" then
                                 (bind ?p (+ ?p 100))
                         )
+                        (case "viajes_en_el_tiempo" then
+                                (bind ?p (+ ?p 75))
+                        )
+                        (case "espacio" then
+                                (bind ?p (+ ?p 75))
+                        )
+                        (case "social_utopia" then
+                                (bind ?p (+ ?p 50))
+                        )
                         (case "social_alterantivo" then
-                                (bind ?p (+ ?p 150))
+                                (bind ?p (+ ?p 100))
                         )
                         (case "social_distopia" then
-                                (bind ?p (+ ?p 150))
+                                (bind ?p (+ ?p 100))
                         )
         )
         (send ?rec put-puntuacion ?p)
