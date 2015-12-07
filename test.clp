@@ -329,1208 +329,1208 @@
 
 ([SBCFinal_Class0] of  Idioma
 
-	(idioma "espanol")
-	(inverse_of_idioma_disponible
-		[SBCFinal_Class24]
-		[SBCFinal_Class25]
-		[SBCFinal_Class10001]
-		[SBCFinal_Class10002]
-		[SBCFinal_Class10007]
-		[SBCFinal_Class10009]
-		[SBCFinal_Class10011]
-		[SBCFinal_Class10014]
-		[SBCFinal_Class20001]
-		[SBCFinal_Class20002]
-		[SBCFinal_Class20003]
-		[SBCFinal_Class20004]
-		[SBCFinal_Class20005]
-		[SBCFinal_Class20006]
-		[SBCFinal_Class20009]
-		[SBCFinal_Class20010]
-		[SBCFinal_Class20013]
-		[SBCFinal_Class20015]
-		[SBCFinal_Class20017]
-		[SBCFinal_Class20019]
-		[SBCFinal_Class20020]
-		[SBCFinal_Class20021]
-		[SBCFinal_Class20022]
-		[SBCFinal_Class20024]
-		[SBCFinal_Class20026]
-		[SBCFinal_Class20027]
-		[SBCFinal_Class20028]
-		[SBCFinal_Class20030]
-		[SBCFinal_Class20031]
-		[SBCFinal_Class20033]))
+        (idioma "espanol")
+        (inverse_of_idioma_disponible
+                [SBCFinal_Class24]
+                [SBCFinal_Class25]
+                [SBCFinal_Class10001]
+                [SBCFinal_Class10002]
+                [SBCFinal_Class10007]
+                [SBCFinal_Class10009]
+                [SBCFinal_Class10011]
+                [SBCFinal_Class10014]
+                [SBCFinal_Class20001]
+                [SBCFinal_Class20002]
+                [SBCFinal_Class20003]
+                [SBCFinal_Class20004]
+                [SBCFinal_Class20005]
+                [SBCFinal_Class20006]
+                [SBCFinal_Class20009]
+                [SBCFinal_Class20010]
+                [SBCFinal_Class20013]
+                [SBCFinal_Class20015]
+                [SBCFinal_Class20017]
+                [SBCFinal_Class20019]
+                [SBCFinal_Class20020]
+                [SBCFinal_Class20021]
+                [SBCFinal_Class20022]
+                [SBCFinal_Class20024]
+                [SBCFinal_Class20026]
+                [SBCFinal_Class20027]
+                [SBCFinal_Class20028]
+                [SBCFinal_Class20030]
+                [SBCFinal_Class20031]
+                [SBCFinal_Class20033]))
 
 ([SBCFinal_Class1] of  Idioma
 
-	(idioma "catalan")
-	(inverse_of_idioma_disponible
-		[SBCFinal_Class24]
-		[SBCFinal_Class10000]
-		[SBCFinal_Class10003]
-		[SBCFinal_Class10005]
-		[SBCFinal_Class10015]
-		[SBCFinal_Class20006]
-		[SBCFinal_Class20007]
-		[SBCFinal_Class20009]
-		[SBCFinal_Class20010]
-		[SBCFinal_Class20012]
-		[SBCFinal_Class20014]
-		[SBCFinal_Class20015]
-		[SBCFinal_Class20017]
-		[SBCFinal_Class20019]
-		[SBCFinal_Class20018]
-		[SBCFinal_Class20020]
-		[SBCFinal_Class20022]
-		[SBCFinal_Class20023]
-		[SBCFinal_Class20026]
-		[SBCFinal_Class20029]
-		[SBCFinal_Class20031]))
+        (idioma "catalan")
+        (inverse_of_idioma_disponible
+                [SBCFinal_Class24]
+                [SBCFinal_Class10000]
+                [SBCFinal_Class10003]
+                [SBCFinal_Class10005]
+                [SBCFinal_Class10015]
+                [SBCFinal_Class20006]
+                [SBCFinal_Class20007]
+                [SBCFinal_Class20009]
+                [SBCFinal_Class20010]
+                [SBCFinal_Class20012]
+                [SBCFinal_Class20014]
+                [SBCFinal_Class20015]
+                [SBCFinal_Class20017]
+                [SBCFinal_Class20019]
+                [SBCFinal_Class20018]
+                [SBCFinal_Class20020]
+                [SBCFinal_Class20022]
+                [SBCFinal_Class20023]
+                [SBCFinal_Class20026]
+                [SBCFinal_Class20029]
+                [SBCFinal_Class20031]))
 
 ([SBCFinal_Class10] of  Subgenero_ciencia_ficcion
 
-	(inverse_of_subgenero_cf
-		[SBCFinal_Class10003]
-		[SBCFinal_Class10004]
-		[SBCFinal_Class20002]
-		[SBCFinal_Class20005])
-	(subgenero_ciencia_ficcion "viajes_en_el_tiempo"))
+        (inverse_of_subgenero_cf
+                [SBCFinal_Class10003]
+                [SBCFinal_Class10004]
+                [SBCFinal_Class20002]
+                [SBCFinal_Class20005])
+        (subgenero_ciencia_ficcion "viajes_en_el_tiempo"))
 
 ([SBCFinal_Class10000] of  Ciencia_ficcion
 
-	(anyo_publicacion 1950)
-	(best_seller FALSE)
-	(clasico_literatura FALSE)
-	(edad_recomendada 16)
-	(edicion_bolsillo FALSE)
-	(editorial "edit2")
-	(escrito_por [SBCFinal_Class20])
-	(hard FALSE)
-	(idioma_disponible
-		[SBCFinal_Class3]
-		[SBCFinal_Class1]
-		[SBCFinal_Class4])
-	(num_pag 200)
-	(puntuacion 10)
-	(saga FALSE)
-	(subgenero_cf [SBCFinal_Class11])
-	(titulo "lib4"))
+        (anyo_publicacion 1950)
+        (best_seller FALSE)
+        (clasico_literatura FALSE)
+        (edad_recomendada 16)
+        (edicion_bolsillo FALSE)
+        (editorial "edit2")
+        (escrito_por [SBCFinal_Class20])
+        (hard FALSE)
+        (idioma_disponible
+                [SBCFinal_Class3]
+                [SBCFinal_Class1]
+                [SBCFinal_Class4])
+        (num_pag 200)
+        (puntuacion 10)
+        (saga FALSE)
+        (subgenero_cf [SBCFinal_Class11])
+        (titulo "lib4"))
 
 ([SBCFinal_Class10001] of  Ciencia_ficcion
 
-	(anyo_publicacion 1941)
-	(best_seller TRUE)
-	(clasico_literatura TRUE)
-	(edad_recomendada 40)
-	(edicion_bolsillo FALSE)
-	(editorial "edit4")
-	(escrito_por [SBCFinal_Class22])
-	(hard TRUE)
-	(idioma_disponible
-		[SBCFinal_Class4]
-		[SBCFinal_Class0]
-		[SBCFinal_Class2])
-	(num_pag 1000)
-	(puntuacion 10)
-	(saga TRUE)
-	(subgenero_cf [SBCFinal_Class12])
-	(titulo "lib5"))
+        (anyo_publicacion 1941)
+        (best_seller TRUE)
+        (clasico_literatura TRUE)
+        (edad_recomendada 40)
+        (edicion_bolsillo FALSE)
+        (editorial "edit4")
+        (escrito_por [SBCFinal_Class22])
+        (hard TRUE)
+        (idioma_disponible
+                [SBCFinal_Class4]
+                [SBCFinal_Class0]
+                [SBCFinal_Class2])
+        (num_pag 1000)
+        (puntuacion 10)
+        (saga TRUE)
+        (subgenero_cf [SBCFinal_Class12])
+        (titulo "lib5"))
 
 ([SBCFinal_Class10002] of  Ciencia_ficcion
 
-	(anyo_publicacion 1945)
-	(best_seller TRUE)
-	(clasico_literatura FALSE)
-	(edad_recomendada 2)
-	(edicion_bolsillo FALSE)
-	(editorial "edit5")
-	(escrito_por [SBCFinal_Class23])
-	(hard FALSE)
-	(idioma_disponible
-		[SBCFinal_Class4]
-		[SBCFinal_Class0])
-	(num_pag 500)
-	(puntuacion 15)
-	(saga TRUE)
-	(subgenero_cf [SBCFinal_Class14])
-	(titulo "lib6"))
+        (anyo_publicacion 1945)
+        (best_seller TRUE)
+        (clasico_literatura FALSE)
+        (edad_recomendada 2)
+        (edicion_bolsillo FALSE)
+        (editorial "edit5")
+        (escrito_por [SBCFinal_Class23])
+        (hard FALSE)
+        (idioma_disponible
+                [SBCFinal_Class4]
+                [SBCFinal_Class0])
+        (num_pag 500)
+        (puntuacion 15)
+        (saga TRUE)
+        (subgenero_cf [SBCFinal_Class14])
+        (titulo "lib6"))
 
 ([SBCFinal_Class10003] of  Ciencia_ficcion
 
-	(anyo_publicacion 1980)
-	(best_seller FALSE)
-	(clasico_literatura TRUE)
-	(edad_recomendada 2)
-	(edicion_bolsillo FALSE)
-	(editorial "edit6")
-	(escrito_por [SBCFinal_Class22])
-	(hard FALSE)
-	(idioma_disponible
-		[SBCFinal_Class3]
-		[SBCFinal_Class1])
-	(num_pag 100)
-	(puntuacion 23)
-	(saga FALSE)
-	(subgenero_cf [SBCFinal_Class10])
-	(titulo "lib7"))
+        (anyo_publicacion 1980)
+        (best_seller FALSE)
+        (clasico_literatura TRUE)
+        (edad_recomendada 2)
+        (edicion_bolsillo FALSE)
+        (editorial "edit6")
+        (escrito_por [SBCFinal_Class22])
+        (hard FALSE)
+        (idioma_disponible
+                [SBCFinal_Class3]
+                [SBCFinal_Class1])
+        (num_pag 100)
+        (puntuacion 23)
+        (saga FALSE)
+        (subgenero_cf [SBCFinal_Class10])
+        (titulo "lib7"))
 
 ([SBCFinal_Class10004] of  Ciencia_ficcion
 
-	(anyo_publicacion 1999)
-	(best_seller FALSE)
-	(clasico_literatura TRUE)
-	(edad_recomendada 1)
-	(edicion_bolsillo FALSE)
-	(editorial "edit2")
-	(escrito_por [SBCFinal_Class21])
-	(hard TRUE)
-	(idioma_disponible [SBCFinal_Class4])
-	(num_pag 150)
-	(puntuacion 7)
-	(saga FALSE)
-	(subgenero_cf [SBCFinal_Class10])
-	(titulo "lib8"))
+        (anyo_publicacion 1999)
+        (best_seller FALSE)
+        (clasico_literatura TRUE)
+        (edad_recomendada 1)
+        (edicion_bolsillo FALSE)
+        (editorial "edit2")
+        (escrito_por [SBCFinal_Class21])
+        (hard TRUE)
+        (idioma_disponible [SBCFinal_Class4])
+        (num_pag 150)
+        (puntuacion 7)
+        (saga FALSE)
+        (subgenero_cf [SBCFinal_Class10])
+        (titulo "lib8"))
 
 ([SBCFinal_Class10005] of  Ciencia_ficcion
 
-	(anyo_publicacion 1921)
-	(best_seller TRUE)
-	(clasico_literatura FALSE)
-	(edad_recomendada 1)
-	(edicion_bolsillo TRUE)
-	(editorial "edit1")
-	(escrito_por [SBCFinal_Class22])
-	(hard TRUE)
-	(idioma_disponible [SBCFinal_Class1])
-	(num_pag 40)
-	(puntuacion 3)
-	(saga FALSE)
-	(subgenero_cf [SBCFinal_Class13])
-	(titulo "lib9"))
+        (anyo_publicacion 1921)
+        (best_seller TRUE)
+        (clasico_literatura FALSE)
+        (edad_recomendada 1)
+        (edicion_bolsillo TRUE)
+        (editorial "edit1")
+        (escrito_por [SBCFinal_Class22])
+        (hard TRUE)
+        (idioma_disponible [SBCFinal_Class1])
+        (num_pag 40)
+        (puntuacion 3)
+        (saga FALSE)
+        (subgenero_cf [SBCFinal_Class13])
+        (titulo "lib9"))
 
 ([SBCFinal_Class10006] of  Ciencia_ficcion
 
-	(anyo_publicacion 1944)
-	(best_seller TRUE)
-	(clasico_literatura TRUE)
-	(edad_recomendada 13)
-	(edicion_bolsillo FALSE)
-	(editorial "edit2")
-	(escrito_por [SBCFinal_Class23])
-	(hard TRUE)
-	(idioma_disponible [SBCFinal_Class4])
-	(num_pag 200)
-	(puntuacion 11)
-	(saga FALSE)
-	(subgenero_cf [SBCFinal_Class15])
-	(titulo "lib10"))
+        (anyo_publicacion 1944)
+        (best_seller TRUE)
+        (clasico_literatura TRUE)
+        (edad_recomendada 13)
+        (edicion_bolsillo FALSE)
+        (editorial "edit2")
+        (escrito_por [SBCFinal_Class23])
+        (hard TRUE)
+        (idioma_disponible [SBCFinal_Class4])
+        (num_pag 200)
+        (puntuacion 11)
+        (saga FALSE)
+        (subgenero_cf [SBCFinal_Class15])
+        (titulo "lib10"))
 
 ([SBCFinal_Class10007] of  Fantasia
 
-	(anyo_publicacion 1910)
-	(best_seller FALSE)
-	(clasico_literatura TRUE)
-	(edad_recomendada 2)
-	(edicion_bolsillo FALSE)
-	(editorial "edit11")
-	(escrito_por [SBCFinal_Class22])
-	(idioma_disponible [SBCFinal_Class0])
-	(num_pag 45)
-	(puntuacion 54)
-	(saga TRUE)
-	(subgenero_fant [SBCFinal_Class7])
-	(titulo "lib11"))
+        (anyo_publicacion 1910)
+        (best_seller FALSE)
+        (clasico_literatura TRUE)
+        (edad_recomendada 2)
+        (edicion_bolsillo FALSE)
+        (editorial "edit11")
+        (escrito_por [SBCFinal_Class22])
+        (idioma_disponible [SBCFinal_Class0])
+        (num_pag 45)
+        (puntuacion 54)
+        (saga TRUE)
+        (subgenero_fant [SBCFinal_Class7])
+        (titulo "lib11"))
 
 ([SBCFinal_Class10008] of  Fantasia
 
-	(anyo_publicacion 1933)
-	(best_seller TRUE)
-	(clasico_literatura TRUE)
-	(edad_recomendada 12)
-	(edicion_bolsillo TRUE)
-	(editorial "edit9")
-	(escrito_por [SBCFinal_Class19])
-	(idioma_disponible [SBCFinal_Class2])
-	(num_pag 400)
-	(puntuacion 1)
-	(saga TRUE)
-	(subgenero_fant [SBCFinal_Class6])
-	(titulo "lib12"))
+        (anyo_publicacion 1933)
+        (best_seller TRUE)
+        (clasico_literatura TRUE)
+        (edad_recomendada 12)
+        (edicion_bolsillo TRUE)
+        (editorial "edit9")
+        (escrito_por [SBCFinal_Class19])
+        (idioma_disponible [SBCFinal_Class2])
+        (num_pag 400)
+        (puntuacion 1)
+        (saga TRUE)
+        (subgenero_fant [SBCFinal_Class6])
+        (titulo "lib12"))
 
 ([SBCFinal_Class10009] of  Fantasia
 
-	(anyo_publicacion 1888)
-	(best_seller TRUE)
-	(clasico_literatura TRUE)
-	(edad_recomendada 1)
-	(edicion_bolsillo FALSE)
-	(editorial "edit6")
-	(escrito_por [SBCFinal_Class22])
-	(idioma_disponible [SBCFinal_Class0])
-	(num_pag 40)
-	(puntuacion 43)
-	(saga TRUE)
-	(subgenero_fant [SBCFinal_Class8])
-	(titulo "lib13"))
+        (anyo_publicacion 1888)
+        (best_seller TRUE)
+        (clasico_literatura TRUE)
+        (edad_recomendada 1)
+        (edicion_bolsillo FALSE)
+        (editorial "edit6")
+        (escrito_por [SBCFinal_Class22])
+        (idioma_disponible [SBCFinal_Class0])
+        (num_pag 40)
+        (puntuacion 43)
+        (saga TRUE)
+        (subgenero_fant [SBCFinal_Class8])
+        (titulo "lib13"))
 
 ([SBCFinal_Class10010] of  Fantasia
 
-	(anyo_publicacion 1920)
-	(best_seller TRUE)
-	(clasico_literatura FALSE)
-	(edad_recomendada 18)
-	(edicion_bolsillo FALSE)
-	(editorial "edit4")
-	(escrito_por [SBCFinal_Class22])
-	(idioma_disponible [SBCFinal_Class3])
-	(num_pag 600)
-	(puntuacion 55)
-	(saga TRUE)
-	(subgenero_fant [SBCFinal_Class9])
-	(titulo "lib14"))
+        (anyo_publicacion 1920)
+        (best_seller TRUE)
+        (clasico_literatura FALSE)
+        (edad_recomendada 18)
+        (edicion_bolsillo FALSE)
+        (editorial "edit4")
+        (escrito_por [SBCFinal_Class22])
+        (idioma_disponible [SBCFinal_Class3])
+        (num_pag 600)
+        (puntuacion 55)
+        (saga TRUE)
+        (subgenero_fant [SBCFinal_Class9])
+        (titulo "lib14"))
 
 ([SBCFinal_Class10011] of  Misterio
 
-	(anyo_publicacion 1539)
-	(best_seller TRUE)
-	(clasico_literatura FALSE)
-	(edad_recomendada 22)
-	(edicion_bolsillo FALSE)
-	(editorial "edit4")
-	(escrito_por [SBCFinal_Class21])
-	(idioma_disponible [SBCFinal_Class0])
-	(num_pag 400)
-	(puntuacion 23)
-	(saga TRUE)
-	(subgenero_mist [SBCFinal_Class17])
-	(titulo "lib15"))
+        (anyo_publicacion 1539)
+        (best_seller TRUE)
+        (clasico_literatura FALSE)
+        (edad_recomendada 22)
+        (edicion_bolsillo FALSE)
+        (editorial "edit4")
+        (escrito_por [SBCFinal_Class21])
+        (idioma_disponible [SBCFinal_Class0])
+        (num_pag 400)
+        (puntuacion 23)
+        (saga TRUE)
+        (subgenero_mist [SBCFinal_Class17])
+        (titulo "lib15"))
 
 ([SBCFinal_Class10012] of  Misterio
 
-	(anyo_publicacion 1984)
-	(best_seller FALSE)
-	(clasico_literatura TRUE)
-	(edad_recomendada 3)
-	(edicion_bolsillo TRUE)
-	(editorial "edit6")
-	(escrito_por [SBCFinal_Class20])
-	(idioma_disponible [SBCFinal_Class2])
-	(num_pag 100)
-	(puntuacion 15)
-	(saga FALSE)
-	(subgenero_mist [SBCFinal_Class16])
-	(titulo "lib16"))
+        (anyo_publicacion 1984)
+        (best_seller FALSE)
+        (clasico_literatura TRUE)
+        (edad_recomendada 3)
+        (edicion_bolsillo TRUE)
+        (editorial "edit6")
+        (escrito_por [SBCFinal_Class20])
+        (idioma_disponible [SBCFinal_Class2])
+        (num_pag 100)
+        (puntuacion 15)
+        (saga FALSE)
+        (subgenero_mist [SBCFinal_Class16])
+        (titulo "lib16"))
 
 ([SBCFinal_Class10013] of  Misterio
 
-	(anyo_publicacion 1967)
-	(best_seller TRUE)
-	(clasico_literatura FALSE)
-	(edad_recomendada 5)
-	(edicion_bolsillo FALSE)
-	(editorial "edit8")
-	(escrito_por [SBCFinal_Class23])
-	(idioma_disponible [SBCFinal_Class3])
-	(num_pag 200)
-	(puntuacion 21)
-	(saga TRUE)
-	(subgenero_mist [SBCFinal_Class17])
-	(titulo "lib17"))
+        (anyo_publicacion 1967)
+        (best_seller TRUE)
+        (clasico_literatura FALSE)
+        (edad_recomendada 5)
+        (edicion_bolsillo FALSE)
+        (editorial "edit8")
+        (escrito_por [SBCFinal_Class23])
+        (idioma_disponible [SBCFinal_Class3])
+        (num_pag 200)
+        (puntuacion 21)
+        (saga TRUE)
+        (subgenero_mist [SBCFinal_Class17])
+        (titulo "lib17"))
 
 ([SBCFinal_Class10014] of  Fantasia
 
-	(anyo_publicacion 1954)
-	(best_seller FALSE)
-	(clasico_literatura TRUE)
-	(edad_recomendada 7)
-	(edicion_bolsillo FALSE)
-	(editorial "edit6")
-	(escrito_por [SBCFinal_Class21])
-	(idioma_disponible [SBCFinal_Class0])
-	(num_pag 250)
-	(puntuacion 10)
-	(saga TRUE)
-	(subgenero_fant [SBCFinal_Class7])
-	(titulo "lib18"))
+        (anyo_publicacion 1954)
+        (best_seller FALSE)
+        (clasico_literatura TRUE)
+        (edad_recomendada 7)
+        (edicion_bolsillo FALSE)
+        (editorial "edit6")
+        (escrito_por [SBCFinal_Class21])
+        (idioma_disponible [SBCFinal_Class0])
+        (num_pag 250)
+        (puntuacion 10)
+        (saga TRUE)
+        (subgenero_fant [SBCFinal_Class7])
+        (titulo "lib18"))
 
 ([SBCFinal_Class10015] of  Fantasia
 
-	(anyo_publicacion 1967)
-	(best_seller FALSE)
-	(clasico_literatura TRUE)
-	(edad_recomendada 4)
-	(edicion_bolsillo TRUE)
-	(editorial "edit7")
-	(escrito_por [SBCFinal_Class21])
-	(idioma_disponible [SBCFinal_Class1])
-	(num_pag 150)
-	(puntuacion 26)
-	(saga FALSE)
-	(subgenero_fant [SBCFinal_Class5])
-	(titulo "lib19"))
+        (anyo_publicacion 1967)
+        (best_seller FALSE)
+        (clasico_literatura TRUE)
+        (edad_recomendada 4)
+        (edicion_bolsillo TRUE)
+        (editorial "edit7")
+        (escrito_por [SBCFinal_Class21])
+        (idioma_disponible [SBCFinal_Class1])
+        (num_pag 150)
+        (puntuacion 26)
+        (saga FALSE)
+        (subgenero_fant [SBCFinal_Class5])
+        (titulo "lib19"))
 
 ([SBCFinal_Class11] of  Subgenero_ciencia_ficcion
 
-	(inverse_of_subgenero_cf
-		[SBCFinal_Class24]
-		[SBCFinal_Class10000]
-		[SBCFinal_Class20000]
-		[SBCFinal_Class20001])
-	(subgenero_ciencia_ficcion "espacio"))
+        (inverse_of_subgenero_cf
+                [SBCFinal_Class24]
+                [SBCFinal_Class10000]
+                [SBCFinal_Class20000]
+                [SBCFinal_Class20001])
+        (subgenero_ciencia_ficcion "espacio"))
 
 ([SBCFinal_Class12] of  Subgenero_ciencia_ficcion
 
-	(inverse_of_subgenero_cf
-		[SBCFinal_Class10001]
-		[SBCFinal_Class20003]
-		[SBCFinal_Class20004]
-		[SBCFinal_Class20006])
-	(subgenero_ciencia_ficcion "robotica_y_inteligencia_artificial"))
+        (inverse_of_subgenero_cf
+                [SBCFinal_Class10001]
+                [SBCFinal_Class20003]
+                [SBCFinal_Class20004]
+                [SBCFinal_Class20006])
+        (subgenero_ciencia_ficcion "robotica_y_inteligencia_artificial"))
 
 ([SBCFinal_Class13] of  Subgenero_ciencia_ficcion
 
-	(inverse_of_subgenero_cf
-		[SBCFinal_Class10005]
-		[SBCFinal_Class20013]
-		[SBCFinal_Class20014]
-		[SBCFinal_Class20015])
-	(subgenero_ciencia_ficcion "socal_alternativo"))
+        (inverse_of_subgenero_cf
+                [SBCFinal_Class10005]
+                [SBCFinal_Class20013]
+                [SBCFinal_Class20014]
+                [SBCFinal_Class20015])
+        (subgenero_ciencia_ficcion "socal_alternativo"))
 
 ([SBCFinal_Class14] of  Subgenero_ciencia_ficcion
 
-	(inverse_of_subgenero_cf
-		[SBCFinal_Class10002]
-		[SBCFinal_Class20010]
-		[SBCFinal_Class20011]
-		[SBCFinal_Class20012])
-	(subgenero_ciencia_ficcion "social_utopia"))
+        (inverse_of_subgenero_cf
+                [SBCFinal_Class10002]
+                [SBCFinal_Class20010]
+                [SBCFinal_Class20011]
+                [SBCFinal_Class20012])
+        (subgenero_ciencia_ficcion "social_utopia"))
 
 ([SBCFinal_Class15] of  Subgenero_ciencia_ficcion
 
-	(inverse_of_subgenero_cf
-		[SBCFinal_Class10006]
-		[SBCFinal_Class20007]
-		[SBCFinal_Class20008]
-		[SBCFinal_Class20009])
-	(subgenero_ciencia_ficcion "social_distopia"))
+        (inverse_of_subgenero_cf
+                [SBCFinal_Class10006]
+                [SBCFinal_Class20007]
+                [SBCFinal_Class20008]
+                [SBCFinal_Class20009])
+        (subgenero_ciencia_ficcion "social_distopia"))
 
 ([SBCFinal_Class16] of  Subgenero_misterio
 
-	(inverse_of_subgenero_mist
-		[SBCFinal_Class26]
-		[SBCFinal_Class10012]
-		[SBCFinal_Class20030]
-		[SBCFinal_Class20031])
-	(subgenero_misterio "policial"))
+        (inverse_of_subgenero_mist
+                [SBCFinal_Class26]
+                [SBCFinal_Class10012]
+                [SBCFinal_Class20030]
+                [SBCFinal_Class20031])
+        (subgenero_misterio "policial"))
 
 ([SBCFinal_Class17] of  Subgenero_misterio
 
-	(inverse_of_subgenero_mist
-		[SBCFinal_Class10011]
-		[SBCFinal_Class10013]
-		[SBCFinal_Class20032]
-		[SBCFinal_Class20033])
-	(subgenero_misterio "suspense"))
+        (inverse_of_subgenero_mist
+                [SBCFinal_Class10011]
+                [SBCFinal_Class10013]
+                [SBCFinal_Class20032]
+                [SBCFinal_Class20033])
+        (subgenero_misterio "suspense"))
 
 ([SBCFinal_Class19] of  Autor
 
-	(inverse_of_escrito_por
-		[SBCFinal_Class24]
-		[SBCFinal_Class10008]
-		[SBCFinal_Class20005]
-		[SBCFinal_Class20009]
-		[SBCFinal_Class20010]
-		[SBCFinal_Class20015]
-		[SBCFinal_Class20017]
-		[SBCFinal_Class20024]
-		[SBCFinal_Class20027]
-		[SBCFinal_Class20031])
-	(Nacionalidad "nac1")
-	(Nombre "autor1"))
+        (inverse_of_escrito_por
+                [SBCFinal_Class24]
+                [SBCFinal_Class10008]
+                [SBCFinal_Class20005]
+                [SBCFinal_Class20009]
+                [SBCFinal_Class20010]
+                [SBCFinal_Class20015]
+                [SBCFinal_Class20017]
+                [SBCFinal_Class20024]
+                [SBCFinal_Class20027]
+                [SBCFinal_Class20031])
+        (Nacionalidad "nac1")
+        (Nombre "autor1"))
 
 ([SBCFinal_Class2] of  Idioma
 
-	(idioma "ingles")
-	(inverse_of_idioma_disponible
-		[SBCFinal_Class24]
-		[SBCFinal_Class26]
-		[SBCFinal_Class10001]
-		[SBCFinal_Class10008]
-		[SBCFinal_Class10012]
-		[SBCFinal_Class20000]
-		[SBCFinal_Class20008]
-		[SBCFinal_Class20009]
-		[SBCFinal_Class20014]
-		[SBCFinal_Class20015]
-		[SBCFinal_Class20017]
-		[SBCFinal_Class20020]
-		[SBCFinal_Class20021]
-		[SBCFinal_Class20024]
-		[SBCFinal_Class20025]
-		[SBCFinal_Class20026]
-		[SBCFinal_Class20027]
-		[SBCFinal_Class20028]
-		[SBCFinal_Class20030]
-		[SBCFinal_Class20032]))
+        (idioma "ingles")
+        (inverse_of_idioma_disponible
+                [SBCFinal_Class24]
+                [SBCFinal_Class26]
+                [SBCFinal_Class10001]
+                [SBCFinal_Class10008]
+                [SBCFinal_Class10012]
+                [SBCFinal_Class20000]
+                [SBCFinal_Class20008]
+                [SBCFinal_Class20009]
+                [SBCFinal_Class20014]
+                [SBCFinal_Class20015]
+                [SBCFinal_Class20017]
+                [SBCFinal_Class20020]
+                [SBCFinal_Class20021]
+                [SBCFinal_Class20024]
+                [SBCFinal_Class20025]
+                [SBCFinal_Class20026]
+                [SBCFinal_Class20027]
+                [SBCFinal_Class20028]
+                [SBCFinal_Class20030]
+                [SBCFinal_Class20032]))
 
 ([SBCFinal_Class20] of  Autor
 
-	(inverse_of_escrito_por
-		[SBCFinal_Class25]
-		[SBCFinal_Class10000]
-		[SBCFinal_Class10012]
-		[SBCFinal_Class20002]
-		[SBCFinal_Class20008]
-		[SBCFinal_Class20019]
-		[SBCFinal_Class20023]
-		[SBCFinal_Class20029])
-	(Nacionalidad "nac2")
-	(Nombre "autor2"))
+        (inverse_of_escrito_por
+                [SBCFinal_Class25]
+                [SBCFinal_Class10000]
+                [SBCFinal_Class10012]
+                [SBCFinal_Class20002]
+                [SBCFinal_Class20008]
+                [SBCFinal_Class20019]
+                [SBCFinal_Class20023]
+                [SBCFinal_Class20029])
+        (Nacionalidad "nac2")
+        (Nombre "autor2"))
 
 ([SBCFinal_Class20000] of  Ciencia_ficcion
 
-	(anyo_publicacion 1994)
-	(best_seller TRUE)
-	(clasico_literatura TRUE)
-	(edad_recomendada 1)
-	(editorial "edit3")
-	(escrito_por [SBCFinal_Class23])
-	(hard FALSE)
-	(idioma_disponible [SBCFinal_Class2])
-	(num_pag 600)
-	(puntuacion 50)
-	(subgenero_cf [SBCFinal_Class11])
-	(titulo "lib20"))
+        (anyo_publicacion 1994)
+        (best_seller TRUE)
+        (clasico_literatura TRUE)
+        (edad_recomendada 1)
+        (editorial "edit3")
+        (escrito_por [SBCFinal_Class23])
+        (hard FALSE)
+        (idioma_disponible [SBCFinal_Class2])
+        (num_pag 600)
+        (puntuacion 50)
+        (subgenero_cf [SBCFinal_Class11])
+        (titulo "lib20"))
 
 ([SBCFinal_Class20001] of  Ciencia_ficcion
 
-	(anyo_publicacion 2000)
-	(best_seller FALSE)
-	(edad_recomendada 16)
-	(editorial "ed6")
-	(escrito_por [SBCFinal_Class21])
-	(hard TRUE)
-	(idioma_disponible
-		[SBCFinal_Class0]
-		[SBCFinal_Class4])
-	(num_pag 300)
-	(puntuacion 110)
-	(saga TRUE)
-	(subgenero_cf [SBCFinal_Class11])
-	(titulo "lib21"))
+        (anyo_publicacion 2000)
+        (best_seller FALSE)
+        (edad_recomendada 16)
+        (editorial "ed6")
+        (escrito_por [SBCFinal_Class21])
+        (hard TRUE)
+        (idioma_disponible
+                [SBCFinal_Class0]
+                [SBCFinal_Class4])
+        (num_pag 300)
+        (puntuacion 110)
+        (saga TRUE)
+        (subgenero_cf [SBCFinal_Class11])
+        (titulo "lib21"))
 
 ([SBCFinal_Class20002] of  Ciencia_ficcion
 
-	(anyo_publicacion 1900)
-	(best_seller TRUE)
-	(edad_recomendada 1)
-	(edicion_bolsillo TRUE)
-	(editorial "edi1")
-	(escrito_por [SBCFinal_Class20])
-	(hard TRUE)
-	(idioma_disponible [SBCFinal_Class0])
-	(num_pag 350)
-	(puntuacion 12)
-	(subgenero_cf [SBCFinal_Class10])
-	(titulo "lib22"))
+        (anyo_publicacion 1900)
+        (best_seller TRUE)
+        (edad_recomendada 1)
+        (edicion_bolsillo TRUE)
+        (editorial "edi1")
+        (escrito_por [SBCFinal_Class20])
+        (hard TRUE)
+        (idioma_disponible [SBCFinal_Class0])
+        (num_pag 350)
+        (puntuacion 12)
+        (subgenero_cf [SBCFinal_Class10])
+        (titulo "lib22"))
 
 ([SBCFinal_Class20003] of  Ciencia_ficcion
 
-	(anyo_publicacion 2000)
-	(clasico_literatura TRUE)
-	(edad_recomendada 16)
-	(editorial "edi6")
-	(escrito_por [SBCFinal_Class21])
-	(hard TRUE)
-	(idioma_disponible [SBCFinal_Class0])
-	(num_pag 250)
-	(puntuacion 5)
-	(saga TRUE)
-	(subgenero_cf [SBCFinal_Class12])
-	(titulo "lib23"))
+        (anyo_publicacion 2000)
+        (clasico_literatura TRUE)
+        (edad_recomendada 16)
+        (editorial "edi6")
+        (escrito_por [SBCFinal_Class21])
+        (hard TRUE)
+        (idioma_disponible [SBCFinal_Class0])
+        (num_pag 250)
+        (puntuacion 5)
+        (saga TRUE)
+        (subgenero_cf [SBCFinal_Class12])
+        (titulo "lib23"))
 
 ([SBCFinal_Class20004] of  Ciencia_ficcion
 
-	(anyo_publicacion 1990)
-	(best_seller TRUE)
-	(edad_recomendada 1)
-	(edicion_bolsillo TRUE)
-	(editorial "ed4")
-	(escrito_por [SBCFinal_Class23])
-	(hard TRUE)
-	(idioma_disponible
-		[SBCFinal_Class4]
-		[SBCFinal_Class0])
-	(num_pag 100)
-	(puntuacion 13)
-	(subgenero_cf [SBCFinal_Class12])
-	(titulo "lib24"))
+        (anyo_publicacion 1990)
+        (best_seller TRUE)
+        (edad_recomendada 1)
+        (edicion_bolsillo TRUE)
+        (editorial "ed4")
+        (escrito_por [SBCFinal_Class23])
+        (hard TRUE)
+        (idioma_disponible
+                [SBCFinal_Class4]
+                [SBCFinal_Class0])
+        (num_pag 100)
+        (puntuacion 13)
+        (subgenero_cf [SBCFinal_Class12])
+        (titulo "lib24"))
 
 ([SBCFinal_Class20005] of  Ciencia_ficcion
 
-	(anyo_publicacion 2005)
-	(best_seller TRUE)
-	(edad_recomendada 1)
-	(editorial "edit1")
-	(escrito_por [SBCFinal_Class19])
-	(idioma_disponible [SBCFinal_Class0])
-	(num_pag 200)
-	(puntuacion 15)
-	(saga TRUE)
-	(subgenero_cf [SBCFinal_Class10])
-	(titulo "lib25"))
+        (anyo_publicacion 2005)
+        (best_seller TRUE)
+        (edad_recomendada 1)
+        (editorial "edit1")
+        (escrito_por [SBCFinal_Class19])
+        (idioma_disponible [SBCFinal_Class0])
+        (num_pag 200)
+        (puntuacion 15)
+        (saga TRUE)
+        (subgenero_cf [SBCFinal_Class10])
+        (titulo "lib25"))
 
 ([SBCFinal_Class20006] of  Ciencia_ficcion
 
-	(anyo_publicacion 2015)
-	(best_seller TRUE)
-	(edad_recomendada 1)
-	(edicion_bolsillo TRUE)
-	(editorial "edit2")
-	(escrito_por [SBCFinal_Class22])
-	(idioma_disponible
-		[SBCFinal_Class0]
-		[SBCFinal_Class1])
-	(num_pag 321)
-	(puntuacion 20)
-	(subgenero_cf [SBCFinal_Class12])
-	(titulo "lib26"))
+        (anyo_publicacion 2015)
+        (best_seller TRUE)
+        (edad_recomendada 1)
+        (edicion_bolsillo TRUE)
+        (editorial "edit2")
+        (escrito_por [SBCFinal_Class22])
+        (idioma_disponible
+                [SBCFinal_Class0]
+                [SBCFinal_Class1])
+        (num_pag 321)
+        (puntuacion 20)
+        (subgenero_cf [SBCFinal_Class12])
+        (titulo "lib26"))
 
 ([SBCFinal_Class20007] of  Ciencia_ficcion
 
-	(anyo_publicacion 2009)
-	(best_seller TRUE)
-	(edad_recomendada 1)
-	(edicion_bolsillo TRUE)
-	(editorial "edit1")
-	(escrito_por [SBCFinal_Class21])
-	(idioma_disponible
-		[SBCFinal_Class1]
-		[SBCFinal_Class3])
-	(num_pag 100)
-	(puntuacion 0)
-	(saga TRUE)
-	(subgenero_cf [SBCFinal_Class15])
-	(titulo "lib27"))
+        (anyo_publicacion 2009)
+        (best_seller TRUE)
+        (edad_recomendada 1)
+        (edicion_bolsillo TRUE)
+        (editorial "edit1")
+        (escrito_por [SBCFinal_Class21])
+        (idioma_disponible
+                [SBCFinal_Class1]
+                [SBCFinal_Class3])
+        (num_pag 100)
+        (puntuacion 0)
+        (saga TRUE)
+        (subgenero_cf [SBCFinal_Class15])
+        (titulo "lib27"))
 
 ([SBCFinal_Class20008] of  Ciencia_ficcion
 
-	(anyo_publicacion 1990)
-	(best_seller FALSE)
-	(clasico_literatura TRUE)
-	(edad_recomendada 16)
-	(editorial "edit6")
-	(escrito_por [SBCFinal_Class20])
-	(idioma_disponible
-		[SBCFinal_Class2]
-		[SBCFinal_Class3])
-	(num_pag 350)
-	(puntuacion 13)
-	(saga TRUE)
-	(subgenero_cf [SBCFinal_Class15])
-	(titulo "lib28"))
+        (anyo_publicacion 1990)
+        (best_seller FALSE)
+        (clasico_literatura TRUE)
+        (edad_recomendada 16)
+        (editorial "edit6")
+        (escrito_por [SBCFinal_Class20])
+        (idioma_disponible
+                [SBCFinal_Class2]
+                [SBCFinal_Class3])
+        (num_pag 350)
+        (puntuacion 13)
+        (saga TRUE)
+        (subgenero_cf [SBCFinal_Class15])
+        (titulo "lib28"))
 
 ([SBCFinal_Class20009] of  Ciencia_ficcion
 
-	(anyo_publicacion 2005)
-	(best_seller FALSE)
-	(edad_recomendada 18)
-	(editorial "edit4")
-	(escrito_por [SBCFinal_Class19])
-	(hard TRUE)
-	(idioma_disponible
-		[SBCFinal_Class0]
-		[SBCFinal_Class2]
-		[SBCFinal_Class1]
-		[SBCFinal_Class4])
-	(num_pag 1000)
-	(puntuacion 20)
-	(saga TRUE)
-	(subgenero_cf [SBCFinal_Class15])
-	(titulo "lib29"))
+        (anyo_publicacion 2005)
+        (best_seller FALSE)
+        (edad_recomendada 18)
+        (editorial "edit4")
+        (escrito_por [SBCFinal_Class19])
+        (hard TRUE)
+        (idioma_disponible
+                [SBCFinal_Class0]
+                [SBCFinal_Class2]
+                [SBCFinal_Class1]
+                [SBCFinal_Class4])
+        (num_pag 1000)
+        (puntuacion 20)
+        (saga TRUE)
+        (subgenero_cf [SBCFinal_Class15])
+        (titulo "lib29"))
 
 ([SBCFinal_Class20010] of  Ciencia_ficcion
 
-	(anyo_publicacion 2001)
-	(best_seller TRUE)
-	(clasico_literatura TRUE)
-	(edad_recomendada 1)
-	(editorial "edit4")
-	(escrito_por [SBCFinal_Class19])
-	(hard TRUE)
-	(idioma_disponible
-		[SBCFinal_Class0]
-		[SBCFinal_Class1])
-	(num_pag 600)
-	(puntuacion 23)
-	(subgenero_cf [SBCFinal_Class14])
-	(titulo "lib30"))
+        (anyo_publicacion 2001)
+        (best_seller TRUE)
+        (clasico_literatura TRUE)
+        (edad_recomendada 1)
+        (editorial "edit4")
+        (escrito_por [SBCFinal_Class19])
+        (hard TRUE)
+        (idioma_disponible
+                [SBCFinal_Class0]
+                [SBCFinal_Class1])
+        (num_pag 600)
+        (puntuacion 23)
+        (subgenero_cf [SBCFinal_Class14])
+        (titulo "lib30"))
 
 ([SBCFinal_Class20011] of  Ciencia_ficcion
 
-	(anyo_publicacion 2003)
-	(best_seller TRUE)
-	(clasico_literatura TRUE)
-	(edad_recomendada 16)
-	(edicion_bolsillo TRUE)
-	(editorial "edit8")
-	(escrito_por [SBCFinal_Class22])
-	(hard TRUE)
-	(idioma_disponible
-		[SBCFinal_Class4]
-		[SBCFinal_Class3])
-	(num_pag 560)
-	(puntuacion 30)
-	(saga TRUE)
-	(subgenero_cf [SBCFinal_Class14])
-	(titulo "lib31"))
+        (anyo_publicacion 2003)
+        (best_seller TRUE)
+        (clasico_literatura TRUE)
+        (edad_recomendada 16)
+        (edicion_bolsillo TRUE)
+        (editorial "edit8")
+        (escrito_por [SBCFinal_Class22])
+        (hard TRUE)
+        (idioma_disponible
+                [SBCFinal_Class4]
+                [SBCFinal_Class3])
+        (num_pag 560)
+        (puntuacion 30)
+        (saga TRUE)
+        (subgenero_cf [SBCFinal_Class14])
+        (titulo "lib31"))
 
 ([SBCFinal_Class20012] of  Ciencia_ficcion
 
-	(anyo_publicacion 1999)
-	(best_seller TRUE)
-	(edad_recomendada 18)
-	(editorial "ed4")
-	(escrito_por [SBCFinal_Class21])
-	(hard TRUE)
-	(idioma_disponible [SBCFinal_Class1])
-	(num_pag 400)
-	(puntuacion 10)
-	(saga TRUE)
-	(subgenero_cf [SBCFinal_Class14])
-	(titulo "lib32"))
+        (anyo_publicacion 1999)
+        (best_seller TRUE)
+        (edad_recomendada 18)
+        (editorial "ed4")
+        (escrito_por [SBCFinal_Class21])
+        (hard TRUE)
+        (idioma_disponible [SBCFinal_Class1])
+        (num_pag 400)
+        (puntuacion 10)
+        (saga TRUE)
+        (subgenero_cf [SBCFinal_Class14])
+        (titulo "lib32"))
 
 ([SBCFinal_Class20013] of  Ciencia_ficcion
 
-	(anyo_publicacion 2000)
-	(best_seller TRUE)
-	(clasico_literatura TRUE)
-	(edad_recomendada 1)
-	(edicion_bolsillo TRUE)
-	(editorial "edit5")
-	(escrito_por [SBCFinal_Class21])
-	(hard TRUE)
-	(idioma_disponible [SBCFinal_Class0])
-	(num_pag 120)
-	(puntuacion 1)
-	(saga TRUE)
-	(subgenero_cf [SBCFinal_Class13])
-	(titulo "lib33"))
+        (anyo_publicacion 2000)
+        (best_seller TRUE)
+        (clasico_literatura TRUE)
+        (edad_recomendada 1)
+        (edicion_bolsillo TRUE)
+        (editorial "edit5")
+        (escrito_por [SBCFinal_Class21])
+        (hard TRUE)
+        (idioma_disponible [SBCFinal_Class0])
+        (num_pag 120)
+        (puntuacion 1)
+        (saga TRUE)
+        (subgenero_cf [SBCFinal_Class13])
+        (titulo "lib33"))
 
 ([SBCFinal_Class20014] of  Ciencia_ficcion
 
-	(anyo_publicacion 2008)
-	(best_seller TRUE)
-	(edad_recomendada 16)
-	(editorial "edit6")
-	(escrito_por [SBCFinal_Class23])
-	(idioma_disponible
-		[SBCFinal_Class2]
-		[SBCFinal_Class1])
-	(num_pag 210)
-	(puntuacion 20)
-	(saga TRUE)
-	(subgenero_cf [SBCFinal_Class13])
-	(titulo "lib26"))
+        (anyo_publicacion 2008)
+        (best_seller TRUE)
+        (edad_recomendada 16)
+        (editorial "edit6")
+        (escrito_por [SBCFinal_Class23])
+        (idioma_disponible
+                [SBCFinal_Class2]
+                [SBCFinal_Class1])
+        (num_pag 210)
+        (puntuacion 20)
+        (saga TRUE)
+        (subgenero_cf [SBCFinal_Class13])
+        (titulo "lib26"))
 
 ([SBCFinal_Class20015] of  Ciencia_ficcion
 
-	(anyo_publicacion 1950)
-	(best_seller TRUE)
-	(clasico_literatura TRUE)
-	(edad_recomendada 18)
-	(editorial "edit1")
-	(escrito_por [SBCFinal_Class19])
-	(hard TRUE)
-	(idioma_disponible
-		[SBCFinal_Class0]
-		[SBCFinal_Class3]
-		[SBCFinal_Class1]
-		[SBCFinal_Class4]
-		[SBCFinal_Class2])
-	(num_pag 1000)
-	(puntuacion 30)
-	(subgenero_cf [SBCFinal_Class13])
-	(titulo "lib34"))
+        (anyo_publicacion 1950)
+        (best_seller TRUE)
+        (clasico_literatura TRUE)
+        (edad_recomendada 18)
+        (editorial "edit1")
+        (escrito_por [SBCFinal_Class19])
+        (hard TRUE)
+        (idioma_disponible
+                [SBCFinal_Class0]
+                [SBCFinal_Class3]
+                [SBCFinal_Class1]
+                [SBCFinal_Class4]
+                [SBCFinal_Class2])
+        (num_pag 1000)
+        (puntuacion 30)
+        (subgenero_cf [SBCFinal_Class13])
+        (titulo "lib34"))
 
 ([SBCFinal_Class20017] of  Fantasia
 
-	(anyo_publicacion 1980)
-	(best_seller TRUE)
-	(clasico_literatura TRUE)
-	(edad_recomendada 16)
-	(editorial "ed1")
-	(escrito_por [SBCFinal_Class19])
-	(idioma_disponible
-		[SBCFinal_Class0]
-		[SBCFinal_Class3]
-		[SBCFinal_Class1]
-		[SBCFinal_Class4]
-		[SBCFinal_Class2])
-	(num_pag 800)
-	(puntuacion 50)
-	(saga FALSE)
-	(subgenero_fant [SBCFinal_Class7])
-	(titulo "lib35"))
+        (anyo_publicacion 1980)
+        (best_seller TRUE)
+        (clasico_literatura TRUE)
+        (edad_recomendada 16)
+        (editorial "ed1")
+        (escrito_por [SBCFinal_Class19])
+        (idioma_disponible
+                [SBCFinal_Class0]
+                [SBCFinal_Class3]
+                [SBCFinal_Class1]
+                [SBCFinal_Class4]
+                [SBCFinal_Class2])
+        (num_pag 800)
+        (puntuacion 50)
+        (saga FALSE)
+        (subgenero_fant [SBCFinal_Class7])
+        (titulo "lib35"))
 
 ([SBCFinal_Class20018] of  Fantasia
 
-	(anyo_publicacion 2006)
-	(best_seller FALSE)
-	(clasico_literatura FALSE)
-	(edad_recomendada 16)
-	(edicion_bolsillo TRUE)
-	(editorial "ed1")
-	(escrito_por [SBCFinal_Class21])
-	(idioma_disponible [SBCFinal_Class1])
-	(num_pag 50)
-	(puntuacion 11)
-	(subgenero_fant [SBCFinal_Class5])
-	(titulo "lib37"))
+        (anyo_publicacion 2006)
+        (best_seller FALSE)
+        (clasico_literatura FALSE)
+        (edad_recomendada 16)
+        (edicion_bolsillo TRUE)
+        (editorial "ed1")
+        (escrito_por [SBCFinal_Class21])
+        (idioma_disponible [SBCFinal_Class1])
+        (num_pag 50)
+        (puntuacion 11)
+        (subgenero_fant [SBCFinal_Class5])
+        (titulo "lib37"))
 
 ([SBCFinal_Class20019] of  Fantasia
 
-	(anyo_publicacion 2001)
-	(best_seller TRUE)
-	(edad_recomendada 1)
-	(editorial "ed2")
-	(escrito_por [SBCFinal_Class20])
-	(idioma_disponible
-		[SBCFinal_Class4]
-		[SBCFinal_Class1]
-		[SBCFinal_Class0])
-	(num_pag 500)
-	(puntuacion 12)
-	(saga TRUE)
-	(subgenero_fant [SBCFinal_Class7])
-	(titulo "lib36"))
+        (anyo_publicacion 2001)
+        (best_seller TRUE)
+        (edad_recomendada 1)
+        (editorial "ed2")
+        (escrito_por [SBCFinal_Class20])
+        (idioma_disponible
+                [SBCFinal_Class4]
+                [SBCFinal_Class1]
+                [SBCFinal_Class0])
+        (num_pag 500)
+        (puntuacion 12)
+        (saga TRUE)
+        (subgenero_fant [SBCFinal_Class7])
+        (titulo "lib36"))
 
 ([SBCFinal_Class20020] of  Fantasia
 
-	(anyo_publicacion 1900)
-	(best_seller FALSE)
-	(clasico_literatura TRUE)
-	(edad_recomendada 1)
-	(editorial "ed3")
-	(escrito_por [SBCFinal_Class23])
-	(idioma_disponible
-		[SBCFinal_Class0]
-		[SBCFinal_Class1]
-		[SBCFinal_Class3]
-		[SBCFinal_Class4]
-		[SBCFinal_Class2])
-	(num_pag 70)
-	(puntuacion 25)
-	(subgenero_fant [SBCFinal_Class5])
-	(titulo "lib38"))
+        (anyo_publicacion 1900)
+        (best_seller FALSE)
+        (clasico_literatura TRUE)
+        (edad_recomendada 1)
+        (editorial "ed3")
+        (escrito_por [SBCFinal_Class23])
+        (idioma_disponible
+                [SBCFinal_Class0]
+                [SBCFinal_Class1]
+                [SBCFinal_Class3]
+                [SBCFinal_Class4]
+                [SBCFinal_Class2])
+        (num_pag 70)
+        (puntuacion 25)
+        (subgenero_fant [SBCFinal_Class5])
+        (titulo "lib38"))
 
 ([SBCFinal_Class20021] of  Fantasia
 
-	(anyo_publicacion 2011)
-	(best_seller TRUE)
-	(edad_recomendada 1)
-	(editorial "edit1")
-	(escrito_por [SBCFinal_Class21])
-	(idioma_disponible
-		[SBCFinal_Class0]
-		[SBCFinal_Class2])
-	(num_pag 150)
-	(puntuacion 0)
-	(saga TRUE)
-	(subgenero_fant [SBCFinal_Class6])
-	(titulo "lib39"))
+        (anyo_publicacion 2011)
+        (best_seller TRUE)
+        (edad_recomendada 1)
+        (editorial "edit1")
+        (escrito_por [SBCFinal_Class21])
+        (idioma_disponible
+                [SBCFinal_Class0]
+                [SBCFinal_Class2])
+        (num_pag 150)
+        (puntuacion 0)
+        (saga TRUE)
+        (subgenero_fant [SBCFinal_Class6])
+        (titulo "lib39"))
 
 ([SBCFinal_Class20022] of  Fantasia
 
-	(anyo_publicacion 1990)
-	(best_seller TRUE)
-	(clasico_literatura TRUE)
-	(edad_recomendada 18)
-	(edicion_bolsillo TRUE)
-	(editorial "edit5")
-	(escrito_por [SBCFinal_Class22])
-	(idioma_disponible
-		[SBCFinal_Class1]
-		[SBCFinal_Class0])
-	(num_pag 650)
-	(puntuacion 20)
-	(saga TRUE)
-	(subgenero_fant [SBCFinal_Class6])
-	(titulo "lib40"))
+        (anyo_publicacion 1990)
+        (best_seller TRUE)
+        (clasico_literatura TRUE)
+        (edad_recomendada 18)
+        (edicion_bolsillo TRUE)
+        (editorial "edit5")
+        (escrito_por [SBCFinal_Class22])
+        (idioma_disponible
+                [SBCFinal_Class1]
+                [SBCFinal_Class0])
+        (num_pag 650)
+        (puntuacion 20)
+        (saga TRUE)
+        (subgenero_fant [SBCFinal_Class6])
+        (titulo "lib40"))
 
 ([SBCFinal_Class20023] of  Fantasia
 
-	(anyo_publicacion 2012)
-	(best_seller TRUE)
-	(edad_recomendada 16)
-	(editorial "edit7")
-	(escrito_por [SBCFinal_Class20])
-	(idioma_disponible
-		[SBCFinal_Class1]
-		[SBCFinal_Class4])
-	(num_pag 306)
-	(puntuacion 14)
-	(saga FALSE)
-	(subgenero_fant [SBCFinal_Class6])
-	(titulo "lib41"))
+        (anyo_publicacion 2012)
+        (best_seller TRUE)
+        (edad_recomendada 16)
+        (editorial "edit7")
+        (escrito_por [SBCFinal_Class20])
+        (idioma_disponible
+                [SBCFinal_Class1]
+                [SBCFinal_Class4])
+        (num_pag 306)
+        (puntuacion 14)
+        (saga FALSE)
+        (subgenero_fant [SBCFinal_Class6])
+        (titulo "lib41"))
 
 ([SBCFinal_Class20024] of  Fantasia
 
-	(anyo_publicacion 1997)
-	(best_seller TRUE)
-	(clasico_literatura TRUE)
-	(edad_recomendada 18)
-	(edicion_bolsillo TRUE)
-	(editorial "edit1")
-	(escrito_por [SBCFinal_Class19])
-	(idioma_disponible
-		[SBCFinal_Class2]
-		[SBCFinal_Class3]
-		[SBCFinal_Class0])
-	(num_pag 900)
-	(puntuacion 50)
-	(saga TRUE)
-	(subgenero_fant [SBCFinal_Class8])
-	(titulo "lib42"))
+        (anyo_publicacion 1997)
+        (best_seller TRUE)
+        (clasico_literatura TRUE)
+        (edad_recomendada 18)
+        (edicion_bolsillo TRUE)
+        (editorial "edit1")
+        (escrito_por [SBCFinal_Class19])
+        (idioma_disponible
+                [SBCFinal_Class2]
+                [SBCFinal_Class3]
+                [SBCFinal_Class0])
+        (num_pag 900)
+        (puntuacion 50)
+        (saga TRUE)
+        (subgenero_fant [SBCFinal_Class8])
+        (titulo "lib42"))
 
 ([SBCFinal_Class20025] of  Fantasia
 
-	(anyo_publicacion 1960)
-	(best_seller TRUE)
-	(edad_recomendada 16)
-	(edicion_bolsillo TRUE)
-	(editorial "edt4")
-	(escrito_por [SBCFinal_Class23])
-	(idioma_disponible [SBCFinal_Class2])
-	(num_pag 300)
-	(puntuacion 12)
-	(subgenero_fant [SBCFinal_Class8])
-	(titulo "lib43"))
+        (anyo_publicacion 1960)
+        (best_seller TRUE)
+        (edad_recomendada 16)
+        (edicion_bolsillo TRUE)
+        (editorial "edt4")
+        (escrito_por [SBCFinal_Class23])
+        (idioma_disponible [SBCFinal_Class2])
+        (num_pag 300)
+        (puntuacion 12)
+        (subgenero_fant [SBCFinal_Class8])
+        (titulo "lib43"))
 
 ([SBCFinal_Class20026] of  Fantasia
 
-	(anyo_publicacion 1800)
-	(clasico_literatura TRUE)
-	(edad_recomendada 1)
-	(editorial "edit5")
-	(escrito_por [SBCFinal_Class22])
-	(idioma_disponible
-		[SBCFinal_Class0]
-		[SBCFinal_Class1]
-		[SBCFinal_Class3]
-		[SBCFinal_Class4]
-		[SBCFinal_Class2])
-	(num_pag 100)
-	(puntuacion 20)
-	(subgenero_fant [SBCFinal_Class8])
-	(titulo "lib44"))
+        (anyo_publicacion 1800)
+        (clasico_literatura TRUE)
+        (edad_recomendada 1)
+        (editorial "edit5")
+        (escrito_por [SBCFinal_Class22])
+        (idioma_disponible
+                [SBCFinal_Class0]
+                [SBCFinal_Class1]
+                [SBCFinal_Class3]
+                [SBCFinal_Class4]
+                [SBCFinal_Class2])
+        (num_pag 100)
+        (puntuacion 20)
+        (subgenero_fant [SBCFinal_Class8])
+        (titulo "lib44"))
 
 ([SBCFinal_Class20027] of  Fantasia
 
-	(anyo_publicacion 1950)
-	(best_seller FALSE)
-	(clasico_literatura TRUE)
-	(edad_recomendada 18)
-	(edicion_bolsillo TRUE)
-	(editorial "edit9")
-	(escrito_por [SBCFinal_Class19])
-	(idioma_disponible
-		[SBCFinal_Class0]
-		[SBCFinal_Class2])
-	(num_pag 350)
-	(puntuacion 10)
-	(saga FALSE)
-	(subgenero_fant [SBCFinal_Class9])
-	(titulo "lib45"))
+        (anyo_publicacion 1950)
+        (best_seller FALSE)
+        (clasico_literatura TRUE)
+        (edad_recomendada 18)
+        (edicion_bolsillo TRUE)
+        (editorial "edit9")
+        (escrito_por [SBCFinal_Class19])
+        (idioma_disponible
+                [SBCFinal_Class0]
+                [SBCFinal_Class2])
+        (num_pag 350)
+        (puntuacion 10)
+        (saga FALSE)
+        (subgenero_fant [SBCFinal_Class9])
+        (titulo "lib45"))
 
 ([SBCFinal_Class20028] of  Fantasia
 
-	(anyo_publicacion 2005)
-	(best_seller TRUE)
-	(edad_recomendada 1)
-	(edicion_bolsillo TRUE)
-	(editorial "ed1")
-	(escrito_por [SBCFinal_Class21])
-	(idioma_disponible
-		[SBCFinal_Class2]
-		[SBCFinal_Class0]
-		[SBCFinal_Class3])
-	(num_pag 150)
-	(puntuacion 1)
-	(saga TRUE)
-	(subgenero_fant [SBCFinal_Class9])
-	(titulo "lib46"))
+        (anyo_publicacion 2005)
+        (best_seller TRUE)
+        (edad_recomendada 1)
+        (edicion_bolsillo TRUE)
+        (editorial "ed1")
+        (escrito_por [SBCFinal_Class21])
+        (idioma_disponible
+                [SBCFinal_Class2]
+                [SBCFinal_Class0]
+                [SBCFinal_Class3])
+        (num_pag 150)
+        (puntuacion 1)
+        (saga TRUE)
+        (subgenero_fant [SBCFinal_Class9])
+        (titulo "lib46"))
 
 ([SBCFinal_Class20029] of  Fantasia
 
-	(anyo_publicacion 1999)
-	(best_seller TRUE)
-	(clasico_literatura TRUE)
-	(edad_recomendada 16)
-	(edicion_bolsillo TRUE)
-	(editorial "edit5")
-	(escrito_por [SBCFinal_Class20])
-	(idioma_disponible
-		[SBCFinal_Class1]
-		[SBCFinal_Class3])
-	(num_pag 530)
-	(puntuacion 2)
-	(saga TRUE)
-	(subgenero_fant [SBCFinal_Class9])
-	(titulo "lib47"))
+        (anyo_publicacion 1999)
+        (best_seller TRUE)
+        (clasico_literatura TRUE)
+        (edad_recomendada 16)
+        (edicion_bolsillo TRUE)
+        (editorial "edit5")
+        (escrito_por [SBCFinal_Class20])
+        (idioma_disponible
+                [SBCFinal_Class1]
+                [SBCFinal_Class3])
+        (num_pag 530)
+        (puntuacion 2)
+        (saga TRUE)
+        (subgenero_fant [SBCFinal_Class9])
+        (titulo "lib47"))
 
 ([SBCFinal_Class20030] of  Misterio
 
-	(anyo_publicacion 2003)
-	(best_seller TRUE)
-	(clasico_literatura TRUE)
-	(edad_recomendada 1)
-	(edicion_bolsillo TRUE)
-	(editorial "edit3")
-	(escrito_por [SBCFinal_Class22])
-	(idioma_disponible
-		[SBCFinal_Class2]
-		[SBCFinal_Class0])
-	(num_pag 350)
-	(puntuacion 10)
-	(saga TRUE)
-	(subgenero_mist [SBCFinal_Class16])
-	(titulo "lib48"))
+        (anyo_publicacion 2003)
+        (best_seller TRUE)
+        (clasico_literatura TRUE)
+        (edad_recomendada 1)
+        (edicion_bolsillo TRUE)
+        (editorial "edit3")
+        (escrito_por [SBCFinal_Class22])
+        (idioma_disponible
+                [SBCFinal_Class2]
+                [SBCFinal_Class0])
+        (num_pag 350)
+        (puntuacion 10)
+        (saga TRUE)
+        (subgenero_mist [SBCFinal_Class16])
+        (titulo "lib48"))
 
 ([SBCFinal_Class20031] of  Misterio
 
-	(anyo_publicacion 1998)
-	(clasico_literatura TRUE)
-	(edad_recomendada 16)
-	(editorial "edit4")
-	(escrito_por [SBCFinal_Class19])
-	(idioma_disponible
-		[SBCFinal_Class0]
-		[SBCFinal_Class1])
-	(num_pag 430)
-	(puntuacion 10)
-	(saga TRUE)
-	(subgenero_mist [SBCFinal_Class16])
-	(titulo "lib49"))
+        (anyo_publicacion 1998)
+        (clasico_literatura TRUE)
+        (edad_recomendada 16)
+        (editorial "edit4")
+        (escrito_por [SBCFinal_Class19])
+        (idioma_disponible
+                [SBCFinal_Class0]
+                [SBCFinal_Class1])
+        (num_pag 430)
+        (puntuacion 10)
+        (saga TRUE)
+        (subgenero_mist [SBCFinal_Class16])
+        (titulo "lib49"))
 
 ([SBCFinal_Class20032] of  Misterio
 
-	(anyo_publicacion 2000)
-	(best_seller TRUE)
-	(clasico_literatura TRUE)
-	(edad_recomendada 1)
-	(edicion_bolsillo TRUE)
-	(editorial "edit4")
-	(escrito_por [SBCFinal_Class23])
-	(idioma_disponible [SBCFinal_Class2])
-	(num_pag 500)
-	(puntuacion 20)
-	(saga TRUE)
-	(subgenero_mist [SBCFinal_Class17])
-	(titulo "lib50"))
+        (anyo_publicacion 2000)
+        (best_seller TRUE)
+        (clasico_literatura TRUE)
+        (edad_recomendada 1)
+        (edicion_bolsillo TRUE)
+        (editorial "edit4")
+        (escrito_por [SBCFinal_Class23])
+        (idioma_disponible [SBCFinal_Class2])
+        (num_pag 500)
+        (puntuacion 20)
+        (saga TRUE)
+        (subgenero_mist [SBCFinal_Class17])
+        (titulo "lib50"))
 
 ([SBCFinal_Class20033] of  Misterio
 
-	(anyo_publicacion 2006)
-	(best_seller TRUE)
-	(edad_recomendada 18)
-	(editorial "edit4")
-	(escrito_por [SBCFinal_Class22])
-	(idioma_disponible [SBCFinal_Class0])
-	(num_pag 300)
-	(puntuacion 10)
-	(saga TRUE)
-	(subgenero_mist [SBCFinal_Class17])
-	(titulo "lib51"))
+        (anyo_publicacion 2006)
+        (best_seller TRUE)
+        (edad_recomendada 18)
+        (editorial "edit4")
+        (escrito_por [SBCFinal_Class22])
+        (idioma_disponible [SBCFinal_Class0])
+        (num_pag 300)
+        (puntuacion 10)
+        (saga TRUE)
+        (subgenero_mist [SBCFinal_Class17])
+        (titulo "lib51"))
 
 ([SBCFinal_Class21] of  Autor
 
-	(inverse_of_escrito_por
-		[SBCFinal_Class26]
-		[SBCFinal_Class10004]
-		[SBCFinal_Class10011]
-		[SBCFinal_Class10014]
-		[SBCFinal_Class10015]
-		[SBCFinal_Class20001]
-		[SBCFinal_Class20003]
-		[SBCFinal_Class20007]
-		[SBCFinal_Class20012]
-		[SBCFinal_Class20013]
-		[SBCFinal_Class20018]
-		[SBCFinal_Class20021]
-		[SBCFinal_Class20028])
-	(Nacionalidad "nac2")
-	(Nombre "autor3"))
+        (inverse_of_escrito_por
+                [SBCFinal_Class26]
+                [SBCFinal_Class10004]
+                [SBCFinal_Class10011]
+                [SBCFinal_Class10014]
+                [SBCFinal_Class10015]
+                [SBCFinal_Class20001]
+                [SBCFinal_Class20003]
+                [SBCFinal_Class20007]
+                [SBCFinal_Class20012]
+                [SBCFinal_Class20013]
+                [SBCFinal_Class20018]
+                [SBCFinal_Class20021]
+                [SBCFinal_Class20028])
+        (Nacionalidad "nac2")
+        (Nombre "autor3"))
 
 ([SBCFinal_Class22] of  Autor
 
-	(inverse_of_escrito_por
-		[SBCFinal_Class10001]
-		[SBCFinal_Class10003]
-		[SBCFinal_Class10005]
-		[SBCFinal_Class10007]
-		[SBCFinal_Class10009]
-		[SBCFinal_Class10010]
-		[SBCFinal_Class20006]
-		[SBCFinal_Class20011]
-		[SBCFinal_Class20022]
-		[SBCFinal_Class20026]
-		[SBCFinal_Class20030]
-		[SBCFinal_Class20033])
-	(Nacionalidad "nac3")
-	(Nombre "autor4"))
+        (inverse_of_escrito_por
+                [SBCFinal_Class10001]
+                [SBCFinal_Class10003]
+                [SBCFinal_Class10005]
+                [SBCFinal_Class10007]
+                [SBCFinal_Class10009]
+                [SBCFinal_Class10010]
+                [SBCFinal_Class20006]
+                [SBCFinal_Class20011]
+                [SBCFinal_Class20022]
+                [SBCFinal_Class20026]
+                [SBCFinal_Class20030]
+                [SBCFinal_Class20033])
+        (Nacionalidad "nac3")
+        (Nombre "autor4"))
 
 ([SBCFinal_Class23] of  Autor
 
-	(inverse_of_escrito_por
-		[SBCFinal_Class10002]
-		[SBCFinal_Class10006]
-		[SBCFinal_Class10013]
-		[SBCFinal_Class20000]
-		[SBCFinal_Class20004]
-		[SBCFinal_Class20014]
-		[SBCFinal_Class20020]
-		[SBCFinal_Class20025]
-		[SBCFinal_Class20032])
-	(Nacionalidad "nac2")
-	(Nombre "autor5"))
+        (inverse_of_escrito_por
+                [SBCFinal_Class10002]
+                [SBCFinal_Class10006]
+                [SBCFinal_Class10013]
+                [SBCFinal_Class20000]
+                [SBCFinal_Class20004]
+                [SBCFinal_Class20014]
+                [SBCFinal_Class20020]
+                [SBCFinal_Class20025]
+                [SBCFinal_Class20032])
+        (Nacionalidad "nac2")
+        (Nombre "autor5"))
 
 ([SBCFinal_Class24] of  Ciencia_ficcion
 
-	(anyo_publicacion 1900)
-	(best_seller TRUE)
-	(clasico_literatura TRUE)
-	(edad_recomendada 16)
-	(edicion_bolsillo TRUE)
-	(editorial "edit1")
-	(escrito_por [SBCFinal_Class19])
-	(hard TRUE)
-	(idioma_disponible
-		[SBCFinal_Class0]
-		[SBCFinal_Class1]
-		[SBCFinal_Class2])
-	(num_pag 500)
-	(puntuacion 10)
-	(saga TRUE)
-	(subgenero_cf [SBCFinal_Class11])
-	(titulo "libro1"))
+        (anyo_publicacion 1900)
+        (best_seller TRUE)
+        (clasico_literatura TRUE)
+        (edad_recomendada 16)
+        (edicion_bolsillo TRUE)
+        (editorial "edit1")
+        (escrito_por [SBCFinal_Class19])
+        (hard TRUE)
+        (idioma_disponible
+                [SBCFinal_Class0]
+                [SBCFinal_Class1]
+                [SBCFinal_Class2])
+        (num_pag 500)
+        (puntuacion 10)
+        (saga TRUE)
+        (subgenero_cf [SBCFinal_Class11])
+        (titulo "libro1"))
 
 ([SBCFinal_Class25] of  Fantasia
 
-	(anyo_publicacion 2000)
-	(best_seller TRUE)
-	(clasico_literatura TRUE)
-	(edad_recomendada 12)
-	(edicion_bolsillo TRUE)
-	(editorial "edit1")
-	(escrito_por [SBCFinal_Class20])
-	(idioma_disponible [SBCFinal_Class0])
-	(num_pag 300)
-	(puntuacion 17)
-	(saga TRUE)
-	(subgenero_fant [SBCFinal_Class5])
-	(titulo "libro2"))
+        (anyo_publicacion 2000)
+        (best_seller TRUE)
+        (clasico_literatura TRUE)
+        (edad_recomendada 12)
+        (edicion_bolsillo TRUE)
+        (editorial "edit1")
+        (escrito_por [SBCFinal_Class20])
+        (idioma_disponible [SBCFinal_Class0])
+        (num_pag 300)
+        (puntuacion 17)
+        (saga TRUE)
+        (subgenero_fant [SBCFinal_Class5])
+        (titulo "libro2"))
 
 ([SBCFinal_Class26] of  Misterio
 
-	(anyo_publicacion 1500)
-	(best_seller TRUE)
-	(clasico_literatura TRUE)
-	(edad_recomendada 18)
-	(edicion_bolsillo TRUE)
-	(editorial "edit2")
-	(escrito_por [SBCFinal_Class21])
-	(idioma_disponible [SBCFinal_Class2])
-	(num_pag 150)
-	(puntuacion 19)
-	(saga TRUE)
-	(subgenero_mist [SBCFinal_Class16])
-	(titulo "libro3"))
+        (anyo_publicacion 1500)
+        (best_seller TRUE)
+        (clasico_literatura TRUE)
+        (edad_recomendada 18)
+        (edicion_bolsillo TRUE)
+        (editorial "edit2")
+        (escrito_por [SBCFinal_Class21])
+        (idioma_disponible [SBCFinal_Class2])
+        (num_pag 150)
+        (puntuacion 19)
+        (saga TRUE)
+        (subgenero_mist [SBCFinal_Class16])
+        (titulo "libro3"))
 
 ([SBCFinal_Class3] of  Idioma
 
-	(idioma "aleman")
-	(inverse_of_idioma_disponible
-		[SBCFinal_Class10000]
-		[SBCFinal_Class10003]
-		[SBCFinal_Class10010]
-		[SBCFinal_Class10013]
-		[SBCFinal_Class20007]
-		[SBCFinal_Class20008]
-		[SBCFinal_Class20011]
-		[SBCFinal_Class20015]
-		[SBCFinal_Class20017]
-		[SBCFinal_Class20020]
-		[SBCFinal_Class20024]
-		[SBCFinal_Class20026]
-		[SBCFinal_Class20028]
-		[SBCFinal_Class20029]))
+        (idioma "aleman")
+        (inverse_of_idioma_disponible
+                [SBCFinal_Class10000]
+                [SBCFinal_Class10003]
+                [SBCFinal_Class10010]
+                [SBCFinal_Class10013]
+                [SBCFinal_Class20007]
+                [SBCFinal_Class20008]
+                [SBCFinal_Class20011]
+                [SBCFinal_Class20015]
+                [SBCFinal_Class20017]
+                [SBCFinal_Class20020]
+                [SBCFinal_Class20024]
+                [SBCFinal_Class20026]
+                [SBCFinal_Class20028]
+                [SBCFinal_Class20029]))
 
 ([SBCFinal_Class4] of  Idioma
 
-	(idioma "chino")
-	(inverse_of_idioma_disponible
-		[SBCFinal_Class10000]
-		[SBCFinal_Class10001]
-		[SBCFinal_Class10002]
-		[SBCFinal_Class10004]
-		[SBCFinal_Class10006]
-		[SBCFinal_Class20001]
-		[SBCFinal_Class20004]
-		[SBCFinal_Class20009]
-		[SBCFinal_Class20011]
-		[SBCFinal_Class20015]
-		[SBCFinal_Class20017]
-		[SBCFinal_Class20019]
-		[SBCFinal_Class20020]
-		[SBCFinal_Class20023]
-		[SBCFinal_Class20026]))
+        (idioma "chino")
+        (inverse_of_idioma_disponible
+                [SBCFinal_Class10000]
+                [SBCFinal_Class10001]
+                [SBCFinal_Class10002]
+                [SBCFinal_Class10004]
+                [SBCFinal_Class10006]
+                [SBCFinal_Class20001]
+                [SBCFinal_Class20004]
+                [SBCFinal_Class20009]
+                [SBCFinal_Class20011]
+                [SBCFinal_Class20015]
+                [SBCFinal_Class20017]
+                [SBCFinal_Class20019]
+                [SBCFinal_Class20020]
+                [SBCFinal_Class20023]
+                [SBCFinal_Class20026]))
 
 ([SBCFinal_Class5] of  Subgenero_fantasia
 
-	(inverse_of_subgenero_fant
-		[SBCFinal_Class25]
-		[SBCFinal_Class10015]
-		[SBCFinal_Class20018]
-		[SBCFinal_Class20020])
-	(subgenero_fantasia "cuentos_clasicos"))
+        (inverse_of_subgenero_fant
+                [SBCFinal_Class25]
+                [SBCFinal_Class10015]
+                [SBCFinal_Class20018]
+                [SBCFinal_Class20020])
+        (subgenero_fantasia "cuentos_clasicos"))
 
 ([SBCFinal_Class6] of  Subgenero_fantasia
 
-	(inverse_of_subgenero_fant
-		[SBCFinal_Class10008]
-		[SBCFinal_Class20021]
-		[SBCFinal_Class20022]
-		[SBCFinal_Class20023])
-	(subgenero_fantasia "magia_y_espada"))
+        (inverse_of_subgenero_fant
+                [SBCFinal_Class10008]
+                [SBCFinal_Class20021]
+                [SBCFinal_Class20022]
+                [SBCFinal_Class20023])
+        (subgenero_fantasia "magia_y_espada"))
 
 ([SBCFinal_Class7] of  Subgenero_fantasia
 
-	(inverse_of_subgenero_fant
-		[SBCFinal_Class10007]
-		[SBCFinal_Class10014]
-		[SBCFinal_Class20017]
-		[SBCFinal_Class20019])
-	(subgenero_fantasia "alta_fantasia"))
+        (inverse_of_subgenero_fant
+                [SBCFinal_Class10007]
+                [SBCFinal_Class10014]
+                [SBCFinal_Class20017]
+                [SBCFinal_Class20019])
+        (subgenero_fantasia "alta_fantasia"))
 
 ([SBCFinal_Class8] of  Subgenero_fantasia
 
-	(inverse_of_subgenero_fant
-		[SBCFinal_Class10009]
-		[SBCFinal_Class20024]
-		[SBCFinal_Class20025]
-		[SBCFinal_Class20026])
-	(subgenero_fantasia "medieval"))
+        (inverse_of_subgenero_fant
+                [SBCFinal_Class10009]
+                [SBCFinal_Class20024]
+                [SBCFinal_Class20025]
+                [SBCFinal_Class20026])
+        (subgenero_fantasia "medieval"))
 
 ([SBCFinal_Class9] of  Subgenero_fantasia
 
-	(inverse_of_subgenero_fant
-		[SBCFinal_Class10010]
-		[SBCFinal_Class20027]
-		[SBCFinal_Class20028]
-		[SBCFinal_Class20029])
-	(subgenero_fantasia "terror"))
+        (inverse_of_subgenero_fant
+                [SBCFinal_Class10010]
+                [SBCFinal_Class20027]
+                [SBCFinal_Class20028]
+                [SBCFinal_Class20029])
+        (subgenero_fantasia "terror"))
 
 )
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
@@ -1588,14 +1588,14 @@
 (defmessage-handler MAIN::Libro plantilla ()
         (format t "Titulo: %s %n" ?self:titulo)
         (format t "Editorial: %s" ?self:editorial)
-		(printout t crlf)
+                (printout t crlf)
         (format t "Autor: %s" (send ?self:escrito_por get-Nombre))
-		(printout t crlf)
+                (printout t crlf)
         (format t "Anyo de publicacion: %d %n" ?self:anyo_publicacion)
-		(printout t "Idiomas disponibles:" crlf)
+                (printout t "Idiomas disponibles:" crlf)
         (progn$ (?id-disp (send ?self get-idioma_disponible))
                 (format t " - %s" (send ?id-disp get-idioma))
-			(printout t crlf)
+                        (printout t crlf)
         )
 )
 
@@ -2163,22 +2163,22 @@
         (bind ?nombre (send $?subcf get-subgenero_ciencia_ficcion))
                 (switch ?nombre
                         (case "robotica_y_inteligencia_artificial" then 
-                                (bind ?p (+ ?p 125))
+                                (bind ?p (+ ?p 100))
                         )
                         (case "viajes_en_el_tiempo" then
-                                (bind ?p (+ ?p 125))
+                                (bind ?p (+ ?p 100))
                         )
                         (case "espacio" then
-                                (bind ?p (+ ?p 125))
+                                (bind ?p (+ ?p 100))
                         )
                         (case "social_utopia" then
-                                (bind ?p (+ ?p 125))
+                                (bind ?p (+ ?p 75))
                         )
                         (case "social_alterantivo" then
-                                (bind ?p (+ ?p 125))
+                                (bind ?p (+ ?p 50))
                         )
                         (case "social_distopia" then
-                                (bind ?p (+ ?p 125))
+                                (bind ?p (+ ?p 50))
                         )
         )
         (send ?rec put-puntuacion ?p)
@@ -2196,10 +2196,10 @@
         (bind ?nombre (send $?submist get-subgenero_misterio))
                 (switch ?nombre
                         (case "policial" then 
-                                (bind ?p (+ ?p 125))
+                                (bind ?p (+ ?p 100))
                         )
                         (case "suspense" then
-                                (bind ?p (+ ?p 125))
+                                (bind ?p (+ ?p 75))
                         )
         )
         (send ?rec put-puntuacion ?p)
@@ -2220,22 +2220,22 @@
                 (bind ?nombre (send $?subcf get-subgenero_ciencia_ficcion))
                 (switch ?nombre
                         (case "robotica_y_inteligencia_artificial" then 
-                                (bind ?p (+ ?p 125))
+                                (bind ?p (+ ?p 150))
                         )
                         (case "viajes_en_el_tiempo" then
-                                (bind ?p (+ ?p 125))
+                                (bind ?p (+ ?p 150))
                         )
                         (case "espacio" then
-                                (bind ?p (+ ?p 125))
+                                (bind ?p (+ ?p 175))
                         )
                         (case "social_utopia" then
-                                (bind ?p (+ ?p 125))
+                                (bind ?p (+ ?p 100))
                         )
                         (case "social_alterantivo" then
                                 (bind ?p (+ ?p 125))
                         )
                         (case "social_distopia" then
-                                (bind ?p (+ ?p 125))
+                                (bind ?p (+ ?p 150))
                         )
         )
         (send ?rec put-puntuacion ?p)
@@ -2253,16 +2253,16 @@
         (bind ?nombre (send $?subfant get-subgenero_fantasia))
                 (switch ?nombre
                         (case "cuentos_clasicos" then 
-                                (bind ?p (+ ?p 125))
+                                (bind ?p (+ ?p 50))
                         )
                         (case "magia_y_espada" then
-                                (bind ?p (+ ?p 125))
+                                (bind ?p (+ ?p 150))
                         )
                         (case "alta_fantasia" then
                                 (bind ?p (+ ?p 125))
                         )
                         (case "medieval" then
-                                (bind ?p (+ ?p 125))
+                                (bind ?p (+ ?p 100))
                         )
                         (case "terror" then
                                 (bind ?p (+ ?p 125))
@@ -2281,7 +2281,7 @@
         (test (eq (instance-name ?cont) (instance-name ?lib)))
         (not (adolescente-valorado-mist ?cont))
         =>
-	  (bind ?nombre (send $?submist get-subgenero_misterio))        
+          (bind ?nombre (send $?submist get-subgenero_misterio))        
                 (switch ?nombre
                         (case "policial" then 
                                 (bind ?p (+ ?p 125))
@@ -2306,7 +2306,7 @@
         (bind ?nombre (send $?subcf get-subgenero_ciencia_ficcion))
                 (switch ?nombre
                         (case "robotica_y_inteligencia_artificial" then 
-                                (bind ?p (+ ?p 125))
+                                (bind ?p (+ ?p 150))
                         )
                         (case "viajes_en_el_tiempo" then
                                 (bind ?p (+ ?p 125))
@@ -2315,13 +2315,13 @@
                                 (bind ?p (+ ?p 125))
                         )
                         (case "social_utopia" then
-                                (bind ?p (+ ?p 125))
+                                (bind ?p (+ ?p 100))
                         )
                         (case "social_alterantivo" then
-                                (bind ?p (+ ?p 125))
+                                (bind ?p (+ ?p 150))
                         )
                         (case "social_distopia" then
-                                (bind ?p (+ ?p 125))
+                                (bind ?p (+ ?p 150))
                         )
         )
         (send ?rec put-puntuacion ?p)
@@ -2341,13 +2341,13 @@
         (bind ?nombre (send $?subfant get-subgenero_fantasia))
                 (switch ?nombre
                         (case "cuentos_clasicos" then 
-                                (bind ?p (+ ?p 125))
+                                (bind ?p (+ ?p 75))
                         )
                         (case "magia_y_espada" then
                                 (bind ?p (+ ?p 125))
                         )
                         (case "alta_fantasia" then
-                                (bind ?p (+ ?p 125))
+                                (bind ?p (+ ?p 150))
                         )
                         (case "medieval" then
                                 (bind ?p (+ ?p 125))
@@ -2371,7 +2371,7 @@
         (bind ?nombre (send $?submist get-subgenero_misterio))
                 (switch ?nombre
                         (case "policial" then 
-                                (bind ?p (+ ?p 125))
+                                (bind ?p (+ ?p 150))
                         )
                         (case "suspense" then
                                 (bind ?p (+ ?p 125))
@@ -2468,7 +2468,7 @@
 
 (defrule procesado::descartar-sin-ediciones-de-bolsillo "Descarta los libros sin edicion de bolisllo"
         (declare (salience 10))
-        (transporte-publico FALSE)
+        (transporte-publico TRUE)
         ?cont <- (object (is-a Libro) (edicion_bolsillo FALSE))
         ?rec <- (object (is-a Solucion) (libro ?lib))
         (test (eq (instance-name ?cont) (instance-name ?lib)))
@@ -2493,7 +2493,7 @@
         (test (eq (instance-name ?cont) (instance-name ?lib)))
         (not (saga-valorada ?cont))
         =>
-        (bind ?p (+ ?p 150))
+        (bind ?p (+ ?p 75))
         (send ?rec put-puntuacion ?p)
         (assert (saga-valorada ?cont))
 )
@@ -2505,7 +2505,7 @@
         (test (eq (instance-name ?cont) (instance-name ?lib)))
         (not (best-seller-valorado ?cont))
         =>
-        (bind ?p (+ ?p 150))
+        (bind ?p (+ ?p 75))
         (send ?rec put-puntuacion ?p)
         (assert (best-seller-valorado ?cont))
 )
@@ -2517,7 +2517,7 @@
         (test (eq (instance-name ?cont) (instance-name ?lib)))
         (not (edicion-bolsillo-valorado ?cont))
         =>
-        (bind ?p (+ ?p 150))
+        (bind ?p (+ ?p 75))
         (send ?rec put-puntuacion ?p)
         (assert (edicion-bolsillo-valorado ?cont))
 )
@@ -2529,7 +2529,7 @@
         (test (eq (instance-name ?cont) (instance-name ?lib)))
         (not (clasico-literatura-valorado ?cont))
         =>
-        (bind ?p (+ ?p 150))
+        (bind ?p (+ ?p 75))
         (send ?rec put-puntuacion ?p)
         (assert (clasico-literatura-valorado ?cont))
 )
