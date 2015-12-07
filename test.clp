@@ -1587,6 +1587,17 @@
 
 (defmessage-handler MAIN::Libro plantilla ()
         (format t "Titulo: %s %n" ?self:titulo)
+        (printout t crlf)
+        (if (eq (class ?self) Ciencia_ficcion) then
+		(printout t "Genero: Ciencia ficcion" crlf)
+                (format t "Subgenero: %s" (send ?self:subgenero_cf get-subgenero_ciencia_ficcion))
+	else (if (eq (class ?self) Misterio) then
+	        (printout t "es misterio" crlf)
+	)else (if (eq (class ?self) Fantasia) then
+		(printout t "es fantasia" crlf)
+	)
+        )
+        (printout t crlf)
         (format t "Editorial: %s" ?self:editorial)
                 (printout t crlf)
         (format t "Autor: %s" (send ?self:escrito_por get-Nombre))
