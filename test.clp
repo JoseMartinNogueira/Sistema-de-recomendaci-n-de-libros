@@ -1792,6 +1792,7 @@
         (assert (subgenero-fant-fav ask))
         (assert (subgenero-cf-fav ask))
         (assert (subgenero-mist-fav ask))
+        (assert (clasico-literatura ask))
         (assert (saga-libros ask))
         (assert (transporte-publico ask))
         (assert (libro-best-seller ask))
@@ -1993,7 +1994,7 @@
 )
 
 (defrule recopilacion-prefs::clasicos-literatura "Establece si le gustan los clasicos de la literatura"
-        ?hecho <- (clasico-literatura)
+        ?hecho <- (clasico-literatura ask)
         =>
         (bind ?clasicos (pregunta-si-no "¿Le gustan los clasicos de la literatura?"))
         (retract ?hecho)
@@ -2024,6 +2025,7 @@
         ?h6 <- (saga-libros TRUE|FALSE)
         ?h7 <- (transporte-publico TRUE|FALSE)
         ?h9 <- (libro-best-seller TRUE|FALSE)
+        ?h10 <- (clasico-literatura TRUE|FALSE)
         ?h11 <- (cf-hard TRUE|FALSE)
         =>
         (focus procesado)
@@ -2436,55 +2438,55 @@
                 ;;; assert necesario saga-libros (TURE/FALSE/INDIFERENTE)
                 ;;; assert necesario libro-best-seller(TURE/FALSE/INDIFERENTE)
         ;;; Comentar autores extranjeros (nacionalidad del usuario?)
-(defrule procesado::descartar-sagas "Descarta los libros que pertenezcan a sagas"
-        (declare (salience 10))
-        (saga-libros FALSE)
-        ?cont <- (object (is-a Libro) (saga TRUE))
-        ?rec <- (object (is-a Solucion) (libro ?lib))
-        (test (eq (instance-name ?cont) (instance-name ?lib)))
-        =>
-        (send ?rec delete)
-)
+;;(defrule procesado::descartar-sagas "Descarta los libros que pertenezcan a sagas"
+;;        (declare (salience 10))
+;;        (saga-libros FALSE)
+;;        ?cont <- (object (is-a Libro) (saga TRUE))
+;;        ?rec <- (object (is-a Solucion) (libro ?lib))
+;;        (test (eq (instance-name ?cont) (instance-name ?lib)))
+;;        =>
+;;        (send ?rec delete)
+;;)
 
-(defrule procesado::descartar-best-sellers "Descarta los libros que hayan sido nombrados best sellers"
-        (declare (salience 10))
-        (libro-best-seller FALSE)
-        ?cont <- (object (is-a Libro) (best_seller TRUE))
-        ?rec <- (object (is-a Solucion) (libro ?lib))
-        (test (eq (instance-name ?cont) (instance-name ?lib)))
-       =>
-        (send ?rec delete)
-)
+;;(defrule procesado::descartar-best-sellers "Descarta los libros que hayan sido nombrados best sellers"
+;;        (declare (salience 10))
+;;        (libro-best-seller FALSE)
+;;        ?cont <- (object (is-a Libro) (best_seller TRUE))
+;;        ?rec <- (object (is-a Solucion) (libro ?lib))
+;;        (test (eq (instance-name ?cont) (instance-name ?lib)))
+;;       =>
+;;        (send ?rec delete)
+;;)
 
-;(defrule procesado::descartar-autor-extranjero "Descarta los libros escritos por autores extranjeros"
-;        (declare (salience 10))
-;        (autor-extranjero FALSE)
-;        ?cont <- (object (is-a Libro) (best_seller TRUE))
-;        ?rec <- (object (is-a Solucion) (libro ?lib))
-;        (test (eq (instance-name ?cont) (instance-name ?lib)))
-;        =>
-;        (send ?rec delete)
-;)
+;;(defrule procesado::descartar-autor-extranjero "Descarta los libros escritos por autores extranjeros"
+;;        (declare (salience 10))
+;;        (autor-extranjero FALSE)
+;;        ?cont <- (object (is-a Libro) (best_seller TRUE))
+;;        ?rec <- (object (is-a Solucion) (libro ?lib))
+;;        (test (eq (instance-name ?cont) (instance-name ?lib)))
+;;        =>
+;;        (send ?rec delete)
+;;)
 
-(defrule procesado::descartar-sin-ediciones-de-bolsillo "Descarta los libros sin edicion de bolisllo"
-        (declare (salience 10))
-        (transporte-publico TRUE)
-        ?cont <- (object (is-a Libro) (edicion_bolsillo FALSE))
-        ?rec <- (object (is-a Solucion) (libro ?lib))
-        (test (eq (instance-name ?cont) (instance-name ?lib)))
-        =>
-        (send ?rec delete)
-)
+;;(defrule procesado::descartar-sin-ediciones-de-bolsillo "Descarta los libros sin edicion de bolisllo"
+;;        (declare (salience 10))
+;;        (transporte-publico TRUE)
+;;        ?cont <- (object (is-a Libro) (edicion_bolsillo FALSE))
+;;        ?rec <- (object (is-a Solucion) (libro ?lib))
+;;        (test (eq (instance-name ?cont) (instance-name ?lib)))
+;;        =>
+;;        (send ?rec delete)
+;;)
 
-(defrule procesado::descartar-clasicos-literatura "Descarta los clasicos de la literatura"
-        (declare (salience 10))
-        (clasico-literatura FALSE)
-        ?cont <- (object (is-a Libro) (clasico_literatura FALSE))
-        ?rec <- (object (is-a Solucion) (libro ?lib))
-        (test (eq (instance-name ?cont) (instance-name ?lib)))
-        =>
-        (send ?rec delete)        
-)
+;;(defrule procesado::descartar-clasicos-literatura "Descarta los clasicos de la literatura"
+;;        (declare (salience 10))
+;;        (clasico-literatura FALSE)
+;;        ?cont <- (object (is-a Libro) (clasico_literatura FALSE))
+;;        ?rec <- (object (is-a Solucion) (libro ?lib))
+;;        (test (eq (instance-name ?cont) (instance-name ?lib)))
+;;        =>
+;;        (send ?rec delete)        
+;;)
 
 (defrule procesado::valorar-saga "Mejora la puntuacion de los libros que pertenezcan a saga"
         (saga-libros TRUE)
@@ -2493,9 +2495,21 @@
         (test (eq (instance-name ?cont) (instance-name ?lib)))
         (not (saga-valorada ?cont))
         =>
-        (bind ?p (+ ?p 75))
+        (bind ?p (+ ?p 50))
         (send ?rec put-puntuacion ?p)
         (assert (saga-valorada ?cont))
+)
+
+(defrule procesado::valorar-saga-no "Mejora la puntuacion de los libros que no pertenezcan a saga"
+        (saga-libros FALSE)
+        ?cont <- (object (is-a Libro) (saga FALSE))
+        ?rec <- (object (is-a Solucion) (libro ?lib) (puntuacion ?p))
+        (test (eq (instance-name ?cont) (instance-name ?lib)))
+        (not (saga-valorada-no ?cont))
+        =>
+        (bind ?p (+ ?p 50))
+        (send ?rec put-puntuacion ?p)
+        (assert (saga-valorada-no ?cont))
 )
 
 (defrule procesado::valorar-best-seller "Mejora la puntuacion de los libros que hayan sido nombrados best sellers"
@@ -2505,22 +2519,36 @@
         (test (eq (instance-name ?cont) (instance-name ?lib)))
         (not (best-seller-valorado ?cont))
         =>
-        (bind ?p (+ ?p 75))
+        (bind ?p (+ ?p 50))
         (send ?rec put-puntuacion ?p)
         (assert (best-seller-valorado ?cont))
 )
 
+(defrule procesado::valorar-best-seller-no "Mejora la puntuacion de los libros que no hayan sido nombrados best sellers"
+        (libro-best-seller FALSE)
+        ?cont <- (object (is-a Libro) (best_seller FALSE))
+        ?rec <- (object (is-a Solucion) (libro ?lib) (puntuacion ?p))
+        (test (eq (instance-name ?cont) (instance-name ?lib)))
+        (not (best-seller-valorado-no ?cont))
+        =>
+        (bind ?p (+ ?p 50))
+        (send ?rec put-puntuacion ?p)
+        (assert (best-seller-valorado-no ?cont))
+)
+
+
 (defrule procesado::valorar-edicion-bolsillo "Mejora la puntuacion de los libros con edicion de bolisllo"
-        (libro-edicion-bolsillo TRUE)
+        (transporte-publico TRUE)
         ?cont <- (object (is-a Libro) (edicion_bolsillo TRUE))
         ?rec <- (object (is-a Solucion) (libro ?lib) (puntuacion ?p))
         (test (eq (instance-name ?cont) (instance-name ?lib)))
         (not (edicion-bolsillo-valorado ?cont))
         =>
-        (bind ?p (+ ?p 75))
+        (bind ?p (+ ?p 50))
         (send ?rec put-puntuacion ?p)
         (assert (edicion-bolsillo-valorado ?cont))
 )
+
 
 (defrule procesado::valorar-clasico-literatura "Mejora la puntuacion de los clasicos de la literatura"
         (clasico-literatura TRUE)
@@ -2529,10 +2557,23 @@
         (test (eq (instance-name ?cont) (instance-name ?lib)))
         (not (clasico-literatura-valorado ?cont))
         =>
-        (bind ?p (+ ?p 75))
+        (bind ?p (+ ?p 50))
         (send ?rec put-puntuacion ?p)
         (assert (clasico-literatura-valorado ?cont))
 )
+
+(defrule procesado::valorar-clasico-literatura-no "Mejora la puntuacion de los que no son clasicos de la literatura"
+        (clasico-literatura FALSE)
+        ?cont <- (object (is-a Libro) (clasico_literatura FALSE))
+        ?rec <- (object (is-a Solucion) (libro ?lib) (puntuacion ?p))
+        (test (eq (instance-name ?cont) (instance-name ?lib)))
+        (not (clasico-literatura-valorado-no ?cont))
+        =>
+        (bind ?p (+ ?p 50))
+        (send ?rec put-puntuacion ?p)
+        (assert (clasico-literatura-valorado-no ?cont))
+)
+
 
 ;------FIN Jose
 
