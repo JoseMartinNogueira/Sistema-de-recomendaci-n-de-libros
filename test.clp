@@ -13,491 +13,823 @@
 
 
 ;;ontologia
-
-; Tue Dec 01 08:43:28 CET 2015
-; 
-;+ (version "3.4.1")
-;+ (build "Build 537")
-
-; Sun Dec 06 19:39:44 CET 2015
+; Mon Dec 07 02:23:35 CET 2015
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
 
 
 (defclass %3ACLIPS_TOP_LEVEL_SLOT_CLASS "Fake class to save top-level slot information"
-    (is-a USER)
-    (role abstract)
-    (single-slot hard
-        (type SYMBOL)
-        (allowed-values FALSE TRUE)
-;+      (cardinality 1 1)
-        (create-accessor read-write))
-    (single-slot edicion_bolsillo
-        (type SYMBOL)
-        (allowed-values FALSE TRUE)
-;+      (cardinality 1 1)
-        (create-accessor read-write))
-    (single-slot edad_recomendada
-        (type INTEGER)
-;+      (cardinality 1 1)
-        (create-accessor read-write))
-    (single-slot subgenero_ciencia_ficcion
-        (type STRING)
-;+      (cardinality 1 1)
-        (create-accessor read-write))
-    (single-slot clasico_literatura
-        (type SYMBOL)
-        (allowed-values FALSE TRUE)
-;+      (cardinality 1 1)
-        (create-accessor read-write))
-    (single-slot titulo
-        (type STRING)
-;+      (cardinality 1 1)
-        (create-accessor read-write))
-    (single-slot num_pag
-        (type INTEGER)
-;+      (cardinality 1 1)
-        (create-accessor read-write))
-    (single-slot Nombre
-        (type STRING)
-;+      (cardinality 1 1)
-        (create-accessor read-write))
-    (single-slot subgenero_romance
-        (type STRING)
-;+      (cardinality 1 1)
-        (create-accessor read-write))
-    (multislot inverse_of_sugnerero_rom
-        (type INSTANCE)
-;+      (allowed-classes)
-;+      (inverse-slot sugnerero_rom)
-        (create-accessor read-write))
-    (multislot idioma_disponible
-        (type INSTANCE)
-;+      (allowed-classes Idioma)
-        (cardinality 1 ?VARIABLE)
-;+      (inverse-slot inverse_of_idioma_disponible)
-        (create-accessor read-write))
-    (multislot inverse_of_subgenero_cf
-        (type INSTANCE)
-;+      (allowed-classes Ciencia_ficcion)
-;+      (inverse-slot subgenero_cf)
-        (create-accessor read-write))
-    (single-slot subgenero_cf
-        (type INSTANCE)
-;+      (allowed-classes Subgenero_ciencia_ficcion)
-;+      (cardinality 1 1)
-;+      (inverse-slot inverse_of_subgenero_cf)
-        (create-accessor read-write))
-    (multislot inverse_of_idioma_disponible
-        (type INSTANCE)
-;+      (allowed-classes Libro)
-;+      (inverse-slot idioma_disponible)
-        (create-accessor read-write))
-    (single-slot idioma
-        (type STRING)
-;+      (cardinality 1 1)
-        (create-accessor read-write))
-    (single-slot subgenero_mist
-        (type INSTANCE)
-;+      (allowed-classes Subgenero_misterio)
-;+      (cardinality 1 1)
-;+      (inverse-slot inverse_of_subgenero_mist)
-        (create-accessor read-write))
-    (multislot inverse_of_subgenero_mist
-        (type INSTANCE)
-;+      (allowed-classes Misterio)
-;+      (inverse-slot subgenero_mist)
-        (create-accessor read-write))
-    (multislot inverse_of_escrito_por
-        (type INSTANCE)
-;+      (allowed-classes Libro)
-;+      (inverse-slot escrito_por)
-        (create-accessor read-write))
-    (single-slot saga
-        (type SYMBOL)
-        (allowed-values FALSE TRUE)
-;+      (cardinality 1 1)
-        (create-accessor read-write))
-    (single-slot subgenero_fant
-        (type INSTANCE)
-;+      (allowed-classes Subgenero_fantasia)
-;+      (cardinality 0 1)
-;+      (inverse-slot inverse_of_subgenero_fant)
-        (create-accessor read-write))
-    (single-slot sugnerero_rom
-        (type INSTANCE)
-;+      (allowed-classes)
-;+      (cardinality 1 1)
-;+      (inverse-slot inverse_of_sugnerero_rom)
-        (create-accessor read-write))
-    (single-slot best_seller
-        (type SYMBOL)
-        (allowed-values FALSE TRUE)
-;+      (cardinality 1 1)
-        (create-accessor read-write))
-    (single-slot subgenero_misterio
-        (type STRING)
-;+      (cardinality 1 1)
-        (create-accessor read-write))
-    (single-slot editorial
-        (type STRING)
-;+      (cardinality 1 1)
-        (create-accessor read-write))
-    (multislot inverse_of_subgenero_fant
-        (type INSTANCE)
-;+      (allowed-classes Fantasia)
-;+      (inverse-slot subgenero_fant)
-        (create-accessor read-write))
-    (single-slot escrito_por
-        (type INSTANCE)
-;+      (allowed-classes Autor)
-;+      (cardinality 1 1)
-;+      (inverse-slot inverse_of_escrito_por)
-        (create-accessor read-write))
-    (single-slot Nacionalidad
-        (type STRING)
-;+      (cardinality 1 1)
-        (create-accessor read-write))
-    (single-slot subgenero_fantasia
-        (type STRING)
-;+      (cardinality 1 1)
-        (create-accessor read-write))
-    (single-slot puntuacion
-        (type INTEGER)
-;+      (cardinality 1 1)
-        (create-accessor read-write))
-    (single-slot anyo_publicacion
-        (type INTEGER)
-;+      (cardinality 1 1)
-        (create-accessor read-write)))
+        (is-a USER)
+        (role abstract)
+        (single-slot idioma
+                (type STRING)
+;+              (cardinality 1 1)
+                (create-accessor read-write))
+        (multislot inverse_of_idioma_disponible
+                (type INSTANCE)
+;+              (allowed-classes Libro)
+;+              (inverse-slot idioma_disponible)
+                (create-accessor read-write))
+        (single-slot subgenero_misterio
+                (type STRING)
+;+              (cardinality 1 1)
+                (create-accessor read-write))
+        (single-slot subgenero_fantasia
+                (type STRING)
+;+              (cardinality 1 1)
+                (create-accessor read-write))
+        (single-slot Nombre
+                (type STRING)
+;+              (cardinality 1 1)
+                (create-accessor read-write))
+        (single-slot subgenero_fant
+                (type INSTANCE)
+;+              (allowed-classes Subgenero_fantasia)
+;+              (cardinality 1 1)
+;+              (inverse-slot inverse_of_subgenero_fant)
+                (create-accessor read-write))
+        (single-slot subgenero_romance
+                (type STRING)
+;+              (cardinality 1 1)
+                (create-accessor read-write))
+        (single-slot edicion_bolsillo
+                (type SYMBOL)
+                (allowed-values FALSE TRUE)
+;+              (cardinality 1 1)
+                (create-accessor read-write))
+        (single-slot edad_recomendada
+                (type INTEGER)
+;+              (cardinality 1 1)
+                (create-accessor read-write))
+        (single-slot puntuacion
+                (type INTEGER)
+;+              (cardinality 1 1)
+                (create-accessor read-write))
+        (single-slot titulo
+                (type STRING)
+;+              (cardinality 1 1)
+                (create-accessor read-write))
+        (single-slot subgenero_rom
+                (type INSTANCE)
+;+              (allowed-classes)
+;+              (cardinality 1 1)
+;+              (inverse-slot inverse_of_sugnerero_rom)
+                (create-accessor read-write))
+        (multislot inverse_of_subgenero_fant
+                (type INSTANCE)
+;+              (allowed-classes Fantasia)
+;+              (inverse-slot subgenero_fant)
+                (create-accessor read-write))
+        (single-slot saga
+                (type SYMBOL)
+                (allowed-values FALSE TRUE)
+;+              (cardinality 1 1)
+                (create-accessor read-write))
+        (single-slot escrito_por
+                (type INSTANCE)
+;+              (allowed-classes Autor)
+;+              (cardinality 1 1)
+;+              (inverse-slot inverse_of_escrito_por)
+                (create-accessor read-write))
+        (single-slot hard
+                (type SYMBOL)
+                (allowed-values FALSE TRUE)
+;+              (cardinality 1 1)
+                (create-accessor read-write))
+        (multislot inverse_of_sugnerero_rom
+                (type INSTANCE)
+;+              (allowed-classes)
+;+              (inverse-slot subgenero_rom)
+                (create-accessor read-write))
+        (single-slot clasico_literatura
+                (type SYMBOL)
+                (allowed-values FALSE TRUE)
+;+              (cardinality 1 1)
+                (create-accessor read-write))
+        (single-slot subgenero_ciencia_ficcion
+                (type STRING)
+;+              (cardinality 1 1)
+                (create-accessor read-write))
+        (multislot inverse_of_subgenero_cf
+                (type INSTANCE)
+;+              (allowed-classes Ciencia_ficcion)
+;+              (inverse-slot subgenero_cf)
+                (create-accessor read-write))
+        (single-slot subgenero_cf
+                (type INSTANCE)
+;+              (allowed-classes Subgenero_ciencia_ficcion)
+;+              (cardinality 1 1)
+;+              (inverse-slot inverse_of_subgenero_cf)
+                (create-accessor read-write))
+        (single-slot editorial
+                (type STRING)
+;+              (cardinality 1 1)
+                (create-accessor read-write))
+        (multislot inverse_of_subgenero_mist
+                (type INSTANCE)
+;+              (allowed-classes Misterio)
+;+              (inverse-slot subgenero_mist)
+                (create-accessor read-write))
+        (single-slot subgenero_mist
+                (type INSTANCE)
+;+              (allowed-classes Subgenero_misterio)
+;+              (cardinality 1 1)
+;+              (inverse-slot inverse_of_subgenero_mist)
+                (create-accessor read-write))
+        (single-slot num_pag
+                (type INTEGER)
+;+              (cardinality 1 1)
+                (create-accessor read-write))
+        (single-slot anyo_publicacion
+                (type INTEGER)
+;+              (cardinality 1 1)
+                (create-accessor read-write))
+        (single-slot Nacionalidad
+                (type STRING)
+;+              (cardinality 1 1)
+                (create-accessor read-write))
+        (multislot inverse_of_escrito_por
+                (type INSTANCE)
+;+              (allowed-classes Libro)
+;+              (inverse-slot escrito_por)
+                (create-accessor read-write))
+        (multislot idioma_disponible
+                (type INSTANCE)
+;+              (allowed-classes Idioma)
+                (cardinality 1 ?VARIABLE)
+;+              (inverse-slot inverse_of_idioma_disponible)
+                (create-accessor read-write))
+        (single-slot best_seller
+                (type SYMBOL)
+                (allowed-values FALSE TRUE)
+;+              (cardinality 1 1)
+                (create-accessor read-write)))
 
 (defclass Libro
-    (is-a USER)
-    (role concrete)
-    (single-slot escrito_por
-        (type INSTANCE)
-;+      (allowed-classes Autor)
-;+      (cardinality 1 1)
-        (create-accessor read-write))
-    (single-slot edicion_bolsillo
-        (type SYMBOL)
-        (allowed-values FALSE TRUE)
-;+      (cardinality 1 1)
-        (create-accessor read-write))
-    (single-slot edad_recomendada
-        (type INTEGER)
-;+      (cardinality 1 1)
-        (create-accessor read-write))
-    (multislot idioma_disponible
-        (type INSTANCE)
-;+      (allowed-classes Idioma)
-        (cardinality 1 ?VARIABLE)
-        (create-accessor read-write))
-    (single-slot clasico_literatura
-        (type SYMBOL)
-        (allowed-values FALSE TRUE)
-;+      (cardinality 1 1)
-        (create-accessor read-write))
-    (single-slot saga
-        (type SYMBOL)
-        (allowed-values FALSE TRUE)
-;+      (cardinality 1 1)
-        (create-accessor read-write))
-    (single-slot titulo
-        (type STRING)
-;+      (cardinality 1 1)
-        (create-accessor read-write))
-    (single-slot puntuacion
-        (type INTEGER)
-;+      (cardinality 1 1)
-        (create-accessor read-write))
-    (single-slot best_seller
-        (type SYMBOL)
-        (allowed-values FALSE TRUE)
-;+      (cardinality 1 1)
-        (create-accessor read-write))
-    (single-slot num_pag
-        (type INTEGER)
-;+      (cardinality 1 1)
-        (create-accessor read-write))
-    (single-slot editorial
-        (type STRING)
-;+      (cardinality 1 1)
-        (create-accessor read-write))
-    (single-slot anyo_publicacion
-        (type INTEGER)
-;+      (cardinality 1 1)
-        (create-accessor read-write)))
+        (is-a USER)
+        (role concrete)
+        (single-slot edad_recomendada
+                (type INTEGER)
+;+              (cardinality 1 1)
+                (create-accessor read-write))
+        (single-slot num_pag
+                (type INTEGER)
+;+              (cardinality 1 1)
+                (create-accessor read-write))
+        (single-slot clasico_literatura
+                (type SYMBOL)
+                (allowed-values FALSE TRUE)
+;+              (cardinality 1 1)
+                (create-accessor read-write))
+        (single-slot anyo_publicacion
+                (type INTEGER)
+;+              (cardinality 1 1)
+                (create-accessor read-write))
+        (single-slot puntuacion
+                (type INTEGER)
+;+              (cardinality 1 1)
+                (create-accessor read-write))
+        (single-slot titulo
+                (type STRING)
+;+              (cardinality 1 1)
+                (create-accessor read-write))
+        (single-slot editorial
+                (type STRING)
+;+              (cardinality 1 1)
+                (create-accessor read-write))
+        (multislot idioma_disponible
+                (type INSTANCE)
+;+              (allowed-classes Idioma)
+                (cardinality 1 ?VARIABLE)
+                (create-accessor read-write))
+        (single-slot best_seller
+                (type SYMBOL)
+                (allowed-values FALSE TRUE)
+;+              (cardinality 1 1)
+                (create-accessor read-write))
+        (single-slot saga
+                (type SYMBOL)
+                (allowed-values FALSE TRUE)
+;+              (cardinality 1 1)
+                (create-accessor read-write))
+        (single-slot edicion_bolsillo
+                (type SYMBOL)
+                (allowed-values FALSE TRUE)
+;+              (cardinality 1 1)
+                (create-accessor read-write))
+        (single-slot escrito_por
+                (type INSTANCE)
+;+              (allowed-classes Autor)
+;+              (cardinality 1 1)
+                (create-accessor read-write)))
 
 (defclass Fantasia
-    (is-a Libro)
-    (role concrete)
-    (single-slot subgenero_fant
-        (type INSTANCE)
-;+      (allowed-classes Subgenero_fantasia)
-;+      (cardinality 0 1)
-        (create-accessor read-write)))
+        (is-a Libro)
+        (role concrete)
+        (single-slot subgenero_fant
+                (type INSTANCE)
+;+              (allowed-classes Subgenero_fantasia)
+;+              (cardinality 1 1)
+                (create-accessor read-write)))
 
 (defclass Ciencia_ficcion
-    (is-a Libro)
-    (role concrete)
-    (single-slot hard
-        (type SYMBOL)
-        (allowed-values FALSE TRUE)
-;+      (cardinality 1 1)
-        (create-accessor read-write))
-    (single-slot subgenero_cf
-        (type INSTANCE)
-;+      (allowed-classes Subgenero_ciencia_ficcion)
-;+      (cardinality 1 1)
-        (create-accessor read-write)))
+        (is-a Libro)
+        (role concrete)
+        (single-slot subgenero_cf
+                (type INSTANCE)
+;+              (allowed-classes Subgenero_ciencia_ficcion)
+;+              (cardinality 1 1)
+                (create-accessor read-write))
+        (single-slot hard
+                (type SYMBOL)
+                (allowed-values FALSE TRUE)
+;+              (cardinality 1 1)
+                (create-accessor read-write)))
 
 (defclass Misterio
-    (is-a Libro)
-    (role concrete)
-    (single-slot subgenero_mist
-        (type INSTANCE)
-;+      (allowed-classes Subgenero_misterio)
-;+      (cardinality 1 1)
-        (create-accessor read-write)))
+        (is-a Libro)
+        (role concrete)
+        (single-slot subgenero_mist
+                (type INSTANCE)
+;+              (allowed-classes Subgenero_misterio)
+;+              (cardinality 1 1)
+                (create-accessor read-write)))
 
 (defclass Idioma
-    (is-a USER)
-    (role concrete)
-    (multislot inverse_of_idioma_disponible
-        (type INSTANCE)
-;+      (allowed-classes Libro)
-        (create-accessor read-write))
-    (single-slot idioma
-        (type STRING)
-;+      (cardinality 1 1)
-        (create-accessor read-write)))
+        (is-a USER)
+        (role concrete)
+        (single-slot idioma
+                (type STRING)
+;+              (cardinality 1 1)
+                (create-accessor read-write))
+        (multislot inverse_of_idioma_disponible
+                (type INSTANCE)
+;+              (allowed-classes Libro)
+                (create-accessor read-write)))
 
 (defclass Autor
-    (is-a USER)
-    (role concrete)
-    (single-slot Nacionalidad
-        (type STRING)
-;+      (cardinality 1 1)
-        (create-accessor read-write))
-    (single-slot Nombre
-        (type STRING)
-;+      (cardinality 1 1)
-        (create-accessor read-write))
-    (multislot inverse_of_escrito_por
-        (type INSTANCE)
-;+      (allowed-classes Libro)
-        (create-accessor read-write)))
+        (is-a USER)
+        (role concrete)
+        (multislot inverse_of_escrito_por
+                (type INSTANCE)
+;+              (allowed-classes Libro)
+                (create-accessor read-write))
+        (single-slot Nombre
+                (type STRING)
+;+              (cardinality 1 1)
+                (create-accessor read-write))
+        (single-slot Nacionalidad
+                (type STRING)
+;+              (cardinality 1 1)
+                (create-accessor read-write)))
 
 (defclass Subgenero_fantasia
-    (is-a USER)
-    (role concrete)
-    (single-slot subgenero_fantasia
-        (type STRING)
-;+      (cardinality 1 1)
-        (create-accessor read-write))
-    (multislot inverse_of_subgenero_fant
-        (type INSTANCE)
-;+      (allowed-classes Fantasia)
-        (create-accessor read-write)))
+        (is-a USER)
+        (role concrete)
+        (single-slot subgenero_fantasia
+                (type STRING)
+;+              (cardinality 1 1)
+                (create-accessor read-write))
+        (multislot inverse_of_subgenero_fant
+                (type INSTANCE)
+;+              (allowed-classes Fantasia)
+                (create-accessor read-write)))
 
 (defclass Subgenero_ciencia_ficcion
-    (is-a USER)
-    (role concrete)
-    (single-slot subgenero_ciencia_ficcion
-        (type STRING)
-;+      (cardinality 1 1)
-        (create-accessor read-write))
-    (multislot inverse_of_subgenero_cf
-        (type INSTANCE)
-;+      (allowed-classes Ciencia_ficcion)
-        (create-accessor read-write)))
+        (is-a USER)
+        (role concrete)
+        (single-slot subgenero_ciencia_ficcion
+                (type STRING)
+;+              (cardinality 1 1)
+                (create-accessor read-write))
+        (multislot inverse_of_subgenero_cf
+                (type INSTANCE)
+;+              (allowed-classes Ciencia_ficcion)
+                (create-accessor read-write)))
 
 (defclass Subgenero_misterio
-    (is-a USER)
-    (role concrete)
-    (multislot inverse_of_subgenero_mist
-        (type INSTANCE)
-;+      (allowed-classes Misterio)
-        (create-accessor read-write))
-    (single-slot subgenero_misterio
-        (type STRING)
-;+      (cardinality 1 1)
-        (create-accessor read-write)))
+        (is-a USER)
+        (role concrete)
+        (multislot inverse_of_subgenero_mist
+                (type INSTANCE)
+;+              (allowed-classes Misterio)
+                (create-accessor read-write))
+        (single-slot subgenero_misterio
+                (type STRING)
+;+              (cardinality 1 1)
+                (create-accessor read-write)))
 ;;Instancias
 
-; Tue Dec 01 08:43:28 CET 2015
-; 
-;+ (version "3.4.1")
-;+ (build "Build 537")
 (definstances instances
-; Sun Dec 06 19:39:44 CET 2015
+; Mon Dec 07 02:23:35 CET 2015
 ; 
 ;+ (version "3.4.1")
 ;+ (build "Build 537")
 
 ([SBCFinal_Class0] of  Idioma
 
-    (idioma "espanol")
-    (inverse_of_idioma_disponible
-        [SBCFinal_Class24]
-        [SBCFinal_Class25]))
+        (idioma "espanol")
+        (inverse_of_idioma_disponible
+                [SBCFinal_Class24]
+                [SBCFinal_Class25]
+                [SBCFinal_Class10001]
+                [SBCFinal_Class10002]
+                [SBCFinal_Class10007]
+                [SBCFinal_Class10009]
+                [SBCFinal_Class10011]
+                [SBCFinal_Class10014]))
 
 ([SBCFinal_Class1] of  Idioma
 
-    (idioma "catalan")
-    (inverse_of_idioma_disponible [SBCFinal_Class24]))
+        (idioma "catalan")
+        (inverse_of_idioma_disponible
+                [SBCFinal_Class24]
+                [SBCFinal_Class10000]
+                [SBCFinal_Class10003]
+                [SBCFinal_Class10005]
+                [SBCFinal_Class10015]))
 
 ([SBCFinal_Class10] of  Subgenero_ciencia_ficcion
 
-    (subgenero_ciencia_ficcion "viajes_en_el_tiempo"))
+        (inverse_of_subgenero_cf
+                [SBCFinal_Class10003]
+                [SBCFinal_Class10004])
+        (subgenero_ciencia_ficcion "viajes_en_el_tiempo"))
+
+([SBCFinal_Class10000] of  Ciencia_ficcion
+
+        (anyo_publicacion 1950)
+        (best_seller FALSE)
+        (clasico_literatura FALSE)
+        (edad_recomendada 16)
+        (edicion_bolsillo FALSE)
+        (editorial "edit2")
+        (escrito_por [SBCFinal_Class20])
+        (hard FALSE)
+        (idioma_disponible
+                [SBCFinal_Class3]
+                [SBCFinal_Class1]
+                [SBCFinal_Class4])
+        (num_pag 200)
+        (puntuacion 10)
+        (saga FALSE)
+        (subgenero_cf [SBCFinal_Class11])
+        (titulo "lib4"))
+
+([SBCFinal_Class10001] of  Ciencia_ficcion
+
+        (anyo_publicacion 1941)
+        (best_seller TRUE)
+        (clasico_literatura TRUE)
+        (edad_recomendada 40)
+        (edicion_bolsillo FALSE)
+        (editorial "edit4")
+        (escrito_por [SBCFinal_Class22])
+        (hard TRUE)
+        (idioma_disponible
+                [SBCFinal_Class4]
+                [SBCFinal_Class0]
+                [SBCFinal_Class2])
+        (num_pag 1000)
+        (puntuacion 10)
+        (saga TRUE)
+        (subgenero_cf [SBCFinal_Class12])
+        (titulo "lib5"))
+
+([SBCFinal_Class10002] of  Ciencia_ficcion
+
+        (anyo_publicacion 1945)
+        (best_seller TRUE)
+        (clasico_literatura FALSE)
+        (edad_recomendada 2)
+        (edicion_bolsillo FALSE)
+        (editorial "edit5")
+        (escrito_por [SBCFinal_Class23])
+        (hard FALSE)
+        (idioma_disponible
+                [SBCFinal_Class4]
+                [SBCFinal_Class0])
+        (num_pag 500)
+        (puntuacion 15)
+        (saga TRUE)
+        (subgenero_cf [SBCFinal_Class14])
+        (titulo "lib6"))
+
+([SBCFinal_Class10003] of  Ciencia_ficcion
+
+        (anyo_publicacion 1980)
+        (best_seller FALSE)
+        (clasico_literatura TRUE)
+        (edad_recomendada 2)
+        (edicion_bolsillo FALSE)
+        (editorial "edit6")
+        (escrito_por [SBCFinal_Class22])
+        (hard FALSE)
+        (idioma_disponible
+                [SBCFinal_Class3]
+                [SBCFinal_Class1])
+        (num_pag 100)
+        (puntuacion 23)
+        (saga FALSE)
+        (subgenero_cf [SBCFinal_Class10])
+        (titulo "lib7"))
+
+([SBCFinal_Class10004] of  Ciencia_ficcion
+
+        (anyo_publicacion 1999)
+        (best_seller FALSE)
+        (clasico_literatura TRUE)
+        (edad_recomendada 1)
+        (edicion_bolsillo FALSE)
+        (editorial "edit2")
+        (escrito_por [SBCFinal_Class21])
+        (hard TRUE)
+        (idioma_disponible [SBCFinal_Class4])
+        (num_pag 150)
+        (puntuacion 7)
+        (saga FALSE)
+        (subgenero_cf [SBCFinal_Class10])
+        (titulo "lib8"))
+
+([SBCFinal_Class10005] of  Ciencia_ficcion
+
+        (anyo_publicacion 1921)
+        (best_seller TRUE)
+        (clasico_literatura FALSE)
+        (edad_recomendada 1)
+        (edicion_bolsillo TRUE)
+        (editorial "edit1")
+        (escrito_por [SBCFinal_Class22])
+        (hard TRUE)
+        (idioma_disponible [SBCFinal_Class1])
+        (num_pag 40)
+        (puntuacion 3)
+        (saga FALSE)
+        (subgenero_cf [SBCFinal_Class13])
+        (titulo "lib9"))
+
+([SBCFinal_Class10006] of  Ciencia_ficcion
+
+        (anyo_publicacion 1944)
+        (best_seller TRUE)
+        (clasico_literatura TRUE)
+        (edad_recomendada 13)
+        (edicion_bolsillo FALSE)
+        (editorial "edit2")
+        (escrito_por [SBCFinal_Class23])
+        (hard TRUE)
+        (idioma_disponible [SBCFinal_Class4])
+        (num_pag 200)
+        (puntuacion 11)
+        (saga FALSE)
+        (subgenero_cf [SBCFinal_Class15])
+        (titulo "lib10"))
+
+([SBCFinal_Class10007] of  Fantasia
+
+        (anyo_publicacion 1910)
+        (best_seller FALSE)
+        (clasico_literatura TRUE)
+        (edad_recomendada 2)
+        (edicion_bolsillo FALSE)
+        (editorial "edit11")
+        (escrito_por [SBCFinal_Class22])
+        (idioma_disponible [SBCFinal_Class0])
+        (num_pag 45)
+        (puntuacion 54)
+        (saga TRUE)
+        (subgenero_fant [SBCFinal_Class7])
+        (titulo "lib11"))
+
+([SBCFinal_Class10008] of  Fantasia
+
+        (anyo_publicacion 1933)
+        (best_seller TRUE)
+        (clasico_literatura TRUE)
+        (edad_recomendada 12)
+        (edicion_bolsillo TRUE)
+        (editorial "edit9")
+        (escrito_por [SBCFinal_Class19])
+        (idioma_disponible [SBCFinal_Class2])
+        (num_pag 400)
+        (puntuacion 1)
+        (saga TRUE)
+        (subgenero_fant [SBCFinal_Class6])
+        (titulo "lib12"))
+
+([SBCFinal_Class10009] of  Fantasia
+
+        (anyo_publicacion 1888)
+        (best_seller TRUE)
+        (clasico_literatura TRUE)
+        (edad_recomendada 1)
+        (edicion_bolsillo FALSE)
+        (editorial "edit6")
+        (escrito_por [SBCFinal_Class22])
+        (idioma_disponible [SBCFinal_Class0])
+        (num_pag 40)
+        (puntuacion 43)
+        (saga TRUE)
+        (subgenero_fant [SBCFinal_Class8])
+        (titulo "lib13"))
+
+([SBCFinal_Class10010] of  Fantasia
+
+        (anyo_publicacion 1920)
+        (best_seller TRUE)
+        (clasico_literatura FALSE)
+        (edad_recomendada 18)
+        (edicion_bolsillo FALSE)
+        (editorial "edit4")
+        (escrito_por [SBCFinal_Class22])
+        (idioma_disponible [SBCFinal_Class3])
+        (num_pag 600)
+        (puntuacion 55)
+        (saga TRUE)
+        (subgenero_fant [SBCFinal_Class9])
+        (titulo "lib14"))
+
+([SBCFinal_Class10011] of  Misterio
+
+        (anyo_publicacion 1539)
+        (best_seller TRUE)
+        (clasico_literatura FALSE)
+        (edad_recomendada 22)
+        (edicion_bolsillo FALSE)
+        (editorial "edit4")
+        (escrito_por [SBCFinal_Class21])
+        (idioma_disponible [SBCFinal_Class0])
+        (num_pag 400)
+        (puntuacion 23)
+        (saga TRUE)
+        (subgenero_mist [SBCFinal_Class17])
+        (titulo "lib15"))
+
+([SBCFinal_Class10012] of  Misterio
+
+        (anyo_publicacion 1984)
+        (best_seller FALSE)
+        (clasico_literatura TRUE)
+        (edad_recomendada 3)
+        (edicion_bolsillo TRUE)
+        (editorial "edit6")
+        (escrito_por [SBCFinal_Class20])
+        (idioma_disponible [SBCFinal_Class2])
+        (num_pag 100)
+        (puntuacion 15)
+        (saga FALSE)
+        (subgenero_mist [SBCFinal_Class16])
+        (titulo "lib16"))
+
+([SBCFinal_Class10013] of  Misterio
+
+        (anyo_publicacion 1967)
+        (best_seller TRUE)
+        (clasico_literatura FALSE)
+        (edad_recomendada 5)
+        (edicion_bolsillo FALSE)
+        (editorial "edit8")
+        (escrito_por [SBCFinal_Class23])
+        (idioma_disponible [SBCFinal_Class3])
+        (num_pag 200)
+        (puntuacion 21)
+        (saga TRUE)
+        (subgenero_mist [SBCFinal_Class17])
+        (titulo "lib17"))
+
+([SBCFinal_Class10014] of  Fantasia
+
+        (anyo_publicacion 1954)
+        (best_seller FALSE)
+        (clasico_literatura TRUE)
+        (edad_recomendada 7)
+        (edicion_bolsillo FALSE)
+        (editorial "edit6")
+        (escrito_por [SBCFinal_Class21])
+        (idioma_disponible [SBCFinal_Class0])
+        (num_pag 250)
+        (puntuacion 10)
+        (saga TRUE)
+        (subgenero_fant [SBCFinal_Class7])
+        (titulo "lib18"))
+
+([SBCFinal_Class10015] of  Fantasia
+
+        (anyo_publicacion 1967)
+        (best_seller FALSE)
+        (clasico_literatura TRUE)
+        (edad_recomendada 4)
+        (edicion_bolsillo TRUE)
+        (editorial "edit7")
+        (escrito_por [SBCFinal_Class21])
+        (idioma_disponible [SBCFinal_Class1])
+        (num_pag 150)
+        (puntuacion 26)
+        (saga FALSE)
+        (subgenero_fant [SBCFinal_Class5])
+        (titulo "lib19"))
 
 ([SBCFinal_Class11] of  Subgenero_ciencia_ficcion
 
-    (inverse_of_subgenero_cf [SBCFinal_Class24])
-    (subgenero_ciencia_ficcion "espacio"))
+        (inverse_of_subgenero_cf
+                [SBCFinal_Class24]
+                [SBCFinal_Class10000])
+        (subgenero_ciencia_ficcion "espacio"))
 
 ([SBCFinal_Class12] of  Subgenero_ciencia_ficcion
 
-    (subgenero_ciencia_ficcion "robotica_y_inteligencia_artificial"))
+        (inverse_of_subgenero_cf [SBCFinal_Class10001])
+        (subgenero_ciencia_ficcion "robotica_y_inteligencia_artificial"))
 
 ([SBCFinal_Class13] of  Subgenero_ciencia_ficcion
 
-    (subgenero_ciencia_ficcion "socal_alternativo"))
+        (inverse_of_subgenero_cf [SBCFinal_Class10005])
+        (subgenero_ciencia_ficcion "socal_alternativo"))
 
 ([SBCFinal_Class14] of  Subgenero_ciencia_ficcion
 
-    (subgenero_ciencia_ficcion "social_utopia"))
+        (inverse_of_subgenero_cf [SBCFinal_Class10002])
+        (subgenero_ciencia_ficcion "social_utopia"))
 
 ([SBCFinal_Class15] of  Subgenero_ciencia_ficcion
 
-    (subgenero_ciencia_ficcion "social_distopia"))
+        (inverse_of_subgenero_cf [SBCFinal_Class10006])
+        (subgenero_ciencia_ficcion "social_distopia"))
 
 ([SBCFinal_Class16] of  Subgenero_misterio
 
-    (inverse_of_subgenero_mist [SBCFinal_Class26])
-    (subgenero_misterio "policial"))
+        (inverse_of_subgenero_mist
+                [SBCFinal_Class26]
+                [SBCFinal_Class10012])
+        (subgenero_misterio "policial"))
 
 ([SBCFinal_Class17] of  Subgenero_misterio
 
-    (subgenero_misterio "suspense"))
+        (inverse_of_subgenero_mist
+                [SBCFinal_Class10011]
+                [SBCFinal_Class10013])
+        (subgenero_misterio "suspense"))
 
 ([SBCFinal_Class19] of  Autor
 
-    (inverse_of_escrito_por [SBCFinal_Class24])
-    (Nacionalidad "nac1")
-    (Nombre "autor1"))
+        (inverse_of_escrito_por
+                [SBCFinal_Class24]
+                [SBCFinal_Class10008])
+        (Nacionalidad "nac1")
+        (Nombre "autor1"))
 
 ([SBCFinal_Class2] of  Idioma
 
-    (idioma "ingles")
-    (inverse_of_idioma_disponible
-        [SBCFinal_Class24]
-        [SBCFinal_Class26]))
+        (idioma "ingles")
+        (inverse_of_idioma_disponible
+                [SBCFinal_Class24]
+                [SBCFinal_Class26]
+                [SBCFinal_Class10001]
+                [SBCFinal_Class10008]
+                [SBCFinal_Class10012]))
 
 ([SBCFinal_Class20] of  Autor
 
-    (inverse_of_escrito_por [SBCFinal_Class25])
-    (Nacionalidad "nac2")
-    (Nombre "autor2"))
+        (inverse_of_escrito_por
+                [SBCFinal_Class25]
+                [SBCFinal_Class10000]
+                [SBCFinal_Class10012])
+        (Nacionalidad "nac2")
+        (Nombre "autor2"))
 
 ([SBCFinal_Class21] of  Autor
 
-    (inverse_of_escrito_por [SBCFinal_Class26])
-    (Nacionalidad "nac2")
-    (Nombre "autor3"))
+        (inverse_of_escrito_por
+                [SBCFinal_Class26]
+                [SBCFinal_Class10004]
+                [SBCFinal_Class10011]
+                [SBCFinal_Class10014]
+                [SBCFinal_Class10015])
+        (Nacionalidad "nac2")
+        (Nombre "autor3"))
 
 ([SBCFinal_Class22] of  Autor
 
-    (Nacionalidad "nac3")
-    (Nombre "autor4"))
+        (inverse_of_escrito_por
+                [SBCFinal_Class10001]
+                [SBCFinal_Class10003]
+                [SBCFinal_Class10005]
+                [SBCFinal_Class10007]
+                [SBCFinal_Class10009]
+                [SBCFinal_Class10010])
+        (Nacionalidad "nac3")
+        (Nombre "autor4"))
 
 ([SBCFinal_Class23] of  Autor
 
-    (Nacionalidad "nac2")
-    (Nombre "autor5"))
+        (inverse_of_escrito_por
+                [SBCFinal_Class10002]
+                [SBCFinal_Class10006]
+                [SBCFinal_Class10013])
+        (Nacionalidad "nac2")
+        (Nombre "autor5"))
 
 ([SBCFinal_Class24] of  Ciencia_ficcion
 
-    (anyo_publicacion 1900)
-    (best_seller TRUE)
-    (clasico_literatura TRUE)
-    (edad_recomendada 16)
-    (edicion_bolsillo TRUE)
-    (editorial "edit1")
-    (escrito_por [SBCFinal_Class19])
-    (hard TRUE)
-    (idioma_disponible
-        [SBCFinal_Class0]
-        [SBCFinal_Class1]
-        [SBCFinal_Class2])
-    (num_pag 500)
-    (puntuacion 0)
-    (saga TRUE)
-    (subgenero_cf [SBCFinal_Class11])
-    (titulo "libro1"))
+        (anyo_publicacion 1900)
+        (best_seller TRUE)
+        (clasico_literatura TRUE)
+        (edad_recomendada 16)
+        (edicion_bolsillo TRUE)
+        (editorial "edit1")
+        (escrito_por [SBCFinal_Class19])
+        (hard TRUE)
+        (idioma_disponible
+                [SBCFinal_Class0]
+                [SBCFinal_Class1]
+                [SBCFinal_Class2])
+        (num_pag 500)
+        (puntuacion 10)
+        (saga TRUE)
+        (subgenero_cf [SBCFinal_Class11])
+        (titulo "libro1"))
 
 ([SBCFinal_Class25] of  Fantasia
 
-    (anyo_publicacion 2000)
-    (best_seller TRUE)
-    (clasico_literatura TRUE)
-    (edad_recomendada 12)
-    (edicion_bolsillo TRUE)
-    (editorial "edit1")
-    (escrito_por [SBCFinal_Class20])
-    (idioma_disponible [SBCFinal_Class0])
-    (num_pag 300)
-    (puntuacion 0)
-    (saga TRUE)
-    (subgenero_fant [SBCFinal_Class5])
-    (titulo "libro2"))
+        (anyo_publicacion 2000)
+        (best_seller TRUE)
+        (clasico_literatura TRUE)
+        (edad_recomendada 12)
+        (edicion_bolsillo TRUE)
+        (editorial "edit1")
+        (escrito_por [SBCFinal_Class20])
+        (idioma_disponible [SBCFinal_Class0])
+        (num_pag 300)
+        (puntuacion 17)
+        (saga TRUE)
+        (subgenero_fant [SBCFinal_Class5])
+        (titulo "libro2"))
 
 ([SBCFinal_Class26] of  Misterio
 
-    (anyo_publicacion 1500)
-    (best_seller TRUE)
-    (clasico_literatura TRUE)
-    (edad_recomendada 18)
-    (edicion_bolsillo TRUE)
-    (editorial "edit2")
-    (escrito_por [SBCFinal_Class21])
-    (idioma_disponible [SBCFinal_Class2])
-    (num_pag 150)
-    (puntuacion 0)
-    (saga TRUE)
-    (subgenero_mist [SBCFinal_Class16])
-    (titulo "libro3"))
+        (anyo_publicacion 1500)
+        (best_seller TRUE)
+        (clasico_literatura TRUE)
+        (edad_recomendada 18)
+        (edicion_bolsillo TRUE)
+        (editorial "edit2")
+        (escrito_por [SBCFinal_Class21])
+        (idioma_disponible [SBCFinal_Class2])
+        (num_pag 150)
+        (puntuacion 19)
+        (saga TRUE)
+        (subgenero_mist [SBCFinal_Class16])
+        (titulo "libro3"))
 
 ([SBCFinal_Class3] of  Idioma
 
-    (idioma "aleman"))
+        (idioma "aleman")
+        (inverse_of_idioma_disponible
+                [SBCFinal_Class10000]
+                [SBCFinal_Class10003]
+                [SBCFinal_Class10010]
+                [SBCFinal_Class10013]))
 
 ([SBCFinal_Class4] of  Idioma
 
-    (idioma "chino"))
+        (idioma "chino")
+        (inverse_of_idioma_disponible
+                [SBCFinal_Class10000]
+                [SBCFinal_Class10001]
+                [SBCFinal_Class10002]
+                [SBCFinal_Class10004]
+                [SBCFinal_Class10006]))
 
 ([SBCFinal_Class5] of  Subgenero_fantasia
 
-    (inverse_of_subgenero_fant [SBCFinal_Class25])
-    (subgenero_fantasia "cuentos_clasicos"))
+        (inverse_of_subgenero_fant
+                [SBCFinal_Class25]
+                [SBCFinal_Class10015])
+        (subgenero_fantasia "cuentos_clasicos"))
 
 ([SBCFinal_Class6] of  Subgenero_fantasia
 
-    (subgenero_fantasia "magia_y_espada"))
+        (inverse_of_subgenero_fant [SBCFinal_Class10008])
+        (subgenero_fantasia "magia_y_espada"))
 
 ([SBCFinal_Class7] of  Subgenero_fantasia
 
-    (subgenero_fantasia "alta_fantasia"))
+        (inverse_of_subgenero_fant
+                [SBCFinal_Class10007]
+                [SBCFinal_Class10014])
+        (subgenero_fantasia "alta_fantasia"))
 
 ([SBCFinal_Class8] of  Subgenero_fantasia
 
-    (subgenero_fantasia "medieval"))
+        (inverse_of_subgenero_fant [SBCFinal_Class10009])
+        (subgenero_fantasia "medieval"))
 
 ([SBCFinal_Class9] of  Subgenero_fantasia
 
-    (subgenero_fantasia "terror"))
+        (inverse_of_subgenero_fant [SBCFinal_Class10010])
+        (subgenero_fantasia "terror"))
+
 
 )
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;,
