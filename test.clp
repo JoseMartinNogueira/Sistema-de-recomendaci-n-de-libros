@@ -1585,17 +1585,31 @@
 
 ;;Mensajes
 
+(defmessage-handler MAIN::Ciencia_ficcion mostrar-cf ()
+        (format t "Subgenero: %s"  (send ?self:subgenero_cf get-subgenero_ciencia_ficcion))
+)
+
+(defmessage-handler MAIN::Fantasia mostrar-fant ()
+        (format t "Subgenero: %s"  (send ?self:subgenero_fant get-subgenero_fantasia))
+)
+
+(defmessage-handler MAIN::Misterio mostrar-mist ()
+        (format t "Subgenero: %s"  (send ?self:subgenero_mist get-subgenero_misterio))
+)
+
 (defmessage-handler MAIN::Libro plantilla ()
         (format t "Titulo: %s %n" ?self:titulo)
         (printout t crlf)
         (if (eq (class ?self) Ciencia_ficcion) then
-		(printout t "Genero: Ciencia ficcion" crlf)
-                (format t "Subgenero: %s" (send ?self:subgenero_cf get-subgenero_ciencia_ficcion))
-	else (if (eq (class ?self) Misterio) then
-	        (printout t "es misterio" crlf)
-	)else (if (eq (class ?self) Fantasia) then
-		(printout t "es fantasia" crlf)
-	)
+                (printout t "Genero: Ciencia ficcion" crlf)
+                (printout t (send ?self mostrar-cf))
+        else (if (eq (class ?self) Misterio) then
+                (printout t "Genero: Misterio" crlf)
+                (printout t (send ?self mostrar-mist))
+        )else (if (eq (class ?self) Fantasia) then
+                (printout t "Genero: Fantasia" crlf)
+                (printout t (send ?self mostrar-fant))
+        )
         )
         (printout t crlf)
         (format t "Editorial: %s" ?self:editorial)
